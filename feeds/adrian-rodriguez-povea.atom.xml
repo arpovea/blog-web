@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático - Adrián Rodríguez Povea</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/adrian-rodriguez-povea.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-09-29T00:00:00+02:00</updated><entry><title>RCLONE</title><link href="https://arpovea.vercel.app/rclone.html" rel="alternate"></link><published>2020-09-29T00:00:00+02:00</published><updated>2020-09-29T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-29:/rclone.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;
+&lt;hr&gt;
+&lt;!--more--&gt;
+
+&lt;h2&gt;RClone&lt;/h2&gt;
+&lt;p&gt;Rclone es una herramienta que permite trabajar con los ficheros que esten almacenados en los distintos servicios de almacenamiento en la nube, puede …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;
+&lt;hr&gt;
+&lt;!--more--&gt;
+
+&lt;h2&gt;RClone&lt;/h2&gt;
+&lt;p&gt;Rclone es una herramienta que permite trabajar con los ficheros que esten almacenados en los distintos servicios de almacenamiento en la nube, puede gestionar y sincronizar los ficheros de los servicios desde la linea de comandos.&lt;/p&gt;
+&lt;h3&gt;Instalación de Rclone&lt;/h3&gt;
+&lt;p&gt;Esta herramienta esta disponible en los repositorios oficiales de Debian Buster, ya que se esta usando esa distribución en este ejemplo, para instalar esta herramienta se realiza:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt install rclone
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Configuración de los proveedores cloud&lt;/h3&gt;
+&lt;p&gt;Se va a configurar dos proveedores cloud, cada proveedor utiliza distintas formas de hacerlo.&lt;/p&gt;
+&lt;h4&gt;Configuración Dropbox&lt;/h4&gt;
+&lt;p&gt;Desde el terminal ejecuta:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rclone config
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y elije la opción:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;n) New remote&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A continuación hay que facilitar los siguientes datos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un nombre con el que se va a identificar este proveedor. (En este caso dropbox)&lt;/li&gt;
+&lt;li&gt;De la lista de proveedores elejir el que nos interesa. (Numero 8, que es Dropbox)&lt;/li&gt;
+&lt;li&gt;Usuario y contraseña si se utiliza una API (En este caso se deja por defecto,es decir, haz un INTRO)&lt;/li&gt;
+&lt;li&gt;Configuración avanzada. (En este caso se selecciona "No")&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;En el terminal se veria así:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;dropbox&lt;/span&gt;
+&lt;span class="k"&gt;Type&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="k"&gt;storage&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;configure&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Enter&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Press&lt;/span&gt; &lt;span class="n"&gt;Enter&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
+&lt;span class="n"&gt;Choose&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="nb"&gt;number&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;below&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;type&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;own&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;
+ &lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;Dropbox&lt;/span&gt;
+   &lt;span class="err"&gt;\&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;dropbox&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;...&lt;/span&gt;
+&lt;span class="k"&gt;Storage&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;
+&lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="n"&gt;See&lt;/span&gt; &lt;span class="n"&gt;help&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;dropbox&lt;/span&gt; &lt;span class="n"&gt;backend&lt;/span&gt; &lt;span class="k"&gt;at&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;rclone&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dropbox&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;
+
+&lt;span class="n"&gt;Dropbox&lt;/span&gt; &lt;span class="n"&gt;App&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt; &lt;span class="n"&gt;Id&lt;/span&gt;
+&lt;span class="n"&gt;Leave&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt; &lt;span class="n"&gt;normally&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Enter&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Press&lt;/span&gt; &lt;span class="n"&gt;Enter&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
+&lt;span class="n"&gt;client_id&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class="n"&gt;Dropbox&lt;/span&gt; &lt;span class="n"&gt;App&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt; &lt;span class="n"&gt;Secret&lt;/span&gt;
+&lt;span class="n"&gt;Leave&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt; &lt;span class="n"&gt;normally&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Enter&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Press&lt;/span&gt; &lt;span class="n"&gt;Enter&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;
+&lt;span class="n"&gt;client_secret&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; 
+&lt;span class="n"&gt;Edit&lt;/span&gt; &lt;span class="n"&gt;advanced&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;Yes&lt;/span&gt;
+&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;No&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;
+&lt;span class="n"&gt;Remote&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt;
+&lt;span class="n"&gt;Use&lt;/span&gt; &lt;span class="n"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;
+ &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Say&lt;/span&gt; &lt;span class="n"&gt;Y&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;sure&lt;/span&gt;
+ &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Say&lt;/span&gt; &lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="k"&gt;are&lt;/span&gt; &lt;span class="n"&gt;working&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;remote&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="n"&gt;headless&lt;/span&gt; &lt;span class="n"&gt;machine&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;Yes&lt;/span&gt;
+&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;No&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Aqui hay dos opciones:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Si estas trabajando en local con entorno gráfico: Elige &lt;code&gt;y) Yes&lt;/code&gt;, esto provocará que se abrá un navegador donde introducir la cuenta de dropbox que queremos asignar y dando permiso a rclone.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Si estas trabajando en remoto o sin entorno gráfico: Elige &lt;code&gt;n) No&lt;/code&gt;, esto pedirá que ejecutes en otra máquina que tenga entorno el comando:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rclone authorize &lt;span class="s2"&gt;&amp;quot;dropbox&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Esto probocará que salte un navegador donde se indicara la cuenta y que se autoriza a rclone como en la anterior opción con la diferencia de que una vez se haya autorizado hay que copiar un código que aparece en la terminal y pegarlo en la terminal de la máquina en la que estas trabajando con rclone. En la terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;For&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;work&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;will&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;need&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;rclone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;available&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;machine&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;that&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;has&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;browser&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;available&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;Execute&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;following&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;machine&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;rclone&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;authorize&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;dropbox&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;Then&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;paste&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;result&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;below&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;result&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;access_token&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;f8wc24NV1XwAAAAAAAAAAeXRdjQ5u8pm5V7QBvec0OqzJjPkveFWN6UTGR8PDugG&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;token_type&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;bearer&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;expiry&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;0001-01-01T00:00:00Z&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;--------------------&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;dropbox&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;token&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;access_token&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;f8wc24NV1XwAAAAAAAAAAeXRdjQ5u8pm5V7QBvec0OqzJjPkveFWN6UTGR8PDugG&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;token_type&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;bearer&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;expiry&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;0001-01-01T00:00:00Z&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;--------------------&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Yes&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;OK&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Edit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;remote&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Delete&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;remote&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;Current&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;remotes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+
+&lt;span class="n"&gt;Name&lt;/span&gt;&lt;span class="w"&gt;                 &lt;/span&gt;&lt;span class="n"&gt;Type&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;====&lt;/span&gt;&lt;span class="w"&gt;                 &lt;/span&gt;&lt;span class="o"&gt;====&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;dropbox&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="n"&gt;dropbox&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Al finalizar como se puede ver lista los proveedores configurados.&lt;/p&gt;
+&lt;h3&gt;Configuración Google Drive&lt;/h3&gt;
+&lt;p&gt;Basicamente es muy parecida a la de dropbox, se comentarán los cambios:&lt;/p&gt;
+&lt;p&gt;De nuevo escribe el siguiente comando para iniciar la configuración:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rclone config
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Variaciones respecto a la configuración de Dropbox:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Choose&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;number&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;below&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;own&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;
+ &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;Full&lt;/span&gt; &lt;span class="n"&gt;access&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;excluding&lt;/span&gt; &lt;span class="n"&gt;Application&lt;/span&gt; &lt;span class="n"&gt;Data&lt;/span&gt; &lt;span class="n"&gt;Folder&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+   \ &lt;span class="s2"&gt;&amp;quot;drive&amp;quot;&lt;/span&gt;
+ &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;Read&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;only&lt;/span&gt; &lt;span class="n"&gt;access&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;metadata&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;contents&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+   \ &lt;span class="s2"&gt;&amp;quot;drive.readonly&amp;quot;&lt;/span&gt;
+   &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;Access&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;files&lt;/span&gt; &lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;rclone&lt;/span&gt; &lt;span class="n"&gt;only&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+ &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;These&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;visible&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;drive&lt;/span&gt; &lt;span class="n"&gt;website&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+   &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="n"&gt;authorization&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;revoked&lt;/span&gt; &lt;span class="n"&gt;when&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="n"&gt;deauthorizes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+   \ &lt;span class="s2"&gt;&amp;quot;drive.file&amp;quot;&lt;/span&gt;
+   &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;Allows&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;write&lt;/span&gt; &lt;span class="n"&gt;access&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;Application&lt;/span&gt; &lt;span class="n"&gt;Data&lt;/span&gt; &lt;span class="n"&gt;folder&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+ &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;visible&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;drive&lt;/span&gt; &lt;span class="n"&gt;website&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+   \ &lt;span class="s2"&gt;&amp;quot;drive.appfolder&amp;quot;&lt;/span&gt;
+   &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;Allows&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;only&lt;/span&gt; &lt;span class="n"&gt;access&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;metadata&lt;/span&gt; &lt;span class="n"&gt;but&lt;/span&gt;
+ &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;does&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;allow&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;access&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;read&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;download&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+   \ &lt;span class="s2"&gt;&amp;quot;drive.metadata.readonly&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;scope&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Aquí basicamente pide los permisos que se le van a conceder a rclone las opciones son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Acceso completo excluyendo la carpeta de datos de aplicaciones.&lt;/li&gt;
+&lt;li&gt;Acceso de solo lectura&lt;/li&gt;
+&lt;li&gt;Acceso sólo a los ficheros creados con Rclone&lt;/li&gt;
+&lt;li&gt;Acceso completo incluyendo la carpeta de datos de aplicaciones.&lt;/li&gt;
+&lt;li&gt;Acceso de solo lectura a los archivos metadata.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Luego preguntará por ID de root y un fichero de Json para el servicio de credenciales de la cuenta lo cual no hace falta, pulsa "INTRO" en terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;ID of the root folder&lt;/span&gt;
+&lt;span class="err"&gt;Leave blank normally.&lt;/span&gt;
+&lt;span class="err"&gt;Fill in to access &amp;quot;Computers&amp;quot; folders. (see docs).&lt;/span&gt;
+&lt;span class="err"&gt;Enter a string value. Press Enter for the default (&amp;quot;&amp;quot;).&lt;/span&gt;
+&lt;span class="err"&gt;root_folder_id&amp;gt; &lt;/span&gt;
+&lt;span class="err"&gt;Service Account Credentials JSON file path &lt;/span&gt;
+&lt;span class="err"&gt;Leave blank normally.&lt;/span&gt;
+&lt;span class="err"&gt;Needed only if you want use SA instead of interactive login.&lt;/span&gt;
+&lt;span class="err"&gt;Enter a string value. Press Enter for the default (&amp;quot;&amp;quot;).&lt;/span&gt;
+&lt;span class="err"&gt;service_account_file&amp;gt; &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Continuando pedirá las mismas opciones ya explicadas en el apartado de Dropbox finalizando sin problemas.&lt;/p&gt;
+&lt;h3&gt;Opciones de Rclone&lt;/h3&gt;
+&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Artículos"></category></entry><entry><title>Tareas con RAID5</title><link href="https://arpovea.vercel.app/tareas-con-raid5.html" rel="alternate"></link><published>2020-09-28T00:00:00+02:00</published><updated>2020-09-28T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-28:/tareas-con-raid5.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con &lt;code&gt;mdadm&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;!--more--&gt;
+
+&lt;h2&gt;Preparación para la tarea sobre RAID5&lt;/h2&gt;
+&lt;p&gt;Para realizar esta tarea se va a utilizar una máquina virtual con vagrant-libvirt la configuración de vagrantfile es la …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con &lt;code&gt;mdadm&lt;/code&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;!--more--&gt;
+
+&lt;h2&gt;Preparación para la tarea sobre RAID5&lt;/h2&gt;
+&lt;p&gt;Para realizar esta tarea se va a utilizar una máquina virtual con vagrant-libvirt la configuración de vagrantfile es la siguiente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- mode: ruby -*-&lt;/span&gt;
+&lt;span class="c1"&gt;# vi: set ft=ruby :&lt;/span&gt;
+
+&lt;span class="no"&gt;Vagrant&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;configure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;provider&lt;/span&gt; &lt;span class="ss"&gt;:libvirt&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;libvirt&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;libvirt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;storage&lt;/span&gt; &lt;span class="ss"&gt;:file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:size&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1G&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;libvirt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;storage&lt;/span&gt; &lt;span class="ss"&gt;:file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:size&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1G&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;libvirt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;storage&lt;/span&gt; &lt;span class="ss"&gt;:file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:size&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1G&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;libvirt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;storage&lt;/span&gt; &lt;span class="ss"&gt;:file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:size&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1G&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;libvirt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;storage&lt;/span&gt; &lt;span class="ss"&gt;:file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:size&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1G&amp;#39;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;box&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;debian/buster64&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como podemos observar en el fichero agregamos 5 discos para realizar distintas pruebas a lo largo del ejercicio.&lt;/p&gt;
+&lt;p&gt;Una vez iniciada la máquina deberías obtener con el comando &lt;code&gt;lsblk&lt;/code&gt; lo siguiente:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblk" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblk.png"&gt;  &lt;/p&gt;
+&lt;p&gt;Lo siguiente es instalar el paquete &lt;code&gt;mdadm&lt;/code&gt;, si no lo tenéis ya instalado en la máquina virtual:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt install -y mdadm
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Tareas RAID5&lt;/h2&gt;
+&lt;h4&gt;Tarea 1: Crea una raid llamado "md5" con los discos que hemos conectado a la máquina. ¿Cuántos discos tienes que conectar? ¿Qué diferencia existe entre el RAID 5 y el RAID1?.&lt;/h4&gt;
+&lt;p&gt;Para el RAID5 hay que conectar 3 discos, es decir tiene en total una capacidad de 2GB, para hacer esto utiliza el siguiente comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm -C /dev/md5 --level&lt;span class="o"&gt;=&lt;/span&gt;RAID5 --raid-devices&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; /dev/vdb /dev/vdc /dev/vdd
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Si realizas de nuevo un &lt;code&gt;lsblk&lt;/code&gt; obtendrás algo como esto:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblk2" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblk2.png"&gt;&lt;/p&gt;
+&lt;p&gt;La diferencia entre RAID5 y RAID1 es:&lt;/p&gt;
+&lt;p&gt;En RAID5 los bloques estan distribuidos entre los 3 discos(los mínimos en RAID5) y soporta la pérdida total de unos de ellos, ya que distribuye la paridad entre los 3 dispositivos, pudiendo con dos recuperar toda la información.&lt;/p&gt;
+&lt;p&gt;En RAID1 se utilizan dos discos y uno es una copia exacta del otro, tiene ventajas en velocidades de lectura, ya que se puede leer de los dos discos, pero tiene desventaja en la escritura ya debe escribir en ambos discos la misma información.&lt;/p&gt;
+&lt;h4&gt;Tarea 2: Comprueba las características del RAID. Comprueba el estado del RAID. ¿Qué capacidad tiene el RAID que hemos creado?.&lt;/h4&gt;
+&lt;p&gt;La capacidad es de 2GB, para comprobar el estado del RAID5 se consulta un fichero y para los detalles un comando: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Consultando el fichero &lt;code&gt;/etc/proc/mdstat&lt;/code&gt; para ver su estado:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo cat /proc/mdstat
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Consultando los detalles:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm -D /dev/md5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En la siguiente imagen se pueden ver tanto el estado como los detalles:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="mdadmstatus" src="{{ site.baseurl }}/assets/img/TareaRAID5/comprobacionstadoraid.png"&gt;&lt;/p&gt;
+&lt;h4&gt;Tarea 3: Crea un volumen lógico (LVM) de 500MB en el RAID5.&lt;/h4&gt;
+&lt;p&gt;Para esto hay que añadir el RAID5 a los volúmenes físicos, crear un grupo de volúmenes que utilize ese dispositivo y luego crear el volumen lógico:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pvcreate /dev/md5
+sudo vgcreate tareas /dev/md5
+sudo lvcreate tareas -L 500M -n tarea3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Quedando como en la siguiente imagen:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Vlogico" src="{{ site.baseurl }}/assets/img/TareaRAID5/Vlogico.png"&gt;&lt;/p&gt;
+&lt;h4&gt;Tarea 4: Formatea ese volumen con un sistema de archivo &lt;code&gt;xfs&lt;/code&gt;.&lt;/h4&gt;
+&lt;p&gt;Realiza el siguiente comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mkfs.xfs /dev/tareas/tarea3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Tarea 5: Monta el volumen en el directorio &lt;code&gt;/mnt/RAID5&lt;/code&gt; y crea un fichero. ¿Qué tendríamos que hacer para que este punto de montaje sea permanente?.&lt;/h4&gt;
+&lt;p&gt;Para ello:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir /mnt/RAID5
+sudo mount -t xfs /dev/tareas/tarea3 /mnt/RAID5
+touch /mnt/RAID5/fich.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para que fuera permanente tendrías que incluir este montaje en el fichero &lt;code&gt;fstab&lt;/code&gt;.    &lt;/p&gt;
+&lt;h4&gt;Tarea 6: Marca un disco como estropeado. Muestra el estado del raid para comprobar que un disco falla. ¿Podemos acceder al fichero?.&lt;/h4&gt;
+&lt;p&gt;Para marcar un disco, por ejemplo &lt;code&gt;vdb&lt;/code&gt; como fallido utiliza:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm --manage /dev/md5 --fail /dev/vdb
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Luego mira el estado con:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat /proc/mdstat
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Mostrará algo similar a la siguiente imagen donde se observa que el disco esta marcado como fallido:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="fallovdb" src="{{ site.baseurl }}/assets/img/TareaRAID5/fallovdb.png"&gt;&lt;/p&gt;
+&lt;p&gt;El fichero se puede seguir visualizando sin problema.&lt;/p&gt;
+&lt;h4&gt;Tarea 7: Una vez marcado como estropeado, lo tenemos que retirar del raid.&lt;/h4&gt;
+&lt;p&gt;Para ello utiliza el siguiente comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm --manage /dev/md5 --remove /dev/vdb
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Observamos de nuevo el estado del RAID5 y mostrará lo siguiente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat /etc/proc/mdstat
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="removevdb" src="{{ site.baseurl }}/assets/img/TareaRAID5/removevdb.png"&gt;&lt;/p&gt;
+&lt;h4&gt;Tarea 8: Imaginemos que lo cambiamos por un nuevo disco nuevo (el dispositivo de bloque se llama igual), añádelo al array y&lt;/h4&gt;
+&lt;p&gt;comprueba como se sincroniza con el anterior. &lt;/p&gt;
+&lt;p&gt;Para ello en este caso con un nuevo disco "vde":&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm --manage /dev/md5 --add /dev/vde
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Automáticamente se sincroniza con el raid, observa los cambios con:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;lsblk
+cat /proc/mdstat
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Obteniendo algo similar a lo siguiente:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="agregandovde" src="{{ site.baseurl }}/assets/img/TareaRAID5/agregandovde.png"&gt;&lt;/p&gt;
+&lt;h4&gt;Tarea 9: Añade otro disco como reserva. Vuelve a simular el fallo de un disco y comprueba como automáticamente se realiza la sincronización con el disco de reserva.&lt;/h4&gt;
+&lt;p&gt;Realiza los siguiente comandos para añadir el disco como reserva:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mdadm --manage /dev/md5 -add /dev/vdf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Puedes comprobar que se ha añadido como "SPARE" comprobando el estado o los detalles del RAID5 con los siguientes comandos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm -D /dev/md5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cat /proc/mdstat
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora vuelve a marcar otro dispositivo como fallido esta vez &lt;code&gt;vdc&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm --manage /dev/md5 --fail /dev/vdc
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como podemos ver en la siguiente imagen el disco pasa de SPARE (S) a activo y el otro se marca como FAIL (F)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="SPAREautilizado" src="{{ site.baseurl }}/assets/img/TareaRAID5/SPAREautilizado.png"&gt;&lt;/p&gt;
+&lt;p&gt;Como repunte, si quisieras que el disco se agrege como dispositivo adicional para aumentar las dimesiones del raid, después de agregarlo, realiza el siguiente comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm --grow /dev/md5 --raid-devices&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y luego aumentar el raid a la máxima capacidad disponible con:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm --grow /dev/md5 -z max
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Tarea 10: Redimensiona el volumen y el sistema de archivo de 500MB al tamaño del raid.&lt;/h4&gt;
+&lt;p&gt;Con los siguientes comandos podras redimensionar el volumen y luego redimensionar el sistema de ficheros:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo lvextend -L +1.5G /dev/tareas/tarea3 
+sudo xfs_growfs /mnt/RAID5/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Recalcar que con &lt;code&gt;xfs&lt;/code&gt;se puede realizar esta acción en caliente con otros sistemas de ficheros podría ocasionar errores o pérdida de datos.&lt;/p&gt;
+&lt;p&gt;Al finalizar todas las tareas en este orden la orden &lt;code&gt;lsblk -f&lt;/code&gt; debería mostrar algo así:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblkfinal" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblkfinal.png"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Artículos"></category></entry></feed>

@@ -1,244 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-        <meta charset="utf-8" />
-        <title>Blog Informático - Adrián Rodríguez Povea</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-</head>
+    <title>Articles by Adrián Rodríguez Povea &ndash; Blog Informático</title>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Blog Informático </a></h1>
-                <nav><ul>
-    
-                        <li><a href="/pages/acerca-de.html">Acerca de</a></li>
-                    <li><a href="/category/articulos.html">Artículos</a></li>
-                </ul>
-                </nav>
-        </header><!-- /#banner -->
+    <!-- Meta -->
+    <meta name="description" content="Blog Informático &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/rclone.html">RCLONE</a></h1>
-<footer class="post-info">
-        <span>mar 29 septiembre 2020</span>
+    <!-- Social -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Blog Informático"/>
+    <meta property="og:description" content=""/>
+    <meta property="og:site_name" content="Blog Informático" />
+    <meta property="og:url" content="https://arpovea.vercel.app"/>
+    <meta property="og:image" content="http://www.gravatar.com/avatar/abcdefghijkl?s=240"/>
 
-</footer><!-- /.post-info --><h2>- Adrián Rodríguez Povea</h2>
-<hr>
-<p>Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.</p>
-<hr>
-<!--more-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog Informático">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:url" content="https://arpovea.vercel.app">
+    <meta name="twitter:image" content="http://www.gravatar.com/avatar/abcdefghijkl?s=240">
 
-<h2>RClone</h2>
-<p>Rclone es una herramienta que permite trabajar con los ficheros que esten almacenados en los distintos servicios de almacenamiento en la nube, puede gestionar y sincronizar los ficheros de los servicios desde la linea de comandos.</p>
-<h3>Instalación de Rclone</h3>
-<p>Esta herramienta esta disponible en los repositorios oficiales de Debian Buster, ya que se esta usando esa distribución en este ejemplo, para instalar esta herramienta se realiza:</p>
-<div class="highlight"><pre><span></span>sudo apt update <span class="o">&amp;&amp;</span> sudo apt install rclone
-</pre></div>
+    <!-- Feed -->
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/all.atom.xml" title="Blog Informático Atom Feed" />
+    <link rel="alternate" type="application/rss+xml" href="http://johndoe.disqus.com/latest.rss" title="Blog Informático Comments RSS Feed">
 
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/static/custom.css">
 
-<h3>Configuración de los proveedores cloud</h3>
-<p>Se va a configurar dos proveedores cloud, cada proveedor utiliza distintas formas de hacerlo.</p>
-<h4>Configuración Dropbox</h4>
-<p>Desde el terminal ejecuta:</p>
-<div class="highlight"><pre><span></span>rclone config
-</pre></div>
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://arpovea.vercel.app/favicon.ico">
 
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://arpovea.vercel.app/theme/js/jqcloud.min.js"></script>
+  </head>
 
-<p>Y elije la opción:</p>
-<div class="highlight"><pre><span></span><span class="err">n) New remote</span>
-</pre></div>
-
-
-<p>A continuación hay que facilitar los siguientes datos:</p>
-<ul>
-<li>Un nombre con el que se va a identificar este proveedor. (En este caso dropbox)</li>
-<li>De la lista de proveedores elejir el que nos interesa. (Numero 8, que es Dropbox)</li>
-<li>Usuario y contraseña si se utiliza una API (En este caso se deja por defecto,es decir, haz un INTRO)</li>
-<li>Configuración avanzada. (En este caso se selecciona "No")</li>
-</ul>
-<p>En el terminal se veria así:</p>
-<div class="highlight"><pre><span></span><span class="n">name</span><span class="o">&gt;</span> <span class="n">dropbox</span>
-<span class="k">Type</span> <span class="k">of</span> <span class="k">storage</span> <span class="k">to</span> <span class="n">configure</span><span class="p">.</span>
-<span class="n">Enter</span> <span class="n">a</span> <span class="n">string</span> <span class="n">value</span><span class="p">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="k">default</span> <span class="p">(</span><span class="ss">&quot;&quot;</span><span class="p">).</span>
-<span class="n">Choose</span> <span class="n">a</span> <span class="nb">number</span> <span class="k">from</span> <span class="n">below</span><span class="p">,</span> <span class="k">or</span> <span class="k">type</span> <span class="k">in</span> <span class="n">your</span> <span class="n">own</span> <span class="n">value</span>
-<span class="p">...</span>
- <span class="mi">8</span> <span class="o">/</span> <span class="n">Dropbox</span>
-   <span class="err">\</span> <span class="ss">&quot;dropbox&quot;</span>
-<span class="p">...</span>
-<span class="k">Storage</span><span class="o">&gt;</span> <span class="mi">8</span>
-<span class="o">**</span> <span class="n">See</span> <span class="n">help</span> <span class="k">for</span> <span class="n">dropbox</span> <span class="n">backend</span> <span class="k">at</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">rclone</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">dropbox</span><span class="o">/</span> <span class="o">**</span>
-
-<span class="n">Dropbox</span> <span class="n">App</span> <span class="n">Client</span> <span class="n">Id</span>
-<span class="n">Leave</span> <span class="n">blank</span> <span class="n">normally</span><span class="p">.</span>
-<span class="n">Enter</span> <span class="n">a</span> <span class="n">string</span> <span class="n">value</span><span class="p">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="k">default</span> <span class="p">(</span><span class="ss">&quot;&quot;</span><span class="p">).</span>
-<span class="n">client_id</span><span class="o">&gt;</span> 
-<span class="n">Dropbox</span> <span class="n">App</span> <span class="n">Client</span> <span class="n">Secret</span>
-<span class="n">Leave</span> <span class="n">blank</span> <span class="n">normally</span><span class="p">.</span>
-<span class="n">Enter</span> <span class="n">a</span> <span class="n">string</span> <span class="n">value</span><span class="p">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="k">default</span> <span class="p">(</span><span class="ss">&quot;&quot;</span><span class="p">).</span>
-<span class="n">client_secret</span><span class="o">&gt;</span> 
-<span class="n">Edit</span> <span class="n">advanced</span> <span class="n">config</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
-<span class="n">y</span><span class="p">)</span> <span class="n">Yes</span>
-<span class="n">n</span><span class="p">)</span> <span class="k">No</span>
-<span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">&gt;</span> <span class="n">n</span>
-<span class="n">Remote</span> <span class="n">config</span>
-<span class="n">Use</span> <span class="n">auto</span> <span class="n">config</span><span class="o">?</span>
- <span class="o">*</span> <span class="n">Say</span> <span class="n">Y</span> <span class="k">if</span> <span class="k">not</span> <span class="n">sure</span>
- <span class="o">*</span> <span class="n">Say</span> <span class="n">N</span> <span class="k">if</span> <span class="n">you</span> <span class="k">are</span> <span class="n">working</span> <span class="k">on</span> <span class="n">a</span> <span class="n">remote</span> <span class="k">or</span> <span class="n">headless</span> <span class="n">machine</span>
-<span class="n">y</span><span class="p">)</span> <span class="n">Yes</span>
-<span class="n">n</span><span class="p">)</span> <span class="k">No</span>
-<span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">&gt;</span> 
-</pre></div>
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="https://arpovea.vercel.app" id="header-logo" title="Home">AR</a>
+        <nav id="header-menu">
+          <ul>
+            <li><a href="https://arpovea.vercel.app/pages/acerca-de.html">Acerca de</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/articulos.html">Artículos</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/">Categories</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/">Archive</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
 
 
-<p>Aqui hay dos opciones:</p>
-<ul>
-<li>
-<p>Si estas trabajando en local con entorno gráfico: Elige <code>y) Yes</code>, esto provocará que se abrá un navegador donde introducir la cuenta de dropbox que queremos asignar y dando permiso a rclone.</p>
-</li>
-<li>
-<p>Si estas trabajando en remoto o sin entorno gráfico: Elige <code>n) No</code>, esto pedirá que ejecutes en otra máquina que tenga entorno el comando:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>rclone authorize <span class="s2">&quot;dropbox&quot;</span>
-</pre></div>
+    <br><br><br>
+
+    <div class="w3-container col-main w3-center">
+      <h2>Articles by Adrián Rodríguez Povea</h2>
+      <br>
+      <a href="https://arpovea.vercel.app/author/adrian-rodriguez-povea.html" style="display: flex; align-items: center; justify-content: center;"><img style="width: 50px; height: 50px;" src="http://www.gravatar.com/avatar/abcdefghijkl?s=240" onerror="this.src='../theme/images/avatar.png'"></img></a>
+    </div>
 
 
-<p>Esto probocará que salte un navegador donde se indicara la cuenta y que se autoriza a rclone como en la anterior opción con la diferencia de que una vez se haya autorizado hay que copiar un código que aparece en la terminal y pegarlo en la terminal de la máquina en la que estas trabajando con rclone. En la terminal:</p>
-<div class="highlight"><pre><span></span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
-<span class="k">For</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">work</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">rclone</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">machine</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">browser</span><span class="w"> </span><span class="n">available</span><span class="p">.</span><span class="w"></span>
-<span class="k">Execute</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="nl">machine</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="n">rclone</span><span class="w"> </span><span class="n">authorize</span><span class="w"> </span><span class="ss">&quot;dropbox&quot;</span><span class="w"></span>
-<span class="k">Then</span><span class="w"> </span><span class="n">paste</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">result</span><span class="w"> </span><span class="nl">below</span><span class="p">:</span><span class="w"></span>
-<span class="k">result</span><span class="o">&gt;</span><span class="w"> </span><span class="err">{</span><span class="ss">&quot;access_token&quot;</span><span class="err">:</span><span class="ss">&quot;f8wc24NV1XwAAAAAAAAAAeXRdjQ5u8pm5V7QBvec0OqzJjPkveFWN6UTGR8PDugG&quot;</span><span class="p">,</span><span class="ss">&quot;token_type&quot;</span><span class="err">:</span><span class="ss">&quot;bearer&quot;</span><span class="p">,</span><span class="ss">&quot;expiry&quot;</span><span class="err">:</span><span class="ss">&quot;0001-01-01T00:00:00Z&quot;</span><span class="err">}</span><span class="w"></span>
-<span class="o">--------------------</span><span class="w"></span>
-<span class="o">[</span><span class="n">dropbox</span><span class="o">]</span><span class="w"></span>
-<span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="ss">&quot;access_token&quot;</span><span class="err">:</span><span class="ss">&quot;f8wc24NV1XwAAAAAAAAAAeXRdjQ5u8pm5V7QBvec0OqzJjPkveFWN6UTGR8PDugG&quot;</span><span class="p">,</span><span class="ss">&quot;token_type&quot;</span><span class="err">:</span><span class="ss">&quot;bearer&quot;</span><span class="p">,</span><span class="ss">&quot;expiry&quot;</span><span class="err">:</span><span class="ss">&quot;0001-01-01T00:00:00Z&quot;</span><span class="err">}</span><span class="w"></span>
-<span class="o">--------------------</span><span class="w"></span>
-<span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="n">Yes</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">OK</span><span class="w"></span>
-<span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="n">Edit</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">remote</span><span class="w"></span>
-<span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="k">Delete</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">remote</span><span class="w"></span>
-<span class="n">y</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">d</span><span class="o">&gt;</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
-<span class="k">Current</span><span class="w"> </span><span class="nl">remotes</span><span class="p">:</span><span class="w"></span>
 
-<span class="n">Name</span><span class="w">                 </span><span class="n">Type</span><span class="w"></span>
-<span class="o">====</span><span class="w">                 </span><span class="o">====</span><span class="w"></span>
-<span class="n">dropbox</span><span class="w">              </span><span class="n">dropbox</span><span class="w"></span>
-</pre></div>
+    <br><br><br>
 
+    <section id="listing">
+      <article class="w3-container w3-card-2 w3-white col-main">
+        <header>
+          <h2><a href="https://arpovea.vercel.app/rclone.html">RCLONE</a></h2>
+          <div class="post-info">
+            <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+              <span><time datetime="2020-09-29T00:00:00+02:00">mar 29 septiembre 2020</time> in <a href="https://arpovea.vercel.app/category/articulos.html" title="All articles in category Artículos">Artículos</a></span>
+            </div>
+          </div>
+        </header>
 
-<p>Al finalizar como se puede ver lista los proveedores configurados.</p>
-<h3>Configuración Google Drive</h3>
-<p>Basicamente es muy parecida a la de dropbox, se comentarán los cambios:</p>
-<p>De nuevo escribe el siguiente comando para iniciar la configuración:</p>
-<div class="highlight"><pre><span></span>rclone config
-</pre></div>
+        <div class="entry-content">
+          - Adrián Rodríguez Povea Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades. RClone Rclone es una herramienta que permite trabajar con los ficheros que esten almacenados en los distintos servicios de almacenamiento en la nube, puede …
+        </div>
 
+        <footer>
+          <a class="w3-btn w3-green w3-right" href="https://arpovea.vercel.app/rclone.html">Read &#10093;</a>
+        </footer>
+      </article>
 
-<p>Variaciones respecto a la configuración de Dropbox:</p>
-<div class="highlight"><pre><span></span><span class="n">Choose</span> <span class="n">a</span> <span class="n">number</span> <span class="n">from</span> <span class="n">below</span><span class="p">,</span> <span class="ow">or</span> <span class="n">type</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">own</span> <span class="n">value</span>
- <span class="mi">1</span> <span class="o">/</span> <span class="n">Full</span> <span class="n">access</span> <span class="n">all</span> <span class="n">files</span><span class="p">,</span> <span class="n">excluding</span> <span class="n">Application</span> <span class="n">Data</span> <span class="n">Folder</span><span class="o">.</span>
-   \ <span class="s2">&quot;drive&quot;</span>
- <span class="mi">2</span> <span class="o">/</span> <span class="n">Read</span><span class="o">-</span><span class="n">only</span> <span class="n">access</span> <span class="n">to</span> <span class="n">file</span> <span class="n">metadata</span> <span class="ow">and</span> <span class="n">file</span> <span class="n">contents</span><span class="o">.</span>
-   \ <span class="s2">&quot;drive.readonly&quot;</span>
-   <span class="o">/</span> <span class="n">Access</span> <span class="n">to</span> <span class="n">files</span> <span class="n">created</span> <span class="n">by</span> <span class="n">rclone</span> <span class="n">only</span><span class="o">.</span>
- <span class="mi">3</span> <span class="o">|</span> <span class="n">These</span> <span class="n">are</span> <span class="n">visible</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">drive</span> <span class="n">website</span><span class="o">.</span>
-   <span class="o">|</span> <span class="n">File</span> <span class="n">authorization</span> <span class="k">is</span> <span class="n">revoked</span> <span class="n">when</span> <span class="n">the</span> <span class="n">user</span> <span class="n">deauthorizes</span> <span class="n">the</span> <span class="n">app</span><span class="o">.</span>
-   \ <span class="s2">&quot;drive.file&quot;</span>
-   <span class="o">/</span> <span class="n">Allows</span> <span class="n">read</span> <span class="ow">and</span> <span class="n">write</span> <span class="n">access</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Application</span> <span class="n">Data</span> <span class="n">folder</span><span class="o">.</span>
- <span class="mi">4</span> <span class="o">|</span> <span class="n">This</span> <span class="k">is</span> <span class="ow">not</span> <span class="n">visible</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">drive</span> <span class="n">website</span><span class="o">.</span>
-   \ <span class="s2">&quot;drive.appfolder&quot;</span>
-   <span class="o">/</span> <span class="n">Allows</span> <span class="n">read</span><span class="o">-</span><span class="n">only</span> <span class="n">access</span> <span class="n">to</span> <span class="n">file</span> <span class="n">metadata</span> <span class="n">but</span>
- <span class="mi">5</span> <span class="o">|</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">allow</span> <span class="n">any</span> <span class="n">access</span> <span class="n">to</span> <span class="n">read</span> <span class="ow">or</span> <span class="n">download</span> <span class="n">file</span> <span class="n">content</span><span class="o">.</span>
-   \ <span class="s2">&quot;drive.metadata.readonly&quot;</span>
-<span class="n">scope</span><span class="o">&gt;</span> <span class="mi">1</span>
-</pre></div>
+      <br><br><br>
+
+      <article class="w3-container w3-card-2 w3-white col-main">
+        <header>
+          <h2><a href="https://arpovea.vercel.app/tareas-con-raid5.html">Tareas con RAID5</a></h2>
+          <div class="post-info">
+            <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+              <span><time datetime="2020-09-28T00:00:00+02:00">lun 28 septiembre 2020</time> in <a href="https://arpovea.vercel.app/category/articulos.html" title="All articles in category Artículos">Artículos</a></span>
+            </div>
+          </div>
+        </header>
+
+        <div class="entry-content">
+          - Adrián Rodríguez Povea Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con mdadm. Preparación para la tarea sobre RAID5 Para realizar esta tarea se va a utilizar una máquina virtual con vagrant-libvirt la configuración de vagrantfile es la …
+        </div>
+
+        <footer>
+          <a class="w3-btn w3-green w3-right" href="https://arpovea.vercel.app/tareas-con-raid5.html">Read &#10093;</a>
+        </footer>
+      </article>
+
+      <br><br><br>
 
 
-<p>Aquí basicamente pide los permisos que se le van a conceder a rclone las opciones son:</p>
-<ul>
-<li>Acceso completo excluyendo la carpeta de datos de aplicaciones.</li>
-<li>Acceso de solo lectura</li>
-<li>Acceso sólo a los ficheros creados con Rclone</li>
-<li>Acceso completo incluyendo la carpeta de datos de aplicaciones.</li>
-<li>Acceso de solo lectura a los archivos metadata.</li>
-</ul>
-<p>Luego preguntará por ID de root y un fichero de Json para el servicio de credenciales de la cuenta lo cual no hace falta, pulsa "INTRO" en terminal:</p>
-<div class="highlight"><pre><span></span><span class="err">ID of the root folder</span>
-<span class="err">Leave blank normally.</span>
-<span class="err">Fill in to access &quot;Computers&quot; folders. (see docs).</span>
-<span class="err">Enter a string value. Press Enter for the default (&quot;&quot;).</span>
-<span class="err">root_folder_id&gt; </span>
-<span class="err">Service Account Credentials JSON file path </span>
-<span class="err">Leave blank normally.</span>
-<span class="err">Needed only if you want use SA instead of interactive login.</span>
-<span class="err">Enter a string value. Press Enter for the default (&quot;&quot;).</span>
-<span class="err">service_account_file&gt; </span>
-</pre></div>
+
+    </section>
 
 
-<p>Continuando pedirá las mismas opciones ya explicadas en el apartado de Dropbox finalizando sin problemas.</p>
-<h3>Opciones de Rclone</h3>
-<hr>
-<p>Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>&copy;  Adrián Rodríguez Povea  | <a href="https://arpovea.vercel.app/feeds/all.atom.xml">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a></span>
+      </div>
+    </footer>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/tareas-con-raid5.html" rel="bookmark"
-                           title="Permalink to Tareas con RAID5">Tareas con RAID5</a></h1>
-                </header>
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <span>lun 28 septiembre 2020</span>
-
-</footer><!-- /.post-info -->                <h2>- Adrián Rodríguez Povea</h2>
-<hr>
-<p>Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con <code>mdadm</code>.</p>
-<hr>
-<!--more-->
-
-<h2>Preparación para la tarea sobre RAID5</h2>
-<p>Para realizar esta tarea se va a utilizar una máquina virtual con vagrant-libvirt la configuración de vagrantfile es la …</p>
-                <a class="readmore" href="/tareas-con-raid5.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="https://getpelican.com/">Pelican</a></li>
-                            <li><a href="https://www.python.org/">Python.org</a></li>
-                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
-        </footer><!-- /#contentinfo -->
-
-</body>
+  </body>
 </html>
