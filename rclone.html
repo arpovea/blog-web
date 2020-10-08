@@ -118,7 +118,7 @@
 <li>Usuario y contraseña si se utiliza una API (En este caso se deja por defecto,es decir, haz un INTRO)</li>
 <li>Configuración avanzada. (En este caso se selecciona "No")</li>
 </ul>
-<p>En el terminal se veria así:</p>
+<p>En el terminal se vería así:</p>
 <div class="highlight"><pre><span></span><span class="n">name</span><span class="o">&gt;</span> <span class="n">dropbox</span>
 <span class="k">Type</span> <span class="k">of</span> <span class="k">storage</span> <span class="k">to</span> <span class="n">configure</span><span class="p">.</span>
 <span class="n">Enter</span> <span class="n">a</span> <span class="n">string</span> <span class="n">value</span><span class="p">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="k">default</span> <span class="p">(</span><span class="ss">&quot;&quot;</span><span class="p">).</span>
@@ -155,7 +155,7 @@
 <p>Aqui hay dos opciones:</p>
 <ul>
 <li>
-<p>Si estas trabajando en local con entorno gráfico: Elige <code>y) Yes</code>, esto provocará que se abrá un navegador donde introducir la cuenta de dropbox que queremos asignar y dando permiso a rclone.</p>
+<p>Si estas trabajando en local con entorno gráfico: Elige <code>y) Yes</code>, esto provocará que se abra un navegador donde introducir la cuenta de dropbox que queremos asignar y dando permiso a rclone.</p>
 </li>
 <li>
 <p>Si estas trabajando en remoto o sin entorno gráfico: Elige <code>n) No</code>, esto pedirá que ejecutes en otra máquina que tenga entorno el comando:</p>
@@ -165,7 +165,7 @@
 </pre></div>
 
 
-<p>Esto probocará que salte un navegador donde se indicara la cuenta y que se autoriza a rclone como en la anterior opción con la diferencia de que una vez se haya autorizado hay que copiar un código que aparece en la terminal y pegarlo en la terminal de la máquina en la que estas trabajando con rclone. En la terminal:</p>
+<p>Esto provocará que salte un navegador donde se indicará la cuenta y que se autoriza a rclone como en la anterior opción con la diferencia de que una vez se haya autorizado hay que copiar un código que aparece en la terminal y pegarlo en la terminal de la máquina en la que estas trabajando con rclone. En la terminal:    </p>
 <div class="highlight"><pre><span></span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="o">&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
 <span class="k">For</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">work</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">rclone</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">machine</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">browser</span><span class="w"> </span><span class="n">available</span><span class="p">.</span><span class="w"></span>
 <span class="k">Execute</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="nl">machine</span><span class="p">:</span><span class="w"></span>
@@ -190,13 +190,13 @@
 
 <p>Al finalizar como se puede ver lista los proveedores configurados.</p>
 <h3>Configuración Google Drive</h3>
-<p>Basicamente es muy parecida a la de dropbox, se comentarán los cambios:</p>
+<p>Básicamente es muy parecida a la de dropbox, se comentarán los cambios:</p>
 <p>De nuevo escribe el siguiente comando para iniciar la configuración:</p>
 <div class="highlight"><pre><span></span>rclone config
 </pre></div>
 
 
-<p>Variaciones respecto a la configuración de Dropbox:</p>
+<p>Variaciones respecto a la configuración de Dropbox, aparte de que la elección en este caso será la (12):</p>
 <div class="highlight"><pre><span></span><span class="n">Choose</span> <span class="n">a</span> <span class="n">number</span> <span class="n">from</span> <span class="n">below</span><span class="p">,</span> <span class="ow">or</span> <span class="n">type</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">own</span> <span class="n">value</span>
  <span class="mi">1</span> <span class="o">/</span> <span class="n">Full</span> <span class="n">access</span> <span class="n">all</span> <span class="n">files</span><span class="p">,</span> <span class="n">excluding</span> <span class="n">Application</span> <span class="n">Data</span> <span class="n">Folder</span><span class="o">.</span>
    \ <span class="s2">&quot;drive&quot;</span>
@@ -216,11 +216,11 @@
 </pre></div>
 
 
-<p>Aquí basicamente pide los permisos que se le van a conceder a rclone las opciones son:</p>
+<p>Aquí básicamente pide los permisos que se le van a conceder a rclone las opciones son:</p>
 <ul>
 <li>Acceso completo excluyendo la carpeta de datos de aplicaciones.</li>
 <li>Acceso de solo lectura</li>
-<li>Acceso sólo a los ficheros creados con Rclone</li>
+<li>Acceso solo a los ficheros creados con Rclone</li>
 <li>Acceso completo incluyendo la carpeta de datos de aplicaciones.</li>
 <li>Acceso de solo lectura a los archivos metadata.</li>
 </ul>
@@ -240,8 +240,96 @@
 
 <p>Continuando pedirá las mismas opciones ya explicadas en el apartado de Dropbox finalizando sin problemas.</p>
 <h3>Opciones de Rclone</h3>
+<p>A continuación se verán las opciones mas usadas y útiles:</p>
+<p>Para listar los directorios:</p>
+<div class="highlight"><pre><span></span>rclone lsd remote-dir-name:
+</pre></div>
+
+
+<p>Para listar los ficheros:</p>
+<div class="highlight"><pre><span></span>rclone ls remote-dir-name:
+</pre></div>
+
+
+<p>Para copiar de origen a destino:(Puede ser entre dos proveedores de nube o entre un proveedor y una carpeta local).</p>
+<div class="highlight"><pre><span></span>rclone copy source:sourcepath dest:destpath
+</pre></div>
+
+
+<p>Para sincronizar datos entre origen y destino:(Como en el anterior puede ser entre proveedores o entre proveedor y carpeta local).</p>
+<div class="highlight"><pre><span></span>rclone sync source:path dest:path <span class="o">[</span>flags<span class="o">]</span>
+</pre></div>
+
+
+<ul>
+<li>En este cado la fuente(origen) sincroniza con el destino, cambiando solo lo que hay en destino, este método salta ficheros sin cambios, este comando puede causar la pérdida de datos por lo que es aconsejable usarlo con el [flag] "--dry-run" para ver que se copiará y eliminará.</li>
+</ul>
+<p>Para mover datos sería así:</p>
+<div class="highlight"><pre><span></span>rclone move source:path dest:path <span class="o">[</span>flags<span class="o">]</span>
+</pre></div>
+
+
+<p>Para crear un directorio:</p>
+<div class="highlight"><pre><span></span>rclone mkdir remote:path
+</pre></div>
+
+
+<p>Para borrar un directorio vacío:</p>
+<div class="highlight"><pre><span></span>rclone rmdir remote:path
+</pre></div>
+
+
+<p>Para borrar un directorio con contenido:</p>
+<div class="highlight"><pre><span></span>rclone purge remote:path
+</pre></div>
+
+
+<p>Para comprobar si los archivos entre origen y destino coinciden:</p>
+<div class="highlight"><pre><span></span>rclone check source:path dest:path
+</pre></div>
+
+
+<p>Para borrar ficheros:</p>
+<div class="highlight"><pre><span></span>rclone delete remote:path
+</pre></div>
+
+
+<ul>
+<li>Cada uno de los comandos rclone se pueden usar con diferentes [flags] e incluyen su propio menú de ayuda. Por ejemplo, puede hacer una eliminación selectiva utilizando la opción de eliminar que elimina archivos mayores de 100M , el comando sería así:    </li>
+</ul>
+<div class="highlight"><pre><span></span>rclone --min-size 100M delete remote:path
+</pre></div>
+
+
+<h3>Montar proveedor en una carpeta local y sincronizados.</h3>
+<p>Otra utilidad es la de montar las unidades del proveedor como unidad local. La información seguirá estando en la nube pero podemos trabajar con ella como si estuviera en local:</p>
+<p>Para esto hay que tener instalado el paquete "fuse" en la máquina local y tener agregado ya un servicio como se ha visto en pasos anteriores, en este caso se utilizará Google Drive:</p>
+<div class="highlight"><pre><span></span>sudo apt install fuse
+</pre></div>
+
+
+<p>Crear un directorio local:</p>
+<div class="highlight"><pre><span></span>mkdir Gdrive
+</pre></div>
+
+
+<p>Montar el proveedor en la carpeta que se ha creado:</p>
+<div class="highlight"><pre><span></span>rclone mount --vfs-cache-mode writes Gdrive: Gdrive <span class="p">&amp;</span>
+</pre></div>
+
+
+<p>Una vez montado se podrá editar, crear y eliminar de forma local, y esto se sincronizará con la nube automáticamente.  <br>
+A continuación se muestran unas capturas del montaje y borrado de un fichero en la terminal y como se borra en el proveedor, en este caso Google Drive.</p>
+<p><img alt="MontajeyBorradoTerminal" src="{{ site.baseurl }}/assets/img/Rclone/comandosmount.png"> </p>
+<p><img alt="BorradoGoogleDrive" src="{{ site.baseurl }}/assets/img/Rclone/pruebaborrado.png">   </p>
+<p>Para desmontar utiliza fusermount con la opción -u sobre la carpeta:</p>
+<div class="highlight"><pre><span></span>fusermount -u Gdrive
+</pre></div>
+
+
+<p>Hay muchos mas comandos y utilidades si quieres saber mas consulta la documentación oficial <a href="https://rclone.org/">aquí</a>.</p>
 <hr>
-<p>Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    </p>
+<p>Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.</p>
         </section>
 
         <br><br><br>

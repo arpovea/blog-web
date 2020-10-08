@@ -101,29 +101,16 @@
 <h4>¿Cómo puedes sacar información de un paquete oficial instalado o que no este instalado?</h4>
 <p>Con <code>apt show [[nombre paquete]]</code> puedes obtener información de dicho paquete.</p>
 <h4>Saca toda la información que puedas del paquete openssh-client que tienes actualmente instalado en tu máquina.</h4>
-<p>Con <code>dpkg -L openssh-client</code> se muestra todo el contenido del paquete instalado en el sistema.</p>
-<p>Con apt <code>apt list --installed openssh-client</code> se muestra las información sobre la versión instalada, se puede añadir el atributo <code>-a</code>para ver todas las entradas.</p>
-<p>Con <code>dpkg -p openssh-client</code> se muestra información del paquete instalado.</p>
+<p>Con dpkg -L openssh-client se muestra todo el contenido del paquete</p>
 <h4>Saca toda la información que puedas del paquete openssh-client candidato a actualizar en tu máquina.</h4>
-<p>Con <code>apt-file list openssh-client</code> todo el contenido del paquete y no es necesario que este instalado.</p>
-<p>Con <code>apt list --upgradable openssh-client</code> se muestra la version candidata del paquete, se puede añadir el atributo <code>-a</code> para ver todas las entradas.</p>
-<p>Con <code>apt show openssh-client</code> despues de realizar un <code>update</code>.</p>
 <h4>Lista todo el contenido referente al paquete openssh-client actual de tu máquina. Utiliza para ello tanto dpkg como apt.</h4>
-<p>Con <code>dpkg -L openssh-client</code> se muestra el contenido del paquete instalado.</p>
-<p>Con apt no encuentro forma de realizarlo.</p>
 <h4>Listar el contenido de un paquete sin la necesidad de instalarlo o descargarlo.</h4>
-<p>Con <code>apt-file list openssh-client</code> se muestra el contenido sin necesidad de tenerlo instalado en el sistema.</p>
 <h4>Simula la instalación del paquete openssh-client.</h4>
-<p>Con <code>aptitude -s install openssh-client</code></p>
 <h4>¿Qué comando te informa de los posible bugs que presente un determinado paquete?</h4>
 <h4>Después de realizar un apt update &amp;&amp; apt upgrade. Si quisieras actualizar únicamente los paquetes que tienen de cadena openssh. ¿Qué procedimiento seguirías?. Realiza esta acción, con las estructuras repetitivas que te ofrece bash, así como con el comando xargs.</h4>
-<p>Con <code>apt install</code> </p>
 <h4>¿Cómo encontrarías qué paquetes dependen de un paquete específico.</h4>
 <h4>Como procederías para encontrar el paquete al que pertenece un determinado archivo.</h4>
-<p>Con <code>apt-file search [nombre del fichero]</code> <strong>*</strong></p>
 <h4>¿Que procedimientos emplearías para eliminar liberar la cache en cuanto a descargas de paquetería?</h4>
-<p>Con <code>apt autoremove</code> se borran los paquetes que ya no son necesarios en el sistema, que se instalaron para cubrir alguna dependencia</p>
-<p>Con <code>apt clean</code> borra los ficheros de los paquetes de instalación de  la memoria.</p>
         </section>
 
         <br><br><br>
