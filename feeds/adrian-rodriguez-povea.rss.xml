@@ -6,11 +6,11 @@
 &lt;!--more--&gt;
 
 &lt;h2&gt;RClone&lt;/h2&gt;
-&lt;p&gt;Rclone es una herramienta que permite trabajar con los ficheros que esten almacenados en los distintos servicios de almacenamiento en la nube, puede …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adrián Rodríguez Povea</dc:creator><pubDate>Tue, 29 Sep 2020 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:arpovea.vercel.app,2020-09-29:/rclone.html</guid><category>misc</category></item><item><title>Tareas con RAID5</title><link>https://arpovea.vercel.app/tareas-con-raid5.html</link><description>&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
+&lt;p&gt;Rclone es una herramienta que permite trabajar con los ficheros que esten almacenados en los distintos servicios de almacenamiento en la nube, puede …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adrián Rodríguez Povea</dc:creator><pubDate>Tue, 29 Sep 2020 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:arpovea.vercel.app,2020-09-29:/rclone.html</guid><category>Seguridad</category></item><item><title>Tareas con RAID5</title><link>https://arpovea.vercel.app/tareas-con-raid5.html</link><description>&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
 &lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con &lt;code&gt;mdadm&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;!--more--&gt;
 
 &lt;h2&gt;Preparación para la tarea sobre RAID5&lt;/h2&gt;
-&lt;p&gt;Para realizar esta tarea se va a utilizar una máquina virtual con vagrant-libvirt la configuración de vagrantfile es la …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adrián Rodríguez Povea</dc:creator><pubDate>Mon, 28 Sep 2020 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:arpovea.vercel.app,2020-09-28:/tareas-con-raid5.html</guid><category>misc</category></item></channel></rss>
+&lt;p&gt;Para realizar esta tarea se va a utilizar una máquina virtual con vagrant-libvirt la configuración de vagrantfile es la …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adrián Rodríguez Povea</dc:creator><pubDate>Mon, 28 Sep 2020 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:arpovea.vercel.app,2020-09-28:/tareas-con-raid5.html</guid><category>Seguridad</category></item></channel></rss>
