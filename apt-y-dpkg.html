@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>APT y DPKG &ndash; Blog Informático</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Blog Informático &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="Adrián Rodríguez Povea" />
+    <meta property="article:section" content="Sistemas" />
+    <meta property="article:published_time" content="2020-10-05" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="APT y DPKG"/>
+    <meta property="og:description" content="- Adrián Rodríguez Povea Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG. Ejercicios APT Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente. Al realizar un apt update, revisa los repositorios listados en el fichero source.list o en los …"/>
+    <meta property="og:site_name" content="Blog Informático" />
+    <meta property="og:url" content="https://arpovea.vercel.app/apt-y-dpkg.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="APT y DPKG">
+    <meta name="twitter:description" content="- Adrián Rodríguez Povea Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG. Ejercicios APT Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente. Al realizar un apt update, revisa los repositorios listados en el fichero source.list o en los …">
+    <meta name="twitter:url" content="https://arpovea.vercel.app/apt-y-dpkg.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/all.atom.xml" title="Blog Informático Atom Feed" />
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/Sistemas.atom.xml" title="Blog Informático Categories Atom Feed" />
+    <link rel="alternate" type="application/rss+xml" href="http://arpovea.disqus.com/latest.rss" title="Blog Informático Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/static/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://arpovea.vercel.app/theme/images/arpovealogo.PNG">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://arpovea.vercel.app/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="https://arpovea.vercel.app" id="header-logo" title="Home">AR</a>
+        <nav id="header-menu">
+          <ul>
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/redes.html">Redes</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/seguridad.html">Seguridad</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="https://arpovea.vercel.app/category/sistemas.html">Sistemas</a></li>-->
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/categories.html">Categorías</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/archives.html">Articulos</a></li>
+            <li><a href="https://arpovea.vercel.app/pages/acerca-de.html">Acerca de</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>APT y DPKG</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2020-10-05T00:00:00+02:00">lun 05 octubre 2020</time> in <a href="https://arpovea.vercel.app/category/sistemas.html" title="All articles in category Sistemas">Sistemas</a></span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <h2>- Adrián Rodríguez Povea</h2>
+<hr>
+<p>Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG.</p>
+<hr>
+<!--more-->
+
+<h2>Ejercicios APT</h2>
+<h4>Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente.</h4>
+<p>Al realizar un <code>apt update</code>, revisa los repositorios listados en el fichero <code>source.list</code> o en los ficheros de <code>source.list.d</code>, obteniendo la lista de los paquetes y sus versiones disponibles en esos repositorios.</p>
+<p>Cuando se realiza un <code>apt upgrade</code> se actualizan los paquetes que estan instalados en el sistema de los cuales hay versiones mas actualizadas en los repositorios.</p>
+<h4>Lista la relación de paquetes que pueden ser actualizados. ¿Qué información puedes sacar a tenor de lo mostrado en el listado?.</h4>
+<p>Despues de realizar un <code>apt update</code> realiza el comando <code>apt list --upgradable</code> esto mostrará el listado de paquetes que se pueden utilizar y se indica la versión final y la versión del sistema local, normalmente son parches de seguridad puesto que no cambian la versión pero al final añaden una terminología como por ejemplo u1, u2, u3 etc.</p>
+<h4>Indica la versión instalada, candidata así como la prioridad del paquete openssh-client.</h4>
+<p>Con <code>apt policy openssh-client</code>.</p>
+<h4>¿Cómo puedes sacar información de un paquete oficial instalado o que no este instalado?</h4>
+<p>Con <code>apt show [[nombre paquete]]</code> puedes obtener información de dicho paquete.</p>
+<h4>Saca toda la información que puedas del paquete openssh-client que tienes actualmente instalado en tu máquina.</h4>
+<p>Con <code>dpkg -L openssh-client</code> se muestra todo el contenido del paquete instalado en el sistema.</p>
+<p>Con apt <code>apt list --installed openssh-client</code> se muestra las información sobre la versión instalada, se puede añadir el atributo <code>-a</code>para ver todas las entradas.</p>
+<p>Con <code>dpkg -p openssh-client</code> se muestra información del paquete instalado.</p>
+<h4>Saca toda la información que puedas del paquete openssh-client candidato a actualizar en tu máquina.</h4>
+<p>Con <code>apt-file list openssh-client</code> todo el contenido del paquete y no es necesario que este instalado.</p>
+<p>Con <code>apt list --upgradable openssh-client</code> se muestra la version candidata del paquete, se puede añadir el atributo <code>-a</code> para ver todas las entradas.</p>
+<p>Con <code>apt show openssh-client</code> despues de realizar un <code>update</code>.</p>
+<h4>Lista todo el contenido referente al paquete openssh-client actual de tu máquina. Utiliza para ello tanto dpkg como apt.</h4>
+<p>Con <code>dpkg -L openssh-client</code> se muestra el contenido del paquete instalado.</p>
+<p>Con apt no encuentro forma de realizarlo.</p>
+<h4>Listar el contenido de un paquete sin la necesidad de instalarlo o descargarlo.</h4>
+<p>Con <code>apt-file list openssh-client</code> se muestra el contenido sin necesidad de tenerlo instalado en el sistema.</p>
+<h4>Simula la instalación del paquete openssh-client.</h4>
+<p>Con <code>aptitude -s install openssh-client</code></p>
+<h4>¿Qué comando te informa de los posible bugs que presente un determinado paquete?</h4>
+<h4>Después de realizar un apt update &amp;&amp; apt upgrade. Si quisieras actualizar únicamente los paquetes que tienen de cadena openssh. ¿Qué procedimiento seguirías?. Realiza esta acción, con las estructuras repetitivas que te ofrece bash, así como con el comando xargs.</h4>
+<p>Con <code>apt install</code> </p>
+<h4>¿Cómo encontrarías qué paquetes dependen de un paquete específico.</h4>
+<h4>Como procederías para encontrar el paquete al que pertenece un determinado archivo.</h4>
+<p>Con <code>apt-file search [nombre del fichero]</code> <strong>*</strong></p>
+<h4>¿Que procedimientos emplearías para eliminar liberar la cache en cuanto a descargas de paquetería?</h4>
+<p>Con <code>apt autoremove</code> se borran los paquetes que ya no son necesarios en el sistema, que se instalaron para cubrir alguna dependencia</p>
+<p>Con <code>apt clean</code> borra los ficheros de los paquetes de instalación de  la memoria.</p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="http://arpovea.vercel.app"><img style="width: 60px; height: 60px;" src="theme/images/arpovealogo.PNG" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="http://arpovea.vercel.app"><span id="author-name" class="w3-hover-text-dark-grey">Adrián Rodríguez Povea</span></a>
+                  <p id="author-story">Apasionado de las tecnologías.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=https%3A//arpovea.vercel.app/apt-y-dpkg.html&amp;t=Blog%20Inform%C3%A1tico%3A%20APT%20y%20DPKG" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=https%3A//arpovea.vercel.app/apt-y-dpkg.html&amp;text=Blog%20Inform%C3%A1tico%3A%20APT%20y%20DPKG" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=https%3A//arpovea.vercel.app/apt-y-dpkg.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = 'https://arpovea.vercel.app';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'apt-y-dpkg'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://arpovea.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>&copy;  Adrián Rodríguez Povea</span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

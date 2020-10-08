@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>FTP &ndash; Blog Informático</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Blog Informático &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="Adrián Rodríguez Povea" />
+    <meta property="article:section" content="Redes" />
+    <meta property="article:published_time" content="2020-02-07" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="FTP"/>
+    <meta property="og:description" content="- Adrián Rodríguez Povea Buenas! En esta ocasión se va a descargar una imagen ISO de Debian del sitio &#34;ftp.rediris.es&#34;, se analizará el tráfico con Wireshark y se comentarán algunas cosas. FTP Para conectarse al sitio &#34;ftp.rediris.es&#34;, lo primero es tener el paquete ftp instalado en el …"/>
+    <meta property="og:site_name" content="Blog Informático" />
+    <meta property="og:url" content="https://arpovea.vercel.app/ftp.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="FTP">
+    <meta name="twitter:description" content="- Adrián Rodríguez Povea Buenas! En esta ocasión se va a descargar una imagen ISO de Debian del sitio &#34;ftp.rediris.es&#34;, se analizará el tráfico con Wireshark y se comentarán algunas cosas. FTP Para conectarse al sitio &#34;ftp.rediris.es&#34;, lo primero es tener el paquete ftp instalado en el …">
+    <meta name="twitter:url" content="https://arpovea.vercel.app/ftp.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/all.atom.xml" title="Blog Informático Atom Feed" />
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/Redes.atom.xml" title="Blog Informático Categories Atom Feed" />
+    <link rel="alternate" type="application/rss+xml" href="http://arpovea.disqus.com/latest.rss" title="Blog Informático Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/static/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://arpovea.vercel.app/theme/images/arpovealogo.PNG">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://arpovea.vercel.app/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="https://arpovea.vercel.app" id="header-logo" title="Home">AR</a>
+        <nav id="header-menu">
+          <ul>
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="https://arpovea.vercel.app/category/redes.html">Redes</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/seguridad.html">Seguridad</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/sistemas.html">Sistemas</a></li>-->
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/categories.html">Categorías</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/archives.html">Articulos</a></li>
+            <li><a href="https://arpovea.vercel.app/pages/acerca-de.html">Acerca de</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>FTP</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2020-02-07T00:00:00+01:00">vie 07 febrero 2020</time> in <a href="https://arpovea.vercel.app/category/redes.html" title="All articles in category Redes">Redes</a></span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <h2>- Adrián Rodríguez Povea</h2>
+<hr>
+<p>Buenas! En esta ocasión se va a descargar una imagen ISO de Debian del sitio "ftp.rediris.es", se analizará el tráfico con Wireshark y se comentarán algunas cosas.</p>
+<hr>
+<!--more-->
+
+<div class="highlight"><pre><span></span>
+</pre></div>
+
+
+<h2>FTP</h2>
+<p>Para conectarse al sitio "ftp.rediris.es", lo primero es tener el paquete ftp instalado en el equipo, para ello:    </p>
+<div class="highlight"><pre><span></span>sudo aptitude update <span class="o">&amp;&amp;</span> aptitude install -y ftp
+</pre></div>
+
+
+<p>Una vez instalado, con el siguiente comando te conectas al sitio "ftp.rediris.es":    </p>
+<div class="highlight"><pre><span></span>ftp ftp.rediris.es
+</pre></div>
+
+
+<p>Pide usuario, pero se puede dejar en blanco y continuar en Anonymous. Ahora entrarás en un prompt de FTP.    </p>
+<p>Con los comandos <code>ls</code> y <code>cd</code> se puede tanto listar el contenido como moverse por los distintos directorios, con el siguiente comando te posicionas en el directorio de la ISO que se va a descargar:</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> debian-cd/10.2.0/amd64/iso-cd/
+</pre></div>
+
+
+<p>Puedes comprobrar con el comando <code>pwd</code> o con <code>ls</code> que estas en el directorio correcto. Ahora se descarga la imagen con el siguiente comando:    </p>
+<div class="highlight"><pre><span></span>get debian-10.2.0-amd64-netinst.iso
+</pre></div>
+
+
+<p>Una vez realizado esto comanzará la descarga que dependerá de la velocidad de conexión de cada uno, una vez descargada esta se encontrará en el directorio actual donde comenzaste con los comandos FTP. Para salir de la línea de comandos FTP utiliza <code>exit</code>.    </p>
+<p>A continución se muestran las capturas de Wireshark desde la primera conexión hasta el fin:    </p>
+<p>Conexiones Cliente-Servidor:  <br>
+<img alt="ftp1" src="{{ site.baseurl }}/assets/img/FTP/FTPWireshark.png">    </p>
+<p>Descarga imagen ISO:  <br>
+<img alt="ftp2" src="{{ site.baseurl }}/assets/img/FTP/DescargaISO.png">    </p>
+<p>Como se puede observar en las capturas de Wireshark el cliente mantiene una conversación con el servidor mediante los puertos "21" del servidor y el puerto "41416" del cliente, cuando inicia la descarga estos puertos cambian del "20" del servidor al "54117" del cliente. Esto significa que el modo de FTP esta en ACTIVO.    </p>
+<p>Recordemos la diferencia entre FTP activo y FTP pasivo:    </p>
+<h3>FTP activo (predeterminado)</h3>
+<p>En este modo el cliente se conecta desde un puerto aleatorio hacia el puerto "21" del servidor para la transferencia de un archivo, el servidor a tráves de su puerto "21" se pone en contacto con el cliente en el siguiente puerto del cliente es decir, si para la primera conexión el cliente utilizó el puerto "1500" el servidor se comunicará con el puerto "1501", aquí el servidor establece la conexión de datos por lo que si hay un firewall este rechazaría la conexión y sería imposible conectarse, ya que el servidor aquí es el que establece el canal de datos.    </p>
+<p><img alt="ftpactivo" src="{{ site.baseurl }}/assets/img/FTP/FTP-Modo-activo.jpg">    </p>
+<h3>FTP pasivo</h3>
+<p>En este modo el cliente se conecta al servidor de la misma manera solo que, el servidor le indica al cliente que tiene que conectarse a un puerto distinto del "20" para la descarga de datos, por lo que el cliente inicia una conexíon a un puerto aleatorio del servidor. Así el cliente es el que establece el canal de datos por lo que el firewall no rechazariá la conexión.     </p>
+<p><img alt="ftpasivo" src="{{ site.baseurl }}/assets/img/FTP/FTP-Modo-Pasivo-FTP.jpg">    </p>
+<hr>
+<p>Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.   </p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="http://arpovea.vercel.app"><img style="width: 60px; height: 60px;" src="theme/images/arpovealogo.PNG" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="http://arpovea.vercel.app"><span id="author-name" class="w3-hover-text-dark-grey">Adrián Rodríguez Povea</span></a>
+                  <p id="author-story">Apasionado de las tecnologías.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=https%3A//arpovea.vercel.app/ftp.html&amp;t=Blog%20Inform%C3%A1tico%3A%20FTP" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=https%3A//arpovea.vercel.app/ftp.html&amp;text=Blog%20Inform%C3%A1tico%3A%20FTP" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=https%3A//arpovea.vercel.app/ftp.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = 'https://arpovea.vercel.app';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'ftp'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://arpovea.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>&copy;  Adrián Rodríguez Povea</span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

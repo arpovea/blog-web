@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Instalación Debian Buster con LVM &ndash; Blog Informático</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Blog Informático &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="Adrián Rodríguez Povea" />
+    <meta property="article:section" content="Sistemas" />
+    <meta property="article:published_time" content="2020-09-26" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Instalación Debian Buster con LVM"/>
+    <meta property="og:description" content="- Adrián Rodríguez Povea Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado. Esquema de particiones realizado en la instalación: En este caso se tiene un SSD de 250 GB con una …"/>
+    <meta property="og:site_name" content="Blog Informático" />
+    <meta property="og:url" content="https://arpovea.vercel.app/instalacion-debian-buster-con-lvm.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Instalación Debian Buster con LVM">
+    <meta name="twitter:description" content="- Adrián Rodríguez Povea Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado. Esquema de particiones realizado en la instalación: En este caso se tiene un SSD de 250 GB con una …">
+    <meta name="twitter:url" content="https://arpovea.vercel.app/instalacion-debian-buster-con-lvm.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/all.atom.xml" title="Blog Informático Atom Feed" />
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/Sistemas.atom.xml" title="Blog Informático Categories Atom Feed" />
+    <link rel="alternate" type="application/rss+xml" href="http://arpovea.disqus.com/latest.rss" title="Blog Informático Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/static/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://arpovea.vercel.app/theme/images/arpovealogo.PNG">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://arpovea.vercel.app/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="https://arpovea.vercel.app" id="header-logo" title="Home">AR</a>
+        <nav id="header-menu">
+          <ul>
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/redes.html">Redes</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/seguridad.html">Seguridad</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="https://arpovea.vercel.app/category/sistemas.html">Sistemas</a></li>-->
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/categories.html">Categorías</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/archives.html">Articulos</a></li>
+            <li><a href="https://arpovea.vercel.app/pages/acerca-de.html">Acerca de</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Instalación Debian Buster con LVM</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2020-09-26T00:00:00+02:00">sáb 26 septiembre 2020</time> in <a href="https://arpovea.vercel.app/category/sistemas.html" title="All articles in category Sistemas">Sistemas</a></span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <h2>- Adrián Rodríguez Povea</h2>
+<hr>
+<p>Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado.</p>
+<hr>
+<!--more-->
+
+<h2>Esquema de particiones realizado en la instalación:</h2>
+<p>En este caso se tiene un  SSD de 250 GB con una instalación de windows que ocupa algo mas de 100 GB, al final disponen de unos 140 GB para la instalación del sistema Debian Buster.</p>
+<p>Una vez se llega a la parte de particionado de la instalación del sistema Debian Buster:</p>
+<p>Se va a crear una partición de 500MB para <code>/boot</code> aparte del sistema LVM ya que esto no interesa que cambie en un futuro, una vez realizado esto selecciona "Configurar el Gestor de Volúmenes Lógicos (LVM)" en el cual pedirá:</p>
+<ul>
+<li>Crear un grupo de volumenes y seleccionar el disco que se va a utilizar:   </li>
+</ul>
+<p>En este caso se le llama al grupo de volumenes "Sistema" y se elige el espacio libre para que lo utilize como si fuera un disco físico, en total unos 140 GB como se ha mencionado anteriormente.</p>
+<ul>
+<li>Luego hay que crear los volúmenes lógicos dentro de ese grupo de volúmenes:   </li>
+</ul>
+<p>Para ellos selecciona el grupo de volúmenes de "Sistema" y crea dos volúmenes lógicos, a uno se le llama "root" donde se montará el raiz y al otro "home" donde se montará /home. El sistema de fichero utilizados en estos dos volumenes es "xfs".</p>
+<p>Una vez realizado esto procedemos con la instalación normalmente hasta finalizarla.</p>
+<p>Una vez iniciado el sistema, con los siguientes comandos se comprueba que todo a quedado como se pretendia:</p>
+<p>Listamos dispositivos de bloque del sistema:</p>
+<div class="highlight"><pre><span></span>lsblk
+</pre></div>
+
+
+<p><img alt="lsblk" src="{{ site.baseurl }}/assets/img/Insta.S.O/lsblk.png">  </p>
+<p>Listamos los dispositivos físicos agregados a LVM:</p>
+<div class="highlight"><pre><span></span>sudo pvdisplay
+</pre></div>
+
+
+<p><img alt="pvdisplay" src="{{ site.baseurl }}/assets/img/Insta.S.O/pvdisplay.png"></p>
+<p>Listamos los volúmenes lógicos:</p>
+<div class="highlight"><pre><span></span>sudo lvdisplay
+</pre></div>
+
+
+<p><img alt="lvdisplay" src="{{ site.baseurl }}/assets/img/Insta.S.O/lvdisplay.png"></p>
+<p>Listamos los grupos de vólumenes:</p>
+<div class="highlight"><pre><span></span>sudo vgs
+</pre></div>
+
+
+<p><img alt="vgs" src="{{ site.baseurl }}/assets/img/Insta.S.O/vgs.png"></p>
+<hr>
+<h2>Solución de errores:</h2>
+<p>Errores producidos dependiendo del modelo de nuestros dispositivos, en este caso se esta utilizanddo un portatil MSI <a href="https://es.msi.com/Laptop/GS73-7RE-Stealth-Pro/Specification">GS73 7RE Stealth Pro</a>:</p>
+<h3>1. El equipo se queda congelado en el arranque:</h3>
+<p>En este caso concreto lo que provocaba la congelación era problema de la gráfica nvidia.   </p>
+<p>Procede a iniciar el equipo con la opción <code>nouveau.modeset=0</code> esto obliga el kernel a no cargar el controlador libre de nvidia que es nouveau lo cual elimina el congelamiento ya que aún no están instalados los drives nvidia. </p>
+<p>Para realizar esto una vez arranque grub pulsamos la tecla "e" lo cual permitirá editar las opciones de arranque por defecto y no se realiza de forma permanente, hay que escribir esta opción al final de la línea que comienza por "linux", para iniciar con estas opciones que se han editado pulsar la tecla "F10".    </p>
+<p>Una vez se puede acceder a una TTY lo primero a realizar es activar los repositorios <code>non-free</code> para poder instalar los controladores necesarios para la tarjeta gráfica para ello edita los repositorios:    </p>
+<div class="highlight"><pre><span></span>sudo nano /etc/apt/source.list 
+</pre></div>
+
+
+<p>Y agrega al final del repositorio deseado <code>contrib non-free</code>, ejemplo:</p>
+<div class="highlight"><pre><span></span>deb http://deb.debian.org/debian buster main contrib non-free
+</pre></div>
+
+
+<p>Luego actualizamos la lista de paquetes:</p>
+<div class="highlight"><pre><span></span>sudo apt update
+</pre></div>
+
+
+<p>Instala nvidia-detect, para detectar el paquete que utiliza tu gráfica y instala dicho paquete:</p>
+<div class="highlight"><pre><span></span>sudo apt install nvidia-detect
+sudo nvidia-detect
+sudo apt install nvidia-driver
+</pre></div>
+
+
+<p>Una vez realizado esto reinicia el equipo si todo va bien debería de funcionar, en nuestro caso esto no funciono, ya que la tarjeta gráfica tenía varios bugs tanto en la versión del Kernel que estaba utilizando la versión de Buster instalada como en la versión del paquete "nvidia-driver".    </p>
+<p>Si todo ha fallado realiza la desistalación completa del driver de nvidia, de nuevo en una TTY:</p>
+<div class="highlight"><pre><span></span>sudo apt purge nvidia*
+</pre></div>
+
+
+<p>Ahora se va a utilizar los backport para instalar tanto el kernel como el paquete mas actual disponible. Para ello agrega una nueva linea al <code>source.list</code>:</p>
+<div class="highlight"><pre><span></span>deb http://deb.debian.org/debian buster-backports main contrib non-free
+</pre></div>
+
+
+<p>Realiza un update, comprueba versiones, y instala dichas versiones:</p>
+<div class="highlight"><pre><span></span>sudo apt update
+sudo apt policy linux-image-amd64
+sudo apt policy nvidia-driver
+sudo apt install -t buster-backports linux-image-amd64 nvidia-driver
+</pre></div>
+
+
+<p>Una vez reiniciado esto soluciono el tema gráfico del equipo.</p>
+<h3>2. La tarjeta wifi no funciona:</h3>
+<p>Esto suele ocurrir sobre todo con las tarjetas Realtek y las Atheros, simplemente instalando el firmware/driver de la tarjeta del equipo se soluciona, en este caso:</p>
+<div class="highlight"><pre><span></span>sudo apt install firmware-atheros
+</pre></div>
+
+
+<h3>3. Problema con bluetooth y Thunderbolt</h3>
+<p>Al iniciar el equipo todo funciona correctamente, pero si realizamos una comprobación de los logs con <code>journalctl</code> en este equipo en concreto se observan errores con algunos componentes, como son el bluetooth y Thunderbolt, en principio como son dos dispositivos que no se van a utilizar vamos a desactivar el módulo del Kernel de ambos que da problemas, para ello se crea un fichero en <code>/etc/modprobe.d/blacklist.conf</code> con el siguiente contenido:</p>
+<div class="highlight"><pre><span></span><span class="err">blacklist btusb</span>
+<span class="err">blacklist bluetooth</span>
+<span class="err">blacklist thunderbolt</span>
+</pre></div>
+
+
+<p>Con esto no se cargaran estos módulos del kernel al iniciar, evitando dichos errores.</p>
+<h3>4. Distintos problemas que aparecen en los logs</h3>
+<p>Uno de los errores que se repetían en los logs de este equipo era con los puertos PCIe del tipo:</p>
+<div class="highlight"><pre><span></span><span class="err">pcieport 0000:00:03.0: PCIe Bus Error: AER / Bad TLP</span>
+</pre></div>
+
+
+<p>Buscando bastante información, encontre que la CPU se comunica con los controladores de bus PCIe mediante unos paquetes (TLP), el hardware detecta cuando hay fallos y el kernel de linux informa de estos errores, con la opción <code>pci=nommconf</code> deshabilitas una configuración de los PCI llamada <code>Memory-Mapped PCI</code> que esta implementada en el Kernel linux desde el 2.6, antes de esto, todos los dispositivos PCI tenían un área que describía a este dispositivo, y el método original para acceder a este área era con I/O, mientras que con el nuevo "método" se simplifica este mecanismo para que sea mas eficiente, pues deshabilitando este nuevo "método" y volviendo al original, soluciona este problema.</p>
+<p>Esto es un caso particular, por los distintos componentes y su unión, pero utilizando esta opción del Kernel se soluciona el problema.</p>
+<p>Para que esta opción sea definitiva vamos a editar una línea en el fichero <code>/etc/default/grup</code> quedando por ejemplo así:</p>
+<div class="highlight"><pre><span></span><span class="err">GRUB_CMDLINE_LINUX_DEFAULT=&quot;pci=nommconf&quot;</span>
+</pre></div>
+
+
+<p>Una vez guardado realiza:</p>
+<div class="highlight"><pre><span></span>sudo update-grub
+</pre></div>
+
+
+<p>Y una vez se reinicie la máquina el Kernel arrancará con esta opción.</p>
+<p>Otras opciones interesantes para corregir los errores en los logs del sistema con los PCI/PCIe son las opción <code>pci=noaer</code> y <code>pci=nomsi</code> pero ya dependerá de vuestro caso, podéis consultar la siguiente página para comprobar o buscar parámetros del Kernel <a href="https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html">aquí</a>.</p>
+<hr>
+<p>Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.</p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="http://arpovea.vercel.app"><img style="width: 60px; height: 60px;" src="theme/images/arpovealogo.PNG" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="http://arpovea.vercel.app"><span id="author-name" class="w3-hover-text-dark-grey">Adrián Rodríguez Povea</span></a>
+                  <p id="author-story">Apasionado de las tecnologías.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">Did you like this article? Share it with your friends!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=https%3A//arpovea.vercel.app/instalacion-debian-buster-con-lvm.html&amp;t=Blog%20Inform%C3%A1tico%3A%20Instalaci%C3%B3n%20Debian%20Buster%20con%20LVM" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=https%3A//arpovea.vercel.app/instalacion-debian-buster-con-lvm.html&amp;text=Blog%20Inform%C3%A1tico%3A%20Instalaci%C3%B3n%20Debian%20Buster%20con%20LVM" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=https%3A//arpovea.vercel.app/instalacion-debian-buster-con-lvm.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+          <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = 'https://arpovea.vercel.app';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'instalacion-debian-buster-con-lvm'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://arpovea.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>&copy;  Adrián Rodríguez Povea</span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>
