@@ -94,29 +94,29 @@
 
 
 <p>Captura de pantalla correspondiente:    </p>
-<p><img alt="dig1" src="{{ site.baseurl }}/assets/img/DigyWireshark/digmarca.png"> </p>
+<p><img alt="dig1" src="https://arpovea.vercel.app/images/DigyWireshark/digmarca.png"> </p>
 <div class="highlight"><pre><span></span>dig www.elmundo.com
 </pre></div>
 
 
 <p>Captura de pantalla correspondiente:    </p>
-<p><img alt="dig2" src="{{ site.baseurl }}/assets/img/DigyWireshark/digelmundo.png">     </p>
+<p><img alt="dig2" src="https://arpovea.vercel.app/images/DigyWireshark/digelmundo.png">     </p>
 <p>Como se puede observar en las imágenes ambas webs estan alojadas en el servidor <code>151.101.133.50</code> con el CNAME(alias del dominio) "unidadeditorial.map.fastly.net".    </p>
 <hr>
 <h2>Wireshark</h2>
 <p>A continuación se realiza una captura del tráfico con Wireshark accediendo al sitio www.marca.com.
 En ella podemos observar lo siguiente:</p>
 <p>La petición y respuesta DNS:</p>
-<p><img alt="dns1" src="{{ site.baseurl }}/assets/img/DigyWireshark/capturadnsmarca1.png">
-<img alt="dns2" src="{{ site.baseurl }}/assets/img/DigyWireshark/capturadns2.png">
-<img alt="dns3" src="{{ site.baseurl }}/assets/img/DigyWireshark/capturadns3.png"></p>
+<p><img alt="dns1" src="https://arpovea.vercel.app/images/DigyWireshark/capturadnsmarca1.png">
+<img alt="dns2" src="https://arpovea.vercel.app/images/DigyWireshark/capturadns2.png">
+<img alt="dns3" src="https://arpovea.vercel.app/images/DigyWireshark/capturadns3.png"></p>
 <p>La primera conexión TSL, puesto que es una página que tiene seguridad HTTPS, con esto el cliente le pide los certificados a la página para poder conectarse de forma segura:    </p>
 <p>Mensajes del cliente:    </p>
-<p><img alt="TSL1" src="{{ site.baseurl }}/assets/img/DigyWireshark/clienthellow1.png"></p>
-<p><img alt="TSL2" src="{{ site.baseurl }}/assets/img/DigyWireshark/clienthellow2.png"></p>
+<p><img alt="TSL1" src="https://arpovea.vercel.app/images/DigyWireshark/clienthellow1.png"></p>
+<p><img alt="TSL2" src="https://arpovea.vercel.app/images/DigyWireshark/clienthellow2.png"></p>
 <p>Mensajes del servidor:    </p>
-<p><img alt="TSL3" src="{{ site.baseurl }}/assets/img/DigyWireshark/serverhellow.png"></p>
-<p><img alt="TSL4" src="{{ site.baseurl }}/assets/img/DigyWireshark/serverhellow2.png"></p>
+<p><img alt="TSL3" src="https://arpovea.vercel.app/images/DigyWireshark/serverhellow.png"></p>
+<p><img alt="TSL4" src="https://arpovea.vercel.app/images/DigyWireshark/serverhellow2.png"></p>
 <p>Ya que es una página con seguridad HTTPS no podemos sacar mucha información, de todas formas dejo por aquí los filtros de Wireshark para páginas HTTP:   </p>
 <div class="highlight"><pre><span></span><span class="o">-</span><span class="n">http</span> <span class="err">—</span><span class="o">&gt;</span> <span class="n">Protocolo</span> <span class="n">HTTP</span>
 
