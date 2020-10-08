@@ -795,7 +795,7 @@ La opción -c indica el número de paquetes que se enviarán en este caso "5".  
 &lt;p&gt;La opcion --ttl cambia por defecto la ttl de "64"(por defecto) en "3" en este caso.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="TTL" src="https://arpovea.vercel.app/images/Hping3yNetCat/TTL.png"&gt;&lt;/p&gt;
 &lt;p&gt;Como se puede observar en la imagen no llega a su destino.    &lt;/p&gt;
-&lt;p&gt;Ahora se intentará realizar una conexion desde el puerto "4000" al puerto "80" desde H1:    &lt;/p&gt;
+&lt;p&gt;Ahora se intentará realizar una conexion desde el puerto "4000" al puerto "80" desde H1:   &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hping3 -s &lt;span class="m"&gt;4000&lt;/span&gt; -p &lt;span class="m"&gt;80&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.0.130.4
 &lt;/pre&gt;&lt;/div&gt;
 
