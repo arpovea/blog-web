@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático - Redes</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/redes.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-02-07T00:00:00+01:00</updated><entry><title>FTP</title><link href="https://arpovea.vercel.app/ftp.html" rel="alternate"></link><published>2020-02-07T00:00:00+01:00</published><updated>2020-02-07T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-07:/ftp.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático - Redes</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/redes.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-02-07T00:00:00+01:00</updated><entry><title>FTP&gt;</title><link href="https://arpovea.vercel.app/ftp.html" rel="alternate"></link><published>2020-02-07T00:00:00+01:00</published><updated>2020-02-07T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-07:/ftp.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a descargar una imagen ISO de Debian del sitio "ftp.rediris.es", se analizará el tráfico con Wireshark y se comentarán algunas cosas.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a descargar una imagen ISO de Debian del sitio "ftp.rediris.es", se analizará el tráfico con Wireshark y se comentarán algunas cosas.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;FTP&lt;/h2&gt;
-&lt;p&gt;Para conectarse al sitio "ftp.rediris.es", lo primero es tener el paquete ftp instalado en el …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se va a descargar una imagen ISO de Debian del sitio "ftp.rediris.es", se analizará el tráfico con Wireshark y se comentarán algunas cosas.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;FTP&lt;/h2&gt;
 &lt;p&gt;Para conectarse al sitio "ftp.rediris.es", lo primero es tener el paquete ftp instalado en el equipo, para ello:    &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo aptitude update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; aptitude install -y ftp
@@ -57,18 +39,9 @@
 &lt;p&gt;En este modo el cliente se conecta al servidor de la misma manera solo que, el servidor le indica al cliente que tiene que conectarse a un puerto distinto del "20" para la descarga de datos, por lo que el cliente inicia una conexíon a un puerto aleatorio del servidor. Así el cliente es el que establece el canal de datos por lo que el firewall no rechazariá la conexión.     &lt;/p&gt;
 &lt;p&gt;&lt;img alt="ftpasivo" src="{{ site.baseurl }}/assets/img/FTP/FTP-Modo-Pasivo-FTP.jpg"&gt;    &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.   &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Hping3 y NetCat</title><link href="https://arpovea.vercel.app/hping3-y-netcat.html" rel="alternate"></link><published>2020-01-31T00:00:00+01:00</published><updated>2020-01-31T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-31:/hping3-y-netcat.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.   &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Hping3 y NetCat</title><link href="https://arpovea.vercel.app/hping3-y-netcat.html" rel="alternate"></link><published>2020-01-31T00:00:00+01:00</published><updated>2020-01-31T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-31:/hping3-y-netcat.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando Hping3 y  NetCat, con los cuales realizaremos pruebas en un escenario creado en una máquina virtual con Mininet. Probaremos a modificar los paquetes de ping y a conectarnos a distintos puertos y realizar varias conexiones.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando Hping3 y  NetCat, con los cuales realizaremos pruebas en un escenario creado en una máquina virtual con Mininet. Probaremos a modificar los paquetes de ping y a conectarnos a distintos puertos y realizar varias conexiones.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Mininet …&lt;/h2&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando Hping3 y  NetCat, con los cuales realizaremos pruebas en un escenario creado en una máquina virtual con Mininet. Probaremos a modificar los paquetes de ping y a conectarnos a distintos puertos y realizar varias conexiones.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Mininet&lt;/h2&gt;
 &lt;p&gt;A continuación se expondra el escenario y los comandos que se van a utilizar en esta práctica:    &lt;/p&gt;
 &lt;p&gt;Esquema de escenario:    &lt;/p&gt;
@@ -192,19 +165,9 @@ La opción -p indica el puerto destino.    &lt;/p&gt;
 &lt;img alt="UDP2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcapUDP2.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Con el protocolo UDP no se comprueban las mismas cosas que con el protocolo TCP, la única ventaja de UDP es que es más liviano y en algunas ocasiones tiene sus ventajas. Como se puede observar solo están los mensajes enviados desde H4 hacia H1.    &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Probando Dig y Wireshark</title><link href="https://arpovea.vercel.app/probando-dig-y-wireshark.html" rel="alternate"></link><published>2020-01-28T00:00:00+01:00</published><updated>2020-01-28T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-28:/probando-dig-y-wireshark.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Probando Dig y Wireshark</title><link href="https://arpovea.vercel.app/probando-dig-y-wireshark.html" rel="alternate"></link><published>2020-01-28T00:00:00+01:00</published><updated>2020-01-28T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-28:/probando-dig-y-wireshark.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando dig y el programa Wireshark, con los cuales realizaremos consultas DNS e investigaremos un poco el tráfico de una petición a una página web.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando dig y el programa Wireshark, con los cuales realizaremos consultas DNS e investigaremos un poco el tráfico de una petición a una página web.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;DIG&lt;/h2&gt;
-&lt;p&gt;Se va a realizar una petición DNS con el comando dig …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando dig y el programa Wireshark, con los cuales realizaremos consultas DNS e investigaremos un poco el tráfico de una petición a una página web.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;DIG&lt;/h2&gt;
 &lt;p&gt;Se va a realizar una petición DNS con el comando dig a las páginas www.marca.com y www.elmundo.es:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dig www.marca.com

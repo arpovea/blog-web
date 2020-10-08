@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático - Seguridad</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/seguridad.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-09-29T00:00:00+02:00</updated><entry><title>RCLONE</title><link href="https://arpovea.vercel.app/rclone.html" rel="alternate"></link><published>2020-09-29T00:00:00+02:00</published><updated>2020-09-29T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-29:/rclone.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático - Seguridad</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/seguridad.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-09-29T00:00:00+02:00</updated><entry><title>RCLONE</title><link href="https://arpovea.vercel.app/rclone.html" rel="alternate"></link><published>2020-09-29T00:00:00+02:00</published><updated>2020-09-29T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-29:/rclone.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;RClone&lt;/h2&gt;
-&lt;p&gt;Rclone es una herramienta que permite trabajar con los ficheros que esten almacenados en los distintos servicios de almacenamiento en la nube, puede …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;RClone&lt;/h2&gt;
 &lt;p&gt;Rclone es una herramienta que permite trabajar con los ficheros que esten almacenados en los distintos servicios de almacenamiento en la nube, puede gestionar y sincronizar los ficheros de los servicios desde la linea de comandos.&lt;/p&gt;
 &lt;h3&gt;Instalación de Rclone&lt;/h3&gt;
@@ -251,19 +241,9 @@ A continuación se muestran unas capturas del montaje y borrado de un fichero en
 
 &lt;p&gt;Hay muchos mas comandos y utilidades si quieres saber mas consulta la documentación oficial &lt;a href="https://rclone.org/"&gt;aquí&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Seguridad"></category></entry><entry><title>Tareas con RAID5</title><link href="https://arpovea.vercel.app/tareas-con-raid5.html" rel="alternate"></link><published>2020-09-28T00:00:00+02:00</published><updated>2020-09-28T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-28:/tareas-con-raid5.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Seguridad"></category></entry><entry><title>Tareas con RAID5</title><link href="https://arpovea.vercel.app/tareas-con-raid5.html" rel="alternate"></link><published>2020-09-28T00:00:00+02:00</published><updated>2020-09-28T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-28:/tareas-con-raid5.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con &lt;code&gt;mdadm&lt;/code&gt;.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con &lt;code&gt;mdadm&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Preparación para la tarea sobre RAID5&lt;/h2&gt;
-&lt;p&gt;Para realizar esta tarea se va a utilizar una máquina virtual con vagrant-libvirt la configuración de vagrantfile es la …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con &lt;code&gt;mdadm&lt;/code&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Preparación para la tarea sobre RAID5&lt;/h2&gt;
 &lt;p&gt;Para realizar esta tarea se va a utilizar una máquina virtual con vagrant-libvirt la configuración de vagrantfile es la siguiente:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- mode: ruby -*-&lt;/span&gt;

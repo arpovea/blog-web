@@ -22,19 +22,9 @@
 &lt;h4&gt;Después de realizar un apt update &amp;amp;&amp;amp; apt upgrade. Si quisieras actualizar únicamente los paquetes que tienen de cadena openssh. ¿Qué procedimiento seguirías?. Realiza esta acción, con las estructuras repetitivas que te ofrece bash, así como con el comando xargs.&lt;/h4&gt;
 &lt;h4&gt;¿Cómo encontrarías qué paquetes dependen de un paquete específico.&lt;/h4&gt;
 &lt;h4&gt;Como procederías para encontrar el paquete al que pertenece un determinado archivo.&lt;/h4&gt;
-&lt;h4&gt;¿Que procedimientos emplearías para eliminar liberar la cache en cuanto a descargas de paquetería?&lt;/h4&gt;</content><category term="Sistemas"></category></entry><entry><title>RCLONE</title><link href="https://arpovea.vercel.app/rclone.html" rel="alternate"></link><published>2020-09-29T00:00:00+02:00</published><updated>2020-09-29T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-29:/rclone.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;h4&gt;¿Que procedimientos emplearías para eliminar liberar la cache en cuanto a descargas de paquetería?&lt;/h4&gt;</content><category term="Sistemas"></category></entry><entry><title>RCLONE</title><link href="https://arpovea.vercel.app/rclone.html" rel="alternate"></link><published>2020-09-29T00:00:00+02:00</published><updated>2020-09-29T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-29:/rclone.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;RClone&lt;/h2&gt;
-&lt;p&gt;Rclone es una herramienta que permite trabajar con los ficheros que esten almacenados en los distintos servicios de almacenamiento en la nube, puede …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;RClone&lt;/h2&gt;
 &lt;p&gt;Rclone es una herramienta que permite trabajar con los ficheros que esten almacenados en los distintos servicios de almacenamiento en la nube, puede gestionar y sincronizar los ficheros de los servicios desde la linea de comandos.&lt;/p&gt;
 &lt;h3&gt;Instalación de Rclone&lt;/h3&gt;
@@ -274,19 +264,9 @@ A continuación se muestran unas capturas del montaje y borrado de un fichero en
 
 &lt;p&gt;Hay muchos mas comandos y utilidades si quieres saber mas consulta la documentación oficial &lt;a href="https://rclone.org/"&gt;aquí&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Seguridad"></category></entry><entry><title>Tareas con RAID5</title><link href="https://arpovea.vercel.app/tareas-con-raid5.html" rel="alternate"></link><published>2020-09-28T00:00:00+02:00</published><updated>2020-09-28T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-28:/tareas-con-raid5.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Seguridad"></category></entry><entry><title>Tareas con RAID5</title><link href="https://arpovea.vercel.app/tareas-con-raid5.html" rel="alternate"></link><published>2020-09-28T00:00:00+02:00</published><updated>2020-09-28T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-28:/tareas-con-raid5.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con &lt;code&gt;mdadm&lt;/code&gt;.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con &lt;code&gt;mdadm&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Preparación para la tarea sobre RAID5&lt;/h2&gt;
-&lt;p&gt;Para realizar esta tarea se va a utilizar una máquina virtual con vagrant-libvirt la configuración de vagrantfile es la …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con &lt;code&gt;mdadm&lt;/code&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Preparación para la tarea sobre RAID5&lt;/h2&gt;
 &lt;p&gt;Para realizar esta tarea se va a utilizar una máquina virtual con vagrant-libvirt la configuración de vagrantfile es la siguiente:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- mode: ruby -*-&lt;/span&gt;
@@ -454,19 +434,9 @@ sudo xfs_growfs /mnt/RAID5/
 &lt;p&gt;Al finalizar todas las tareas en este orden la orden &lt;code&gt;lsblk -f&lt;/code&gt; debería mostrar algo así:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="lsblkfinal" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblkfinal.png"&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Seguridad"></category></entry><entry><title>Instalación Debian Buster con LVM</title><link href="https://arpovea.vercel.app/instalacion-debian-buster-con-lvm.html" rel="alternate"></link><published>2020-09-26T00:00:00+02:00</published><updated>2020-09-26T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-26:/instalacion-debian-buster-con-lvm.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Seguridad"></category></entry><entry><title>Instalación Debian Buster con LVM</title><link href="https://arpovea.vercel.app/instalacion-debian-buster-con-lvm.html" rel="alternate"></link><published>2020-09-26T00:00:00+02:00</published><updated>2020-09-26T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-26:/instalacion-debian-buster-con-lvm.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Esquema de particiones realizado en la instalación:&lt;/h2&gt;
-&lt;p&gt;En este caso se tiene un  SSD de 250 GB con una …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Esquema de particiones realizado en la instalación:&lt;/h2&gt;
 &lt;p&gt;En este caso se tiene un  SSD de 250 GB con una instalación de windows que ocupa algo mas de 100 GB, al final disponen de unos 140 GB para la instalación del sistema Debian Buster.&lt;/p&gt;
 &lt;p&gt;Una vez se llega a la parte de particionado de la instalación del sistema Debian Buster:&lt;/p&gt;
@@ -590,20 +560,9 @@ sudo apt install -t buster-backports linux-image-amd64 nvidia-driver
 &lt;p&gt;Y una vez se reinicie la máquina el Kernel arrancará con esta opción.&lt;/p&gt;
 &lt;p&gt;Otras opciones interesantes para corregir los errores en los logs del sistema con los PCI/PCIe son las opción &lt;code&gt;pci=noaer&lt;/code&gt; y &lt;code&gt;pci=nomsi&lt;/code&gt; pero ya dependerá de vuestro caso, podéis consultar la siguiente página para comprobar o buscar parámetros del Kernel &lt;a href="https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html"&gt;aquí&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>Creacion de usuarios BATCH</title><link href="https://arpovea.vercel.app/creacion-de-usuarios-batch.html" rel="alternate"></link><published>2020-02-19T00:00:00+01:00</published><updated>2020-02-19T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-19:/creacion-de-usuarios-batch.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>Creacion de usuarios BATCH</title><link href="https://arpovea.vercel.app/creacion-de-usuarios-batch.html" rel="alternate"></link><published>2020-02-19T00:00:00+01:00</published><updated>2020-02-19T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-19:/creacion-de-usuarios-batch.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se van crear usuarios con los comandos &lt;code&gt;newusers&lt;/code&gt;,&lt;code&gt;chpasswd&lt;/code&gt;,&lt;code&gt;pwgen&lt;/code&gt; y la sentencia de iteración &lt;code&gt;for&lt;/code&gt;.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se van crear usuarios con los comandos &lt;code&gt;newusers&lt;/code&gt;,&lt;code&gt;chpasswd&lt;/code&gt;,&lt;code&gt;pwgen&lt;/code&gt; y la sentencia de iteración &lt;code&gt;for&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Desarrollo&lt;/h2&gt;
-&lt;p&gt;Se crea el fichero con el formato que acepta el comando &lt;code&gt;newusers&lt;/code&gt; que es el mismo que el del fichero /etc/passwd.    &lt;/p&gt;
-&lt;p&gt;Para ello se utiliza …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se van crear usuarios con los comandos &lt;code&gt;newusers&lt;/code&gt;,&lt;code&gt;chpasswd&lt;/code&gt;,&lt;code&gt;pwgen&lt;/code&gt; y la sentencia de iteración &lt;code&gt;for&lt;/code&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Desarrollo&lt;/h2&gt;
 &lt;p&gt;Se crea el fichero con el formato que acepta el comando &lt;code&gt;newusers&lt;/code&gt; que es el mismo que el del fichero /etc/passwd.    &lt;/p&gt;
 &lt;p&gt;Para ello se utiliza la sentencia &lt;code&gt;for&lt;/code&gt;:    &lt;/p&gt;
@@ -643,20 +602,9 @@ usuarios
 
 &lt;p&gt;Y con esto tendriamos creados los usuarios.    &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>UGO-Permisos y propietarios</title><link href="https://arpovea.vercel.app/ugo-permisos-y-propietarios.html" rel="alternate"></link><published>2020-02-19T00:00:00+01:00</published><updated>2020-02-19T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-19:/ugo-permisos-y-propietarios.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>UGO-Permisos y propietarios</title><link href="https://arpovea.vercel.app/ugo-permisos-y-propietarios.html" rel="alternate"></link><published>2020-02-19T00:00:00+01:00</published><updated>2020-02-19T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-19:/ugo-permisos-y-propietarios.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a a realizar una actividad de usuarios y permisos del curso 1º ASIR de la asignatura: Implantacion de Sistemas Operativos.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a a realizar una actividad de usuarios y permisos del curso 1º ASIR de la asignatura: Implantacion de Sistemas Operativos.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Enunciado Ejercicio:&lt;/h2&gt;
-&lt;p&gt;Crea los siguientes grupos de usuarios: sistemas, desarrollo y explotación.    &lt;/p&gt;
-&lt;p&gt;Crea dentro del directorio raíz, el directorio proyecto, con …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se va a a realizar una actividad de usuarios y permisos del curso 1º ASIR de la asignatura: Implantacion de Sistemas Operativos.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Enunciado Ejercicio:&lt;/h2&gt;
 &lt;p&gt;Crea los siguientes grupos de usuarios: sistemas, desarrollo y explotación.    &lt;/p&gt;
 &lt;p&gt;Crea dentro del directorio raíz, el directorio proyecto, con permisos de propietario: root, y grupo del propietario:root.    &lt;/p&gt;
@@ -734,27 +682,9 @@ sudo useradd explotacion2 -m -G explotacion -s /bin/bash
 
 &lt;p&gt;Con esta configuración los usuarios cumplirán los requisitos que se enumeran en el enunciado de este post.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>FTP</title><link href="https://arpovea.vercel.app/ftp.html" rel="alternate"></link><published>2020-02-07T00:00:00+01:00</published><updated>2020-02-07T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-07:/ftp.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>FTP&gt;</title><link href="https://arpovea.vercel.app/ftp.html" rel="alternate"></link><published>2020-02-07T00:00:00+01:00</published><updated>2020-02-07T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-07:/ftp.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a descargar una imagen ISO de Debian del sitio "ftp.rediris.es", se analizará el tráfico con Wireshark y se comentarán algunas cosas.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a descargar una imagen ISO de Debian del sitio "ftp.rediris.es", se analizará el tráfico con Wireshark y se comentarán algunas cosas.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h2&gt;FTP&lt;/h2&gt;
-&lt;p&gt;Para conectarse al sitio "ftp.rediris.es", lo primero es tener el paquete ftp instalado en el …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se va a descargar una imagen ISO de Debian del sitio "ftp.rediris.es", se analizará el tráfico con Wireshark y se comentarán algunas cosas.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h2&gt;FTP&lt;/h2&gt;
 &lt;p&gt;Para conectarse al sitio "ftp.rediris.es", lo primero es tener el paquete ftp instalado en el equipo, para ello:    &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo aptitude update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; aptitude install -y ftp
@@ -792,18 +722,9 @@ sudo useradd explotacion2 -m -G explotacion -s /bin/bash
 &lt;p&gt;En este modo el cliente se conecta al servidor de la misma manera solo que, el servidor le indica al cliente que tiene que conectarse a un puerto distinto del "20" para la descarga de datos, por lo que el cliente inicia una conexíon a un puerto aleatorio del servidor. Así el cliente es el que establece el canal de datos por lo que el firewall no rechazariá la conexión.     &lt;/p&gt;
 &lt;p&gt;&lt;img alt="ftpasivo" src="{{ site.baseurl }}/assets/img/FTP/FTP-Modo-Pasivo-FTP.jpg"&gt;    &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.   &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Hping3 y NetCat</title><link href="https://arpovea.vercel.app/hping3-y-netcat.html" rel="alternate"></link><published>2020-01-31T00:00:00+01:00</published><updated>2020-01-31T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-31:/hping3-y-netcat.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.   &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Hping3 y NetCat</title><link href="https://arpovea.vercel.app/hping3-y-netcat.html" rel="alternate"></link><published>2020-01-31T00:00:00+01:00</published><updated>2020-01-31T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-31:/hping3-y-netcat.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando Hping3 y  NetCat, con los cuales realizaremos pruebas en un escenario creado en una máquina virtual con Mininet. Probaremos a modificar los paquetes de ping y a conectarnos a distintos puertos y realizar varias conexiones.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando Hping3 y  NetCat, con los cuales realizaremos pruebas en un escenario creado en una máquina virtual con Mininet. Probaremos a modificar los paquetes de ping y a conectarnos a distintos puertos y realizar varias conexiones.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Mininet …&lt;/h2&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando Hping3 y  NetCat, con los cuales realizaremos pruebas en un escenario creado en una máquina virtual con Mininet. Probaremos a modificar los paquetes de ping y a conectarnos a distintos puertos y realizar varias conexiones.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Mininet&lt;/h2&gt;
 &lt;p&gt;A continuación se expondra el escenario y los comandos que se van a utilizar en esta práctica:    &lt;/p&gt;
 &lt;p&gt;Esquema de escenario:    &lt;/p&gt;
@@ -927,19 +848,9 @@ La opción -p indica el puerto destino.    &lt;/p&gt;
 &lt;img alt="UDP2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcapUDP2.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Con el protocolo UDP no se comprueban las mismas cosas que con el protocolo TCP, la única ventaja de UDP es que es más liviano y en algunas ocasiones tiene sus ventajas. Como se puede observar solo están los mensajes enviados desde H4 hacia H1.    &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Probando Dig y Wireshark</title><link href="https://arpovea.vercel.app/probando-dig-y-wireshark.html" rel="alternate"></link><published>2020-01-28T00:00:00+01:00</published><updated>2020-01-28T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-28:/probando-dig-y-wireshark.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Probando Dig y Wireshark</title><link href="https://arpovea.vercel.app/probando-dig-y-wireshark.html" rel="alternate"></link><published>2020-01-28T00:00:00+01:00</published><updated>2020-01-28T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-28:/probando-dig-y-wireshark.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando dig y el programa Wireshark, con los cuales realizaremos consultas DNS e investigaremos un poco el tráfico de una petición a una página web.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando dig y el programa Wireshark, con los cuales realizaremos consultas DNS e investigaremos un poco el tráfico de una petición a una página web.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;DIG&lt;/h2&gt;
-&lt;p&gt;Se va a realizar una petición DNS con el comando dig …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando dig y el programa Wireshark, con los cuales realizaremos consultas DNS e investigaremos un poco el tráfico de una petición a una página web.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;DIG&lt;/h2&gt;
 &lt;p&gt;Se va a realizar una petición DNS con el comando dig a las páginas www.marca.com y www.elmundo.es:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dig www.marca.com
@@ -1007,19 +918,9 @@ En ella podemos observar lo siguiente:&lt;/p&gt;
 
 &lt;p&gt;Estos son solo algunos ejemplos. ¡Existen muchos mas!    &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí, espero que sirva de ayuda. Nos vemos en el siguiente post.&lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Swap-Añadiendo espacio de intercambio a nuestra máquina.</title><link href="https://arpovea.vercel.app/swap-anadiendo-espacio-de-intercambio-a-nuestra-maquina.html" rel="alternate"></link><published>2020-01-26T00:00:00+01:00</published><updated>2020-01-26T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-26:/swap-anadiendo-espacio-de-intercambio-a-nuestra-maquina.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí, espero que sirva de ayuda. Nos vemos en el siguiente post.&lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Swap-Añadiendo espacio de intercambio a nuestra máquina.</title><link href="https://arpovea.vercel.app/swap-anadiendo-espacio-de-intercambio-a-nuestra-maquina.html" rel="alternate"></link><published>2020-01-26T00:00:00+01:00</published><updated>2020-01-26T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-26:/swap-anadiendo-espacio-de-intercambio-a-nuestra-maquina.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se añadirá espacio de intercambio (SWAP) a través de un volumen, y de un fichero, en este Post se verán ambos casos. Recordad que para esta práctica se está utilizando una máquina con Debian 10.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se añadirá espacio de intercambio (SWAP) a través de un volumen, y de un fichero, en este Post se verán ambos casos. Recordad que para esta práctica se está utilizando una máquina con Debian 10.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Primer caso: Añadiendo SWAP con un volumen.&lt;/h2&gt;
-&lt;p&gt;Suponiendo …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se añadirá espacio de intercambio (SWAP) a través de un volumen, y de un fichero, en este Post se verán ambos casos. Recordad que para esta práctica se está utilizando una máquina con Debian 10.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Primer caso: Añadiendo SWAP con un volumen.&lt;/h2&gt;
 &lt;p&gt;Suponiendo que se haya conectado un volumen a la máquina, se le creará la partición y se le dará formato a esta para que sea apta para SWAP. (En este caso el volumen tiene 1 GB.)  &lt;br&gt;
 Para ello se crea la partición con: (El volumen tiene asignado las letras "sdb" en este caso.)    &lt;/p&gt;
@@ -1103,24 +1004,9 @@ Para desactivarla sería:    &lt;/p&gt;
 &lt;p&gt;Para que inicie con el sistema añadimos la siguiente línea al fichero &lt;code&gt;/etc/fstab&lt;/code&gt;:  &lt;br&gt;
 &lt;code&gt;/swap  swap   swap   defaults      0   0&lt;/code&gt;    &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;En estos dos sencillos pasos se ha visto como añadir SWAP a nuestra máquina. Un saludo    &lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>AutoFS</title><link href="https://arpovea.vercel.app/autofs.html" rel="alternate"></link><published>2020-01-25T00:00:00+01:00</published><updated>2020-01-25T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-25:/autofs.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
+&lt;p&gt;En estos dos sencillos pasos se ha visto como añadir SWAP a nuestra máquina. Un saludo    &lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>AutoFS</title><link href="https://arpovea.vercel.app/autofs.html" rel="alternate"></link><published>2020-01-25T00:00:00+01:00</published><updated>2020-01-25T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-25:/autofs.html</id><summary type="html">&lt;p&gt;Buenas! Para inaugurar el Blog empezaremos con una pequeña práctica para automontar un volumen en una máquina con Debian 10 utilizando autofs.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;Buenas! Para inaugurar el Blog empezaremos con una pequeña práctica para automontar un volumen en una máquina con Debian 10 utilizando autofs.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Buenas! Para inaugurar el Blog empezaremos con una pequeña práctica para automontar un volumen en una máquina con Debian 10 utilizando autofs.  &lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;p&gt;Lo primero que se va a realizar es la instalación del servicio autofs:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install autofs
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Comprobamos que servicio este activo con:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;systemctl …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! Para inaugurar el Blog empezaremos con una pequeña práctica para automontar un volumen en una máquina con Debian 10 utilizando autofs.  &lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;Lo primero que se va a realizar es la instalación del servicio autofs:  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install autofs
 &lt;/pre&gt;&lt;/div&gt;

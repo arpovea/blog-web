@@ -22,19 +22,9 @@
 &lt;h4&gt;Después de realizar un apt update &amp;amp;&amp;amp; apt upgrade. Si quisieras actualizar únicamente los paquetes que tienen de cadena openssh. ¿Qué procedimiento seguirías?. Realiza esta acción, con las estructuras repetitivas que te ofrece bash, así como con el comando xargs.&lt;/h4&gt;
 &lt;h4&gt;¿Cómo encontrarías qué paquetes dependen de un paquete específico.&lt;/h4&gt;
 &lt;h4&gt;Como procederías para encontrar el paquete al que pertenece un determinado archivo.&lt;/h4&gt;
-&lt;h4&gt;¿Que procedimientos emplearías para eliminar liberar la cache en cuanto a descargas de paquetería?&lt;/h4&gt;</content><category term="Sistemas"></category></entry><entry><title>Instalación Debian Buster con LVM</title><link href="https://arpovea.vercel.app/instalacion-debian-buster-con-lvm.html" rel="alternate"></link><published>2020-09-26T00:00:00+02:00</published><updated>2020-09-26T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-26:/instalacion-debian-buster-con-lvm.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;h4&gt;¿Que procedimientos emplearías para eliminar liberar la cache en cuanto a descargas de paquetería?&lt;/h4&gt;</content><category term="Sistemas"></category></entry><entry><title>Instalación Debian Buster con LVM</title><link href="https://arpovea.vercel.app/instalacion-debian-buster-con-lvm.html" rel="alternate"></link><published>2020-09-26T00:00:00+02:00</published><updated>2020-09-26T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-26:/instalacion-debian-buster-con-lvm.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Esquema de particiones realizado en la instalación:&lt;/h2&gt;
-&lt;p&gt;En este caso se tiene un  SSD de 250 GB con una …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Esquema de particiones realizado en la instalación:&lt;/h2&gt;
 &lt;p&gt;En este caso se tiene un  SSD de 250 GB con una instalación de windows que ocupa algo mas de 100 GB, al final disponen de unos 140 GB para la instalación del sistema Debian Buster.&lt;/p&gt;
 &lt;p&gt;Una vez se llega a la parte de particionado de la instalación del sistema Debian Buster:&lt;/p&gt;
@@ -158,20 +148,9 @@ sudo apt install -t buster-backports linux-image-amd64 nvidia-driver
 &lt;p&gt;Y una vez se reinicie la máquina el Kernel arrancará con esta opción.&lt;/p&gt;
 &lt;p&gt;Otras opciones interesantes para corregir los errores en los logs del sistema con los PCI/PCIe son las opción &lt;code&gt;pci=noaer&lt;/code&gt; y &lt;code&gt;pci=nomsi&lt;/code&gt; pero ya dependerá de vuestro caso, podéis consultar la siguiente página para comprobar o buscar parámetros del Kernel &lt;a href="https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html"&gt;aquí&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>Creacion de usuarios BATCH</title><link href="https://arpovea.vercel.app/creacion-de-usuarios-batch.html" rel="alternate"></link><published>2020-02-19T00:00:00+01:00</published><updated>2020-02-19T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-19:/creacion-de-usuarios-batch.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>Creacion de usuarios BATCH</title><link href="https://arpovea.vercel.app/creacion-de-usuarios-batch.html" rel="alternate"></link><published>2020-02-19T00:00:00+01:00</published><updated>2020-02-19T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-19:/creacion-de-usuarios-batch.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se van crear usuarios con los comandos &lt;code&gt;newusers&lt;/code&gt;,&lt;code&gt;chpasswd&lt;/code&gt;,&lt;code&gt;pwgen&lt;/code&gt; y la sentencia de iteración &lt;code&gt;for&lt;/code&gt;.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se van crear usuarios con los comandos &lt;code&gt;newusers&lt;/code&gt;,&lt;code&gt;chpasswd&lt;/code&gt;,&lt;code&gt;pwgen&lt;/code&gt; y la sentencia de iteración &lt;code&gt;for&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Desarrollo&lt;/h2&gt;
-&lt;p&gt;Se crea el fichero con el formato que acepta el comando &lt;code&gt;newusers&lt;/code&gt; que es el mismo que el del fichero /etc/passwd.    &lt;/p&gt;
-&lt;p&gt;Para ello se utiliza …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se van crear usuarios con los comandos &lt;code&gt;newusers&lt;/code&gt;,&lt;code&gt;chpasswd&lt;/code&gt;,&lt;code&gt;pwgen&lt;/code&gt; y la sentencia de iteración &lt;code&gt;for&lt;/code&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Desarrollo&lt;/h2&gt;
 &lt;p&gt;Se crea el fichero con el formato que acepta el comando &lt;code&gt;newusers&lt;/code&gt; que es el mismo que el del fichero /etc/passwd.    &lt;/p&gt;
 &lt;p&gt;Para ello se utiliza la sentencia &lt;code&gt;for&lt;/code&gt;:    &lt;/p&gt;
@@ -211,20 +190,9 @@ usuarios
 
 &lt;p&gt;Y con esto tendriamos creados los usuarios.    &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>UGO-Permisos y propietarios</title><link href="https://arpovea.vercel.app/ugo-permisos-y-propietarios.html" rel="alternate"></link><published>2020-02-19T00:00:00+01:00</published><updated>2020-02-19T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-19:/ugo-permisos-y-propietarios.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>UGO-Permisos y propietarios</title><link href="https://arpovea.vercel.app/ugo-permisos-y-propietarios.html" rel="alternate"></link><published>2020-02-19T00:00:00+01:00</published><updated>2020-02-19T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-02-19:/ugo-permisos-y-propietarios.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a a realizar una actividad de usuarios y permisos del curso 1º ASIR de la asignatura: Implantacion de Sistemas Operativos.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a a realizar una actividad de usuarios y permisos del curso 1º ASIR de la asignatura: Implantacion de Sistemas Operativos.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Enunciado Ejercicio:&lt;/h2&gt;
-&lt;p&gt;Crea los siguientes grupos de usuarios: sistemas, desarrollo y explotación.    &lt;/p&gt;
-&lt;p&gt;Crea dentro del directorio raíz, el directorio proyecto, con …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se va a a realizar una actividad de usuarios y permisos del curso 1º ASIR de la asignatura: Implantacion de Sistemas Operativos.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Enunciado Ejercicio:&lt;/h2&gt;
 &lt;p&gt;Crea los siguientes grupos de usuarios: sistemas, desarrollo y explotación.    &lt;/p&gt;
 &lt;p&gt;Crea dentro del directorio raíz, el directorio proyecto, con permisos de propietario: root, y grupo del propietario:root.    &lt;/p&gt;
@@ -302,19 +270,9 @@ sudo useradd explotacion2 -m -G explotacion -s /bin/bash
 
 &lt;p&gt;Con esta configuración los usuarios cumplirán los requisitos que se enumeran en el enunciado de este post.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>Swap-Añadiendo espacio de intercambio a nuestra máquina.</title><link href="https://arpovea.vercel.app/swap-anadiendo-espacio-de-intercambio-a-nuestra-maquina.html" rel="alternate"></link><published>2020-01-26T00:00:00+01:00</published><updated>2020-01-26T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-26:/swap-anadiendo-espacio-de-intercambio-a-nuestra-maquina.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.&lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>Swap-Añadiendo espacio de intercambio a nuestra máquina.</title><link href="https://arpovea.vercel.app/swap-anadiendo-espacio-de-intercambio-a-nuestra-maquina.html" rel="alternate"></link><published>2020-01-26T00:00:00+01:00</published><updated>2020-01-26T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-26:/swap-anadiendo-espacio-de-intercambio-a-nuestra-maquina.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se añadirá espacio de intercambio (SWAP) a través de un volumen, y de un fichero, en este Post se verán ambos casos. Recordad que para esta práctica se está utilizando una máquina con Debian 10.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se añadirá espacio de intercambio (SWAP) a través de un volumen, y de un fichero, en este Post se verán ambos casos. Recordad que para esta práctica se está utilizando una máquina con Debian 10.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Primer caso: Añadiendo SWAP con un volumen.&lt;/h2&gt;
-&lt;p&gt;Suponiendo …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se añadirá espacio de intercambio (SWAP) a través de un volumen, y de un fichero, en este Post se verán ambos casos. Recordad que para esta práctica se está utilizando una máquina con Debian 10.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Primer caso: Añadiendo SWAP con un volumen.&lt;/h2&gt;
 &lt;p&gt;Suponiendo que se haya conectado un volumen a la máquina, se le creará la partición y se le dará formato a esta para que sea apta para SWAP. (En este caso el volumen tiene 1 GB.)  &lt;br&gt;
 Para ello se crea la partición con: (El volumen tiene asignado las letras "sdb" en este caso.)    &lt;/p&gt;
@@ -398,24 +356,9 @@ Para desactivarla sería:    &lt;/p&gt;
 &lt;p&gt;Para que inicie con el sistema añadimos la siguiente línea al fichero &lt;code&gt;/etc/fstab&lt;/code&gt;:  &lt;br&gt;
 &lt;code&gt;/swap  swap   swap   defaults      0   0&lt;/code&gt;    &lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;En estos dos sencillos pasos se ha visto como añadir SWAP a nuestra máquina. Un saludo    &lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>AutoFS</title><link href="https://arpovea.vercel.app/autofs.html" rel="alternate"></link><published>2020-01-25T00:00:00+01:00</published><updated>2020-01-25T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-25:/autofs.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
+&lt;p&gt;En estos dos sencillos pasos se ha visto como añadir SWAP a nuestra máquina. Un saludo    &lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>AutoFS</title><link href="https://arpovea.vercel.app/autofs.html" rel="alternate"></link><published>2020-01-25T00:00:00+01:00</published><updated>2020-01-25T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-25:/autofs.html</id><summary type="html">&lt;p&gt;Buenas! Para inaugurar el Blog empezaremos con una pequeña práctica para automontar un volumen en una máquina con Debian 10 utilizando autofs.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;Buenas! Para inaugurar el Blog empezaremos con una pequeña práctica para automontar un volumen en una máquina con Debian 10 utilizando autofs.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Buenas! Para inaugurar el Blog empezaremos con una pequeña práctica para automontar un volumen en una máquina con Debian 10 utilizando autofs.  &lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;p&gt;Lo primero que se va a realizar es la instalación del servicio autofs:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install autofs
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Comprobamos que servicio este activo con:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;systemctl …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! Para inaugurar el Blog empezaremos con una pequeña práctica para automontar un volumen en una máquina con Debian 10 utilizando autofs.  &lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;p&gt;Lo primero que se va a realizar es la instalación del servicio autofs:  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install autofs
 &lt;/pre&gt;&lt;/div&gt;
