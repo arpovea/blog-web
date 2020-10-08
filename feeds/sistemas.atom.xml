@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático - Sistemas</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/sistemas.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-10-05T00:00:00+02:00</updated><entry><title>APT y DPKG</title><link href="https://arpovea.vercel.app/apt-y-dpkg.html" rel="alternate"></link><published>2020-10-05T00:00:00+02:00</published><updated>2020-10-05T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-10-05:/apt-y-dpkg.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
-&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;Ejercicios APT&lt;/h2&gt;
