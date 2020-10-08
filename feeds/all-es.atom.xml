@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/all-es.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-10-05T00:00:00+02:00</updated><entry><title>APT y DPKG</title><link href="https://arpovea.vercel.app/apt-y-dpkg.html" rel="alternate"></link><published>2020-10-05T00:00:00+02:00</published><updated>2020-10-05T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-10-05:/apt-y-dpkg.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/all-es.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-10-05T00:00:00+02:00</updated><entry><title>APT y DPKG</title><link href="https://arpovea.vercel.app/apt-y-dpkg.html" rel="alternate"></link><published>2020-10-05T00:00:00+02:00</published><updated>2020-10-05T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-10-05:/apt-y-dpkg.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG.&lt;/p&gt;
 &lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Ejercicios APT&lt;/h2&gt;
-&lt;h4&gt;Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente.&lt;/h4&gt;
-&lt;p&gt;Al realizar un &lt;code&gt;apt update&lt;/code&gt;, revisa los repositorios listados en el fichero &lt;code&gt;source.list&lt;/code&gt; o en los …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
 &lt;h2&gt;Ejercicios APT&lt;/h2&gt;
 &lt;h4&gt;Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente.&lt;/h4&gt;
 &lt;p&gt;Al realizar un &lt;code&gt;apt update&lt;/code&gt;, revisa los repositorios listados en el fichero &lt;code&gt;source.list&lt;/code&gt; o en los ficheros de &lt;code&gt;source.list.d&lt;/code&gt;, obteniendo la lista de los paquetes y sus versiones disponibles en esos repositorios.&lt;/p&gt;

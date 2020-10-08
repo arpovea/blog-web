@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Blog Informático - Adrián Rodríguez Povea</title><link>https://arpovea.vercel.app/</link><description></description><lastBuildDate>Mon, 05 Oct 2020 00:00:00 +0200</lastBuildDate><item><title>APT y DPKG</title><link>https://arpovea.vercel.app/apt-y-dpkg.html</link><description>&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
-&lt;hr&gt;
-&lt;p&gt;Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG.&lt;/p&gt;
-&lt;hr&gt;
-&lt;!--more--&gt;
-
-&lt;h2&gt;Ejercicios APT&lt;/h2&gt;
-&lt;h4&gt;Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente.&lt;/h4&gt;
-&lt;p&gt;Al realizar un &lt;code&gt;apt update&lt;/code&gt;, revisa los repositorios listados en el fichero &lt;code&gt;source.list&lt;/code&gt; o en los …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adrián Rodríguez Povea</dc:creator><pubDate>Mon, 05 Oct 2020 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:arpovea.vercel.app,2020-10-05:/apt-y-dpkg.html</guid><category>Sistemas</category></item><item><title>RCLONE</title><link>https://arpovea.vercel.app/rclone.html</link><description>&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
+<rss version="2.0"><channel><title>Blog Informático - Adrián Rodríguez Povea</title><link>https://arpovea.vercel.app/</link><description></description><lastBuildDate>Mon, 05 Oct 2020 00:00:00 +0200</lastBuildDate><item><title>APT y DPKG</title><link>https://arpovea.vercel.app/apt-y-dpkg.html</link><description>&lt;p&gt;Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adrián Rodríguez Povea</dc:creator><pubDate>Mon, 05 Oct 2020 00:00:00 +0200</pubDate><guid isPermaLink="false">tag:arpovea.vercel.app,2020-10-05:/apt-y-dpkg.html</guid><category>Sistemas</category></item><item><title>RCLONE</title><link>https://arpovea.vercel.app/rclone.html</link><description>&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
 &lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;
 &lt;hr&gt;
