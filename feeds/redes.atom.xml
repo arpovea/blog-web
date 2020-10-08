@@ -27,17 +27,17 @@
 &lt;p&gt;Una vez realizado esto comanzará la descarga que dependerá de la velocidad de conexión de cada uno, una vez descargada esta se encontrará en el directorio actual donde comenzaste con los comandos FTP. Para salir de la línea de comandos FTP utiliza &lt;code&gt;exit&lt;/code&gt;.    &lt;/p&gt;
 &lt;p&gt;A continución se muestran las capturas de Wireshark desde la primera conexión hasta el fin:    &lt;/p&gt;
 &lt;p&gt;Conexiones Cliente-Servidor:  &lt;br&gt;
-&lt;img alt="ftp1" src="{{ site.baseurl }}/assets/img/FTP/FTPWireshark.png"&gt;    &lt;/p&gt;
+&lt;img alt="ftp1" src="https://arpovea.vercel.app/images/FTP/FTPWireshark.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Descarga imagen ISO:  &lt;br&gt;
-&lt;img alt="ftp2" src="{{ site.baseurl }}/assets/img/FTP/DescargaISO.png"&gt;    &lt;/p&gt;
+&lt;img alt="ftp2" src="https://arpovea.vercel.app/images/FTP/DescargaISO.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Como se puede observar en las capturas de Wireshark el cliente mantiene una conversación con el servidor mediante los puertos "21" del servidor y el puerto "41416" del cliente, cuando inicia la descarga estos puertos cambian del "20" del servidor al "54117" del cliente. Esto significa que el modo de FTP esta en ACTIVO.    &lt;/p&gt;
 &lt;p&gt;Recordemos la diferencia entre FTP activo y FTP pasivo:    &lt;/p&gt;
 &lt;h3&gt;FTP activo (predeterminado)&lt;/h3&gt;
 &lt;p&gt;En este modo el cliente se conecta desde un puerto aleatorio hacia el puerto "21" del servidor para la transferencia de un archivo, el servidor a tráves de su puerto "21" se pone en contacto con el cliente en el siguiente puerto del cliente es decir, si para la primera conexión el cliente utilizó el puerto "1500" el servidor se comunicará con el puerto "1501", aquí el servidor establece la conexión de datos por lo que si hay un firewall este rechazaría la conexión y sería imposible conectarse, ya que el servidor aquí es el que establece el canal de datos.    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="ftpactivo" src="{{ site.baseurl }}/assets/img/FTP/FTP-Modo-activo.jpg"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="ftpactivo" src="https://arpovea.vercel.app/images/FTP/FTP-Modo-activo.jpg"&gt;    &lt;/p&gt;
 &lt;h3&gt;FTP pasivo&lt;/h3&gt;
 &lt;p&gt;En este modo el cliente se conecta al servidor de la misma manera solo que, el servidor le indica al cliente que tiene que conectarse a un puerto distinto del "20" para la descarga de datos, por lo que el cliente inicia una conexíon a un puerto aleatorio del servidor. Así el cliente es el que establece el canal de datos por lo que el firewall no rechazariá la conexión.     &lt;/p&gt;
-&lt;p&gt;&lt;img alt="ftpasivo" src="{{ site.baseurl }}/assets/img/FTP/FTP-Modo-Pasivo-FTP.jpg"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="ftpasivo" src="https://arpovea.vercel.app/images/FTP/FTP-Modo-Pasivo-FTP.jpg"&gt;    &lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.   &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Hping3 y NetCat</title><link href="https://arpovea.vercel.app/hping3-y-netcat.html" rel="alternate"></link><published>2020-01-31T00:00:00+01:00</published><updated>2020-01-31T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-31:/hping3-y-netcat.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando Hping3 y  NetCat, con los cuales realizaremos pruebas en un escenario creado en una máquina virtual con Mininet. Probaremos a modificar los paquetes de ping y a conectarnos a distintos puertos y realizar varias conexiones.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando Hping3 y  NetCat, con los cuales realizaremos pruebas en un escenario creado en una máquina virtual con Mininet. Probaremos a modificar los paquetes de ping y a conectarnos a distintos puertos y realizar varias conexiones.&lt;/p&gt;
@@ -49,7 +49,7 @@
 &lt;code&gt;10.0.110.0/24 -&amp;gt; r1 y r2&lt;/code&gt;  &lt;br&gt;
 &lt;code&gt;10.0.120.0/24 -&amp;gt; r2 y r3&lt;/code&gt;  &lt;br&gt;
 &lt;code&gt;10.0.130.0/24 -&amp;gt; h3, h4  y r3&lt;/code&gt;    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="escenario" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/escenario.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="escenario" src="https://arpovea.vercel.app/images/Hping3yNetCat/escenario.png"&gt;&lt;/p&gt;
 &lt;p&gt;Se dejan por aquí los enlaces a los scripts tanto del escenario como del despliegue en Mininet:    &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/arpovea/arpovea.github.io/blob/master/assets/img/Hping3yNetCat/escenariotrasnporte2.mn"&gt;Scrip Escenario&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/arpovea/arpovea.github.io/blob/master/assets/img/Hping3yNetCat/escenariotrasnporte2.py"&gt;Scrip Despliegue&lt;/a&gt;&lt;/p&gt;
@@ -101,8 +101,8 @@ ip r add default via &lt;span class="m"&gt;10&lt;/span&gt;.0.130.2
 &lt;p&gt;La opción -K indica que utilice Echo Request, este vendria por defecto pero con esto se le especifica.  &lt;br&gt;
 La opción -c indica el número de paquetes que se enviarán en este caso "5".     &lt;/p&gt;
 &lt;p&gt;Estas son las capturas realizadas con Wireshark en R3:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="echorequest1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaechorequest1.png"&gt;  &lt;br&gt;
-&lt;img alt="echorequest2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaechorequest2.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="echorequest1" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaechorequest1.png"&gt;  &lt;br&gt;
+&lt;img alt="echorequest2" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaechorequest2.png"&gt;    &lt;/p&gt;
 &lt;p&gt;A continución cambiaremos la TTL para que no sea alcanzable H4:    &lt;/p&gt;
 &lt;p&gt;Comando H1:    &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hping -K &lt;span class="m"&gt;0&lt;/span&gt; --ttl &lt;span class="m"&gt;3&lt;/span&gt; -c &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.0.130.4
@@ -110,7 +110,7 @@ La opción -c indica el número de paquetes que se enviarán en este caso "5".  
 
 
 &lt;p&gt;La opcion --ttl cambia por defecto la ttl de "64"(por defecto) en "3" en este caso.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="TTL" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/TTL.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="TTL" src="https://arpovea.vercel.app/images/Hping3yNetCat/TTL.png"&gt;&lt;/p&gt;
 &lt;p&gt;Como se puede observar en la imagen no llega a su destino.    &lt;/p&gt;
 &lt;p&gt;Ahora se intentará realizar una conexion desde el puerto "4000" al puerto "80" desde H1:    &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hping3 -s &lt;span class="m"&gt;4000&lt;/span&gt; -p &lt;span class="m"&gt;80&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.0.130.4
@@ -120,8 +120,8 @@ La opción -c indica el número de paquetes que se enviarán en este caso "5".  
 &lt;p&gt;La opción -s indica el puerto base.  &lt;br&gt;
 La opción -p indica el puerto destino.    &lt;/p&gt;
 &lt;p&gt;Capturas en Wireshark:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="TCP4000-1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaTCP4000-1.png"&gt;  &lt;br&gt;
-&lt;img alt="TCP4000-2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaTCP4000-2.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="TCP4000-1" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaTCP4000-1.png"&gt;  &lt;br&gt;
+&lt;img alt="TCP4000-2" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaTCP4000-2.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Como se puede observar al no estar el puerto "80" activo se recibe la etiqueta [RST,ACK] que indica que no hay nada en ese puerto, si hubiera un servicio en ese puerto escuchando se mostraría la etiqueta [SYN,ACK].    &lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;NetCat&lt;/h2&gt;
@@ -137,15 +137,15 @@ La opción -p indica el puerto destino.    &lt;/p&gt;
 
 
 &lt;p&gt;A continuación se escribe en H2 y aparecerá en H3 como muestra la siguiente imagen:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="TCPconexion" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/TCPconexion.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="TCPconexion" src="https://arpovea.vercel.app/images/Hping3yNetCat/TCPconexion.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Capturas de Wireshark:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="netcap1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcap1.png"&gt;  &lt;br&gt;
-&lt;img alt="netcap2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcat2.png"&gt;  &lt;br&gt;
-&lt;img alt="mensaje1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/mensaje1psh.png"&gt;  &lt;br&gt;
-&lt;img alt="mensaje2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/mensaje2psh.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="netcap1" src="https://arpovea.vercel.app/images/Hping3yNetCat/netcap1.png"&gt;  &lt;br&gt;
+&lt;img alt="netcap2" src="https://arpovea.vercel.app/images/Hping3yNetCat/netcat2.png"&gt;  &lt;br&gt;
+&lt;img alt="mensaje1" src="https://arpovea.vercel.app/images/Hping3yNetCat/mensaje1psh.png"&gt;  &lt;br&gt;
+&lt;img alt="mensaje2" src="https://arpovea.vercel.app/images/Hping3yNetCat/mensaje2psh.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Como se puede obsevar en estas capturas se ve la conexión TCP con la etiqueta [SYN,ACK] y luego los mensajes enviados con la etiqueta [PSH,ACK].    &lt;/p&gt;
 &lt;p&gt;Ahora se cerrara la conexión y se mostrará la secuencia de cierre con Wireshark:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="secuenciadecerrado" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/secuenciadecerrado.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="secuenciadecerrado" src="https://arpovea.vercel.app/images/Hping3yNetCat/secuenciadecerrado.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Aquí se observa la etiqueta [FIN,ACK] y sus respectivas respuestas, indicando el cierre de la conexión.    &lt;/p&gt;
 &lt;p&gt;Probaremos a realizar lo mismo pero con un servidor UDP en vez de TCP, esta vez el servidor en H1 y la conexión desde H4:    &lt;/p&gt;
 &lt;p&gt;Comando para el servidor UDP en H1:    &lt;/p&gt;
@@ -159,10 +159,10 @@ La opción -p indica el puerto destino.    &lt;/p&gt;
 
 
 &lt;p&gt;A continuación se escribe en H4 y aparecerá en H1 como muestra la siguiente imagen:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="UDPconexion" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/UDPconexion.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="UDPconexion" src="https://arpovea.vercel.app/images/Hping3yNetCat/UDPconexion.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Capturas de Wireshark:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="UDP1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/Netcatudp1.png"&gt;  &lt;br&gt;
-&lt;img alt="UDP2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcapUDP2.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="UDP1" src="https://arpovea.vercel.app/images/Hping3yNetCat/Netcatudp1.png"&gt;  &lt;br&gt;
+&lt;img alt="UDP2" src="https://arpovea.vercel.app/images/Hping3yNetCat/netcapUDP2.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Con el protocolo UDP no se comprueban las mismas cosas que con el protocolo TCP, la única ventaja de UDP es que es más liviano y en algunas ocasiones tiene sus ventajas. Como se puede observar solo están los mensajes enviados desde H4 hacia H1.    &lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Probando Dig y Wireshark</title><link href="https://arpovea.vercel.app/probando-dig-y-wireshark.html" rel="alternate"></link><published>2020-01-28T00:00:00+01:00</published><updated>2020-01-28T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-28:/probando-dig-y-wireshark.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando dig y el programa Wireshark, con los cuales realizaremos consultas DNS e investigaremos un poco el tráfico de una petición a una página web.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;

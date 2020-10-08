@@ -94,7 +94,7 @@
 <code>10.0.110.0/24 -&gt; r1 y r2</code>  <br>
 <code>10.0.120.0/24 -&gt; r2 y r3</code>  <br>
 <code>10.0.130.0/24 -&gt; h3, h4  y r3</code>    </p>
-<p><img alt="escenario" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/escenario.png"></p>
+<p><img alt="escenario" src="https://arpovea.vercel.app/images/Hping3yNetCat/escenario.png"></p>
 <p>Se dejan por aquí los enlaces a los scripts tanto del escenario como del despliegue en Mininet:    </p>
 <p><a href="https://github.com/arpovea/arpovea.github.io/blob/master/assets/img/Hping3yNetCat/escenariotrasnporte2.mn">Scrip Escenario</a></p>
 <p><a href="https://github.com/arpovea/arpovea.github.io/blob/master/assets/img/Hping3yNetCat/escenariotrasnporte2.py">Scrip Despliegue</a></p>
@@ -146,8 +146,8 @@ ip r add default via <span class="m">10</span>.0.130.2
 <p>La opción -K indica que utilice Echo Request, este vendria por defecto pero con esto se le especifica.  <br>
 La opción -c indica el número de paquetes que se enviarán en este caso "5".     </p>
 <p>Estas son las capturas realizadas con Wireshark en R3:    </p>
-<p><img alt="echorequest1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaechorequest1.png">  <br>
-<img alt="echorequest2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaechorequest2.png">    </p>
+<p><img alt="echorequest1" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaechorequest1.png">  <br>
+<img alt="echorequest2" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaechorequest2.png">    </p>
 <p>A continución cambiaremos la TTL para que no sea alcanzable H4:    </p>
 <p>Comando H1:    </p>
 <div class="highlight"><pre><span></span>hping -K <span class="m">0</span> --ttl <span class="m">3</span> -c <span class="m">3</span> <span class="m">10</span>.0.130.4
@@ -155,7 +155,7 @@ La opción -c indica el número de paquetes que se enviarán en este caso "5".  
 
 
 <p>La opcion --ttl cambia por defecto la ttl de "64"(por defecto) en "3" en este caso.</p>
-<p><img alt="TTL" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/TTL.png"></p>
+<p><img alt="TTL" src="https://arpovea.vercel.app/images/Hping3yNetCat/TTL.png"></p>
 <p>Como se puede observar en la imagen no llega a su destino.    </p>
 <p>Ahora se intentará realizar una conexion desde el puerto "4000" al puerto "80" desde H1:    </p>
 <div class="highlight"><pre><span></span>hping3 -s <span class="m">4000</span> -p <span class="m">80</span> <span class="m">10</span>.0.130.4
@@ -165,8 +165,8 @@ La opción -c indica el número de paquetes que se enviarán en este caso "5".  
 <p>La opción -s indica el puerto base.  <br>
 La opción -p indica el puerto destino.    </p>
 <p>Capturas en Wireshark:</p>
-<p><img alt="TCP4000-1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaTCP4000-1.png">  <br>
-<img alt="TCP4000-2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaTCP4000-2.png">    </p>
+<p><img alt="TCP4000-1" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaTCP4000-1.png">  <br>
+<img alt="TCP4000-2" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaTCP4000-2.png">    </p>
 <p>Como se puede observar al no estar el puerto "80" activo se recibe la etiqueta [RST,ACK] que indica que no hay nada en ese puerto, si hubiera un servicio en ese puerto escuchando se mostraría la etiqueta [SYN,ACK].    </p>
 <hr>
 <h2>NetCat</h2>
@@ -182,15 +182,15 @@ La opción -p indica el puerto destino.    </p>
 
 
 <p>A continuación se escribe en H2 y aparecerá en H3 como muestra la siguiente imagen:</p>
-<p><img alt="TCPconexion" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/TCPconexion.png">    </p>
+<p><img alt="TCPconexion" src="https://arpovea.vercel.app/images/Hping3yNetCat/TCPconexion.png">    </p>
 <p>Capturas de Wireshark:    </p>
-<p><img alt="netcap1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcap1.png">  <br>
-<img alt="netcap2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcat2.png">  <br>
-<img alt="mensaje1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/mensaje1psh.png">  <br>
-<img alt="mensaje2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/mensaje2psh.png">    </p>
+<p><img alt="netcap1" src="https://arpovea.vercel.app/images/Hping3yNetCat/netcap1.png">  <br>
+<img alt="netcap2" src="https://arpovea.vercel.app/images/Hping3yNetCat/netcat2.png">  <br>
+<img alt="mensaje1" src="https://arpovea.vercel.app/images/Hping3yNetCat/mensaje1psh.png">  <br>
+<img alt="mensaje2" src="https://arpovea.vercel.app/images/Hping3yNetCat/mensaje2psh.png">    </p>
 <p>Como se puede obsevar en estas capturas se ve la conexión TCP con la etiqueta [SYN,ACK] y luego los mensajes enviados con la etiqueta [PSH,ACK].    </p>
 <p>Ahora se cerrara la conexión y se mostrará la secuencia de cierre con Wireshark:    </p>
-<p><img alt="secuenciadecerrado" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/secuenciadecerrado.png">    </p>
+<p><img alt="secuenciadecerrado" src="https://arpovea.vercel.app/images/Hping3yNetCat/secuenciadecerrado.png">    </p>
 <p>Aquí se observa la etiqueta [FIN,ACK] y sus respectivas respuestas, indicando el cierre de la conexión.    </p>
 <p>Probaremos a realizar lo mismo pero con un servidor UDP en vez de TCP, esta vez el servidor en H1 y la conexión desde H4:    </p>
 <p>Comando para el servidor UDP en H1:    </p>
@@ -204,10 +204,10 @@ La opción -p indica el puerto destino.    </p>
 
 
 <p>A continuación se escribe en H4 y aparecerá en H1 como muestra la siguiente imagen:    </p>
-<p><img alt="UDPconexion" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/UDPconexion.png">    </p>
+<p><img alt="UDPconexion" src="https://arpovea.vercel.app/images/Hping3yNetCat/UDPconexion.png">    </p>
 <p>Capturas de Wireshark:    </p>
-<p><img alt="UDP1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/Netcatudp1.png">  <br>
-<img alt="UDP2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcapUDP2.png">    </p>
+<p><img alt="UDP1" src="https://arpovea.vercel.app/images/Hping3yNetCat/Netcatudp1.png">  <br>
+<img alt="UDP2" src="https://arpovea.vercel.app/images/Hping3yNetCat/netcapUDP2.png">    </p>
 <p>Con el protocolo UDP no se comprueban las mismas cosas que con el protocolo TCP, la única ventaja de UDP es que es más liviano y en algunas ocasiones tiene sus ventajas. Como se puede observar solo están los mensajes enviados desde H4 hacia H1.    </p>
 <hr>
 <p>Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.    </p>

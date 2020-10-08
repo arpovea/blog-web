@@ -255,8 +255,8 @@
 
 &lt;p&gt;Una vez montado se podrá editar, crear y eliminar de forma local, y esto se sincronizará con la nube automáticamente.  &lt;br&gt;
 A continuación se muestran unas capturas del montaje y borrado de un fichero en la terminal y como se borra en el proveedor, en este caso Google Drive.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="MontajeyBorradoTerminal" src="{{ site.baseurl }}/assets/img/Rclone/comandosmount.png"&gt; &lt;/p&gt;
-&lt;p&gt;&lt;img alt="BorradoGoogleDrive" src="{{ site.baseurl }}/assets/img/Rclone/pruebaborrado.png"&gt;   &lt;/p&gt;
+&lt;p&gt;&lt;img alt="MontajeyBorradoTerminal" src="https://arpovea.vercel.app/images/Rclone/comandosmount.png"&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img alt="BorradoGoogleDrive" src="https://arpovea.vercel.app/images/Rclone/pruebaborrado.png"&gt;   &lt;/p&gt;
 &lt;p&gt;Para desmontar utiliza fusermount con la opción -u sobre la carpeta:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fusermount -u Gdrive
 &lt;/pre&gt;&lt;/div&gt;
@@ -287,7 +287,7 @@ A continuación se muestran unas capturas del montaje y borrado de un fichero en
 
 &lt;p&gt;Como podemos observar en el fichero agregamos 5 discos para realizar distintas pruebas a lo largo del ejercicio.&lt;/p&gt;
 &lt;p&gt;Una vez iniciada la máquina deberías obtener con el comando &lt;code&gt;lsblk&lt;/code&gt; lo siguiente:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="lsblk" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblk.png"&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblk" src="https://arpovea.vercel.app/images/TareaRAID5/lsblk.png"&gt;  &lt;/p&gt;
 &lt;p&gt;Lo siguiente es instalar el paquete &lt;code&gt;mdadm&lt;/code&gt;, si no lo tenéis ya instalado en la máquina virtual:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt install -y mdadm
 &lt;/pre&gt;&lt;/div&gt;
@@ -302,7 +302,7 @@ A continuación se muestran unas capturas del montaje y borrado de un fichero en
 
 
 &lt;p&gt;Si realizas de nuevo un &lt;code&gt;lsblk&lt;/code&gt; obtendrás algo como esto:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="lsblk2" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblk2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblk2" src="https://arpovea.vercel.app/images/TareaRAID5/lsblk2.png"&gt;&lt;/p&gt;
 &lt;p&gt;La diferencia entre RAID5 y RAID1 es:&lt;/p&gt;
 &lt;p&gt;En RAID5 los bloques estan distribuidos entre los 3 discos(los mínimos en RAID5) y soporta la pérdida total de unos de ellos, ya que distribuye la paridad entre los 3 dispositivos, pudiendo con dos recuperar toda la información.&lt;/p&gt;
 &lt;p&gt;En RAID1 se utilizan dos discos y uno es una copia exacta del otro, tiene ventajas en velocidades de lectura, ya que se puede leer de los dos discos, pero tiene desventaja en la escritura ya debe escribir en ambos discos la misma información.&lt;/p&gt;
@@ -323,7 +323,7 @@ A continuación se muestran unas capturas del montaje y borrado de un fichero en
 
 
 &lt;p&gt;En la siguiente imagen se pueden ver tanto el estado como los detalles:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="mdadmstatus" src="{{ site.baseurl }}/assets/img/TareaRAID5/comprobacionstadoraid.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="mdadmstatus" src="https://arpovea.vercel.app/images/TareaRAID5/comprobacionstadoraid.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Tarea 3: Crea un volumen lógico (LVM) de 500MB en el RAID5.&lt;/h4&gt;
 &lt;p&gt;Para esto hay que añadir el RAID5 a los volúmenes físicos, crear un grupo de volúmenes que utilize ese dispositivo y luego crear el volumen lógico:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pvcreate /dev/md5
@@ -333,7 +333,7 @@ sudo lvcreate tareas -L 500M -n tarea3
 
 
 &lt;p&gt;Quedando como en la siguiente imagen:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Vlogico" src="{{ site.baseurl }}/assets/img/TareaRAID5/Vlogico.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Vlogico" src="https://arpovea.vercel.app/images/TareaRAID5/Vlogico.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Tarea 4: Formatea ese volumen con un sistema de archivo &lt;code&gt;xfs&lt;/code&gt;.&lt;/h4&gt;
 &lt;p&gt;Realiza el siguiente comando:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mkfs.xfs /dev/tareas/tarea3
@@ -361,7 +361,7 @@ touch /mnt/RAID5/fich.txt
 
 
 &lt;p&gt;Mostrará algo similar a la siguiente imagen donde se observa que el disco esta marcado como fallido:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="fallovdb" src="{{ site.baseurl }}/assets/img/TareaRAID5/fallovdb.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="fallovdb" src="https://arpovea.vercel.app/images/TareaRAID5/fallovdb.png"&gt;&lt;/p&gt;
 &lt;p&gt;El fichero se puede seguir visualizando sin problema.&lt;/p&gt;
 &lt;h4&gt;Tarea 7: Una vez marcado como estropeado, lo tenemos que retirar del raid.&lt;/h4&gt;
 &lt;p&gt;Para ello utiliza el siguiente comando:&lt;/p&gt;
@@ -374,7 +374,7 @@ touch /mnt/RAID5/fich.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="removevdb" src="{{ site.baseurl }}/assets/img/TareaRAID5/removevdb.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="removevdb" src="https://arpovea.vercel.app/images/TareaRAID5/removevdb.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Tarea 8: Imaginemos que lo cambiamos por un nuevo disco nuevo (el dispositivo de bloque se llama igual), añádelo al array y&lt;/h4&gt;
 &lt;p&gt;comprueba como se sincroniza con el anterior. &lt;/p&gt;
 &lt;p&gt;Para ello en este caso con un nuevo disco "vde":&lt;/p&gt;
@@ -389,7 +389,7 @@ cat /proc/mdstat
 
 
 &lt;p&gt;Obteniendo algo similar a lo siguiente:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="agregandovde" src="{{ site.baseurl }}/assets/img/TareaRAID5/agregandovde.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="agregandovde" src="https://arpovea.vercel.app/images/TareaRAID5/agregandovde.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Tarea 9: Añade otro disco como reserva. Vuelve a simular el fallo de un disco y comprueba como automáticamente se realiza la sincronización con el disco de reserva.&lt;/h4&gt;
 &lt;p&gt;Realiza los siguiente comandos para añadir el disco como reserva:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mdadm --manage /dev/md5 -add /dev/vdf
@@ -412,7 +412,7 @@ cat /proc/mdstat
 
 
 &lt;p&gt;Como podemos ver en la siguiente imagen el disco pasa de SPARE (S) a activo y el otro se marca como FAIL (F)&lt;/p&gt;
-&lt;p&gt;&lt;img alt="SPAREautilizado" src="{{ site.baseurl }}/assets/img/TareaRAID5/SPAREautilizado.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="SPAREautilizado" src="https://arpovea.vercel.app/images/TareaRAID5/SPAREautilizado.png"&gt;&lt;/p&gt;
 &lt;p&gt;Como repunte, si quisieras que el disco se agrege como dispositivo adicional para aumentar las dimesiones del raid, después de agregarlo, realiza el siguiente comando:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm --grow /dev/md5 --raid-devices&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -432,7 +432,7 @@ sudo xfs_growfs /mnt/RAID5/
 
 &lt;p&gt;Recalcar que con &lt;code&gt;xfs&lt;/code&gt;se puede realizar esta acción en caliente con otros sistemas de ficheros podría ocasionar errores o pérdida de datos.&lt;/p&gt;
 &lt;p&gt;Al finalizar todas las tareas en este orden la orden &lt;code&gt;lsblk -f&lt;/code&gt; debería mostrar algo así:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="lsblkfinal" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblkfinal.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblkfinal" src="https://arpovea.vercel.app/images/TareaRAID5/lsblkfinal.png"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Seguridad"></category></entry><entry><title>Instalación Debian Buster con LVM</title><link href="https://arpovea.vercel.app/instalacion-debian-buster-con-lvm.html" rel="alternate"></link><published>2020-09-26T00:00:00+02:00</published><updated>2020-09-26T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-26:/instalacion-debian-buster-con-lvm.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a instalar el sistema operativo Debian Buster con particiones LVM, y vamos a exponer los errores producidos y las soluciones que hemos realizado.&lt;/p&gt;
@@ -456,25 +456,25 @@ sudo xfs_growfs /mnt/RAID5/
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="lsblk" src="{{ site.baseurl }}/assets/img/Insta.S.O/lsblk.png"&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblk" src="https://arpovea.vercel.app/images/Insta.S.O/lsblk.png"&gt;  &lt;/p&gt;
 &lt;p&gt;Listamos los dispositivos físicos agregados a LVM:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pvdisplay
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="pvdisplay" src="{{ site.baseurl }}/assets/img/Insta.S.O/pvdisplay.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pvdisplay" src="https://arpovea.vercel.app/images/Insta.S.O/pvdisplay.png"&gt;&lt;/p&gt;
 &lt;p&gt;Listamos los volúmenes lógicos:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo lvdisplay
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="lvdisplay" src="{{ site.baseurl }}/assets/img/Insta.S.O/lvdisplay.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lvdisplay" src="https://arpovea.vercel.app/images/Insta.S.O/lvdisplay.png"&gt;&lt;/p&gt;
 &lt;p&gt;Listamos los grupos de vólumenes:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo vgs
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="vgs" src="{{ site.baseurl }}/assets/img/Insta.S.O/vgs.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vgs" src="https://arpovea.vercel.app/images/Insta.S.O/vgs.png"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;Solución de errores:&lt;/h2&gt;
 &lt;p&gt;Errores producidos dependiendo del modelo de nuestros dispositivos, en este caso se esta utilizanddo un portatil MSI &lt;a href="https://es.msi.com/Laptop/GS73-7RE-Stealth-Pro/Specification"&gt;GS73 7RE Stealth Pro&lt;/a&gt;:&lt;/p&gt;
@@ -576,7 +576,7 @@ usuarios
 
 
 &lt;p&gt;Visualización del fichero usuarios:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="usuarios" src="{{ site.baseurl }}/assets/img/BATCH/usuarios.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="usuarios" src="https://arpovea.vercel.app/images/BATCH/usuarios.png"&gt;    &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/arpovea/arpovea.github.io/blob/master/assets/img/BATCH/usuarios"&gt;Link fichero usuarios&lt;/a&gt;    &lt;/p&gt;
 &lt;p&gt;Una vez generado ese fichero se va a crear otro con los nombre de usuarios y las contraseñas el cual se genera con &lt;code&gt;pwgen&lt;/code&gt; y la sentencia &lt;code&gt;for&lt;/code&gt;:    &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; i in &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;..9&lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
@@ -588,7 +588,7 @@ usuarios
 
 
 &lt;p&gt;Visualización del fichero contraseñas:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="contraseñas" src="{{ site.baseurl }}/assets/img/BATCH/contraseñas.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="contraseñas" src="https://arpovea.vercel.app/images/BATCH/contraseñas.png"&gt;    &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/arpovea/arpovea.github.io/blob/master/assets/img/BATCH/contraseñas"&gt;Link fichero contraseñas&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Una vez generado estos ficheros solo queda pasarselos a los comandos para crear los usuarios:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo newusers &amp;lt; usuarios
@@ -646,7 +646,7 @@ sudo chmod u+rwx,g+rwx,o-rwx /raiz/proyecto/desarrollo
 
 
 &lt;p&gt;Captura de los directorios ya modificados:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="directorios" src="{{ site.baseurl }}/assets/img/UGO/capturadirectoriopermisospropietarios.png"&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img alt="directorios" src="https://arpovea.vercel.app/images/UGO/capturadirectoriopermisospropietarios.png"&gt; &lt;/p&gt;
 &lt;p&gt;Creación de usuarios y asignación a los grupos en la creación:&lt;/p&gt;
 &lt;p&gt;Usuarios sistema1 y sistema2:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo useradd sistemas1 -m -G sistemas,desarrollo,explotacion -s /bin/bash
@@ -667,9 +667,9 @@ sudo useradd explotacion2 -m -G explotacion -s /bin/bash
 
 
 &lt;p&gt;Captura de los usuarios /etc/passwd:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="passwd" src="{{ site.baseurl }}/assets/img/UGO/passwd.png"&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img alt="passwd" src="https://arpovea.vercel.app/images/UGO/passwd.png"&gt; &lt;/p&gt;
 &lt;p&gt;Captura de los grupos /etc/group:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="group" src="{{ site.baseurl }}/assets/img/UGO/group.png"&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img alt="group" src="https://arpovea.vercel.app/images/UGO/group.png"&gt; &lt;/p&gt;
 &lt;p&gt;Recordamos que las opciones del comando usseradd son para los siguiente:  &lt;br&gt;
 - "-m". Crea el directorio principal del usuario.  &lt;br&gt;
 - "-G". Se asignan los grupos segundarios, separados por comas.  &lt;br&gt;
@@ -710,17 +710,17 @@ sudo useradd explotacion2 -m -G explotacion -s /bin/bash
 &lt;p&gt;Una vez realizado esto comanzará la descarga que dependerá de la velocidad de conexión de cada uno, una vez descargada esta se encontrará en el directorio actual donde comenzaste con los comandos FTP. Para salir de la línea de comandos FTP utiliza &lt;code&gt;exit&lt;/code&gt;.    &lt;/p&gt;
 &lt;p&gt;A continución se muestran las capturas de Wireshark desde la primera conexión hasta el fin:    &lt;/p&gt;
 &lt;p&gt;Conexiones Cliente-Servidor:  &lt;br&gt;
-&lt;img alt="ftp1" src="{{ site.baseurl }}/assets/img/FTP/FTPWireshark.png"&gt;    &lt;/p&gt;
+&lt;img alt="ftp1" src="https://arpovea.vercel.app/images/FTP/FTPWireshark.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Descarga imagen ISO:  &lt;br&gt;
-&lt;img alt="ftp2" src="{{ site.baseurl }}/assets/img/FTP/DescargaISO.png"&gt;    &lt;/p&gt;
+&lt;img alt="ftp2" src="https://arpovea.vercel.app/images/FTP/DescargaISO.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Como se puede observar en las capturas de Wireshark el cliente mantiene una conversación con el servidor mediante los puertos "21" del servidor y el puerto "41416" del cliente, cuando inicia la descarga estos puertos cambian del "20" del servidor al "54117" del cliente. Esto significa que el modo de FTP esta en ACTIVO.    &lt;/p&gt;
 &lt;p&gt;Recordemos la diferencia entre FTP activo y FTP pasivo:    &lt;/p&gt;
 &lt;h3&gt;FTP activo (predeterminado)&lt;/h3&gt;
 &lt;p&gt;En este modo el cliente se conecta desde un puerto aleatorio hacia el puerto "21" del servidor para la transferencia de un archivo, el servidor a tráves de su puerto "21" se pone en contacto con el cliente en el siguiente puerto del cliente es decir, si para la primera conexión el cliente utilizó el puerto "1500" el servidor se comunicará con el puerto "1501", aquí el servidor establece la conexión de datos por lo que si hay un firewall este rechazaría la conexión y sería imposible conectarse, ya que el servidor aquí es el que establece el canal de datos.    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="ftpactivo" src="{{ site.baseurl }}/assets/img/FTP/FTP-Modo-activo.jpg"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="ftpactivo" src="https://arpovea.vercel.app/images/FTP/FTP-Modo-activo.jpg"&gt;    &lt;/p&gt;
 &lt;h3&gt;FTP pasivo&lt;/h3&gt;
 &lt;p&gt;En este modo el cliente se conecta al servidor de la misma manera solo que, el servidor le indica al cliente que tiene que conectarse a un puerto distinto del "20" para la descarga de datos, por lo que el cliente inicia una conexíon a un puerto aleatorio del servidor. Así el cliente es el que establece el canal de datos por lo que el firewall no rechazariá la conexión.     &lt;/p&gt;
-&lt;p&gt;&lt;img alt="ftpasivo" src="{{ site.baseurl }}/assets/img/FTP/FTP-Modo-Pasivo-FTP.jpg"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="ftpasivo" src="https://arpovea.vercel.app/images/FTP/FTP-Modo-Pasivo-FTP.jpg"&gt;    &lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.   &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Hping3 y NetCat</title><link href="https://arpovea.vercel.app/hping3-y-netcat.html" rel="alternate"></link><published>2020-01-31T00:00:00+01:00</published><updated>2020-01-31T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-31:/hping3-y-netcat.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando Hping3 y  NetCat, con los cuales realizaremos pruebas en un escenario creado en una máquina virtual con Mininet. Probaremos a modificar los paquetes de ping y a conectarnos a distintos puertos y realizar varias conexiones.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando Hping3 y  NetCat, con los cuales realizaremos pruebas en un escenario creado en una máquina virtual con Mininet. Probaremos a modificar los paquetes de ping y a conectarnos a distintos puertos y realizar varias conexiones.&lt;/p&gt;
@@ -732,7 +732,7 @@ sudo useradd explotacion2 -m -G explotacion -s /bin/bash
 &lt;code&gt;10.0.110.0/24 -&amp;gt; r1 y r2&lt;/code&gt;  &lt;br&gt;
 &lt;code&gt;10.0.120.0/24 -&amp;gt; r2 y r3&lt;/code&gt;  &lt;br&gt;
 &lt;code&gt;10.0.130.0/24 -&amp;gt; h3, h4  y r3&lt;/code&gt;    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="escenario" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/escenario.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="escenario" src="https://arpovea.vercel.app/images/Hping3yNetCat/escenario.png"&gt;&lt;/p&gt;
 &lt;p&gt;Se dejan por aquí los enlaces a los scripts tanto del escenario como del despliegue en Mininet:    &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/arpovea/arpovea.github.io/blob/master/assets/img/Hping3yNetCat/escenariotrasnporte2.mn"&gt;Scrip Escenario&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/arpovea/arpovea.github.io/blob/master/assets/img/Hping3yNetCat/escenariotrasnporte2.py"&gt;Scrip Despliegue&lt;/a&gt;&lt;/p&gt;
@@ -784,8 +784,8 @@ ip r add default via &lt;span class="m"&gt;10&lt;/span&gt;.0.130.2
 &lt;p&gt;La opción -K indica que utilice Echo Request, este vendria por defecto pero con esto se le especifica.  &lt;br&gt;
 La opción -c indica el número de paquetes que se enviarán en este caso "5".     &lt;/p&gt;
 &lt;p&gt;Estas son las capturas realizadas con Wireshark en R3:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="echorequest1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaechorequest1.png"&gt;  &lt;br&gt;
-&lt;img alt="echorequest2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaechorequest2.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="echorequest1" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaechorequest1.png"&gt;  &lt;br&gt;
+&lt;img alt="echorequest2" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaechorequest2.png"&gt;    &lt;/p&gt;
 &lt;p&gt;A continución cambiaremos la TTL para que no sea alcanzable H4:    &lt;/p&gt;
 &lt;p&gt;Comando H1:    &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hping -K &lt;span class="m"&gt;0&lt;/span&gt; --ttl &lt;span class="m"&gt;3&lt;/span&gt; -c &lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.0.130.4
@@ -793,7 +793,7 @@ La opción -c indica el número de paquetes que se enviarán en este caso "5".  
 
 
 &lt;p&gt;La opcion --ttl cambia por defecto la ttl de "64"(por defecto) en "3" en este caso.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="TTL" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/TTL.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="TTL" src="https://arpovea.vercel.app/images/Hping3yNetCat/TTL.png"&gt;&lt;/p&gt;
 &lt;p&gt;Como se puede observar en la imagen no llega a su destino.    &lt;/p&gt;
 &lt;p&gt;Ahora se intentará realizar una conexion desde el puerto "4000" al puerto "80" desde H1:    &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hping3 -s &lt;span class="m"&gt;4000&lt;/span&gt; -p &lt;span class="m"&gt;80&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;.0.130.4
@@ -803,8 +803,8 @@ La opción -c indica el número de paquetes que se enviarán en este caso "5".  
 &lt;p&gt;La opción -s indica el puerto base.  &lt;br&gt;
 La opción -p indica el puerto destino.    &lt;/p&gt;
 &lt;p&gt;Capturas en Wireshark:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="TCP4000-1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaTCP4000-1.png"&gt;  &lt;br&gt;
-&lt;img alt="TCP4000-2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/capturaTCP4000-2.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="TCP4000-1" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaTCP4000-1.png"&gt;  &lt;br&gt;
+&lt;img alt="TCP4000-2" src="https://arpovea.vercel.app/images/Hping3yNetCat/capturaTCP4000-2.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Como se puede observar al no estar el puerto "80" activo se recibe la etiqueta [RST,ACK] que indica que no hay nada en ese puerto, si hubiera un servicio en ese puerto escuchando se mostraría la etiqueta [SYN,ACK].    &lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;NetCat&lt;/h2&gt;
@@ -820,15 +820,15 @@ La opción -p indica el puerto destino.    &lt;/p&gt;
 
 
 &lt;p&gt;A continuación se escribe en H2 y aparecerá en H3 como muestra la siguiente imagen:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="TCPconexion" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/TCPconexion.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="TCPconexion" src="https://arpovea.vercel.app/images/Hping3yNetCat/TCPconexion.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Capturas de Wireshark:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="netcap1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcap1.png"&gt;  &lt;br&gt;
-&lt;img alt="netcap2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcat2.png"&gt;  &lt;br&gt;
-&lt;img alt="mensaje1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/mensaje1psh.png"&gt;  &lt;br&gt;
-&lt;img alt="mensaje2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/mensaje2psh.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="netcap1" src="https://arpovea.vercel.app/images/Hping3yNetCat/netcap1.png"&gt;  &lt;br&gt;
+&lt;img alt="netcap2" src="https://arpovea.vercel.app/images/Hping3yNetCat/netcat2.png"&gt;  &lt;br&gt;
+&lt;img alt="mensaje1" src="https://arpovea.vercel.app/images/Hping3yNetCat/mensaje1psh.png"&gt;  &lt;br&gt;
+&lt;img alt="mensaje2" src="https://arpovea.vercel.app/images/Hping3yNetCat/mensaje2psh.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Como se puede obsevar en estas capturas se ve la conexión TCP con la etiqueta [SYN,ACK] y luego los mensajes enviados con la etiqueta [PSH,ACK].    &lt;/p&gt;
 &lt;p&gt;Ahora se cerrara la conexión y se mostrará la secuencia de cierre con Wireshark:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="secuenciadecerrado" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/secuenciadecerrado.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="secuenciadecerrado" src="https://arpovea.vercel.app/images/Hping3yNetCat/secuenciadecerrado.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Aquí se observa la etiqueta [FIN,ACK] y sus respectivas respuestas, indicando el cierre de la conexión.    &lt;/p&gt;
 &lt;p&gt;Probaremos a realizar lo mismo pero con un servidor UDP en vez de TCP, esta vez el servidor en H1 y la conexión desde H4:    &lt;/p&gt;
 &lt;p&gt;Comando para el servidor UDP en H1:    &lt;/p&gt;
@@ -842,10 +842,10 @@ La opción -p indica el puerto destino.    &lt;/p&gt;
 
 
 &lt;p&gt;A continuación se escribe en H4 y aparecerá en H1 como muestra la siguiente imagen:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="UDPconexion" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/UDPconexion.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="UDPconexion" src="https://arpovea.vercel.app/images/Hping3yNetCat/UDPconexion.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Capturas de Wireshark:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="UDP1" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/Netcatudp1.png"&gt;  &lt;br&gt;
-&lt;img alt="UDP2" src="{{ site.baseurl }}/assets/img/Hping3yNetCat/netcapUDP2.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="UDP1" src="https://arpovea.vercel.app/images/Hping3yNetCat/Netcatudp1.png"&gt;  &lt;br&gt;
+&lt;img alt="UDP2" src="https://arpovea.vercel.app/images/Hping3yNetCat/netcapUDP2.png"&gt;    &lt;/p&gt;
 &lt;p&gt;Con el protocolo UDP no se comprueban las mismas cosas que con el protocolo TCP, la única ventaja de UDP es que es más liviano y en algunas ocasiones tiene sus ventajas. Como se puede observar solo están los mensajes enviados desde H4 hacia H1.    &lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Redes"></category></entry><entry><title>Probando Dig y Wireshark</title><link href="https://arpovea.vercel.app/probando-dig-y-wireshark.html" rel="alternate"></link><published>2020-01-28T00:00:00+01:00</published><updated>2020-01-28T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-01-28:/probando-dig-y-wireshark.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión vamos a probar un poco el comando dig y el programa Wireshark, con los cuales realizaremos consultas DNS e investigaremos un poco el tráfico de una petición a una página web.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;

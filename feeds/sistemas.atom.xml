@@ -44,25 +44,25 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="lsblk" src="{{ site.baseurl }}/assets/img/Insta.S.O/lsblk.png"&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblk" src="https://arpovea.vercel.app/images/Insta.S.O/lsblk.png"&gt;  &lt;/p&gt;
 &lt;p&gt;Listamos los dispositivos físicos agregados a LVM:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pvdisplay
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="pvdisplay" src="{{ site.baseurl }}/assets/img/Insta.S.O/pvdisplay.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pvdisplay" src="https://arpovea.vercel.app/images/Insta.S.O/pvdisplay.png"&gt;&lt;/p&gt;
 &lt;p&gt;Listamos los volúmenes lógicos:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo lvdisplay
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="lvdisplay" src="{{ site.baseurl }}/assets/img/Insta.S.O/lvdisplay.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lvdisplay" src="https://arpovea.vercel.app/images/Insta.S.O/lvdisplay.png"&gt;&lt;/p&gt;
 &lt;p&gt;Listamos los grupos de vólumenes:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo vgs
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="vgs" src="{{ site.baseurl }}/assets/img/Insta.S.O/vgs.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="vgs" src="https://arpovea.vercel.app/images/Insta.S.O/vgs.png"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;Solución de errores:&lt;/h2&gt;
 &lt;p&gt;Errores producidos dependiendo del modelo de nuestros dispositivos, en este caso se esta utilizanddo un portatil MSI &lt;a href="https://es.msi.com/Laptop/GS73-7RE-Stealth-Pro/Specification"&gt;GS73 7RE Stealth Pro&lt;/a&gt;:&lt;/p&gt;
@@ -164,7 +164,7 @@ usuarios
 
 
 &lt;p&gt;Visualización del fichero usuarios:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="usuarios" src="{{ site.baseurl }}/assets/img/BATCH/usuarios.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="usuarios" src="https://arpovea.vercel.app/images/BATCH/usuarios.png"&gt;    &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/arpovea/arpovea.github.io/blob/master/assets/img/BATCH/usuarios"&gt;Link fichero usuarios&lt;/a&gt;    &lt;/p&gt;
 &lt;p&gt;Una vez generado ese fichero se va a crear otro con los nombre de usuarios y las contraseñas el cual se genera con &lt;code&gt;pwgen&lt;/code&gt; y la sentencia &lt;code&gt;for&lt;/code&gt;:    &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; i in &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;..9&lt;span class="o"&gt;}&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
@@ -176,7 +176,7 @@ usuarios
 
 
 &lt;p&gt;Visualización del fichero contraseñas:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="contraseñas" src="{{ site.baseurl }}/assets/img/BATCH/contraseñas.png"&gt;    &lt;/p&gt;
+&lt;p&gt;&lt;img alt="contraseñas" src="https://arpovea.vercel.app/images/BATCH/contraseñas.png"&gt;    &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/arpovea/arpovea.github.io/blob/master/assets/img/BATCH/contraseñas"&gt;Link fichero contraseñas&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Una vez generado estos ficheros solo queda pasarselos a los comandos para crear los usuarios:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo newusers &amp;lt; usuarios
@@ -234,7 +234,7 @@ sudo chmod u+rwx,g+rwx,o-rwx /raiz/proyecto/desarrollo
 
 
 &lt;p&gt;Captura de los directorios ya modificados:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="directorios" src="{{ site.baseurl }}/assets/img/UGO/capturadirectoriopermisospropietarios.png"&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img alt="directorios" src="https://arpovea.vercel.app/images/UGO/capturadirectoriopermisospropietarios.png"&gt; &lt;/p&gt;
 &lt;p&gt;Creación de usuarios y asignación a los grupos en la creación:&lt;/p&gt;
 &lt;p&gt;Usuarios sistema1 y sistema2:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo useradd sistemas1 -m -G sistemas,desarrollo,explotacion -s /bin/bash
@@ -255,9 +255,9 @@ sudo useradd explotacion2 -m -G explotacion -s /bin/bash
 
 
 &lt;p&gt;Captura de los usuarios /etc/passwd:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="passwd" src="{{ site.baseurl }}/assets/img/UGO/passwd.png"&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img alt="passwd" src="https://arpovea.vercel.app/images/UGO/passwd.png"&gt; &lt;/p&gt;
 &lt;p&gt;Captura de los grupos /etc/group:    &lt;/p&gt;
-&lt;p&gt;&lt;img alt="group" src="{{ site.baseurl }}/assets/img/UGO/group.png"&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img alt="group" src="https://arpovea.vercel.app/images/UGO/group.png"&gt; &lt;/p&gt;
 &lt;p&gt;Recordamos que las opciones del comando usseradd son para los siguiente:  &lt;br&gt;
 - "-m". Crea el directorio principal del usuario.  &lt;br&gt;
 - "-G". Se asignan los grupos segundarios, separados por comas.  &lt;br&gt;

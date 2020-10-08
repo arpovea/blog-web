@@ -232,8 +232,8 @@
 
 &lt;p&gt;Una vez montado se podrá editar, crear y eliminar de forma local, y esto se sincronizará con la nube automáticamente.  &lt;br&gt;
 A continuación se muestran unas capturas del montaje y borrado de un fichero en la terminal y como se borra en el proveedor, en este caso Google Drive.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="MontajeyBorradoTerminal" src="{{ site.baseurl }}/assets/img/Rclone/comandosmount.png"&gt; &lt;/p&gt;
-&lt;p&gt;&lt;img alt="BorradoGoogleDrive" src="{{ site.baseurl }}/assets/img/Rclone/pruebaborrado.png"&gt;   &lt;/p&gt;
+&lt;p&gt;&lt;img alt="MontajeyBorradoTerminal" src="https://arpovea.vercel.app/images/Rclone/comandosmount.png"&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img alt="BorradoGoogleDrive" src="https://arpovea.vercel.app/images/Rclone/pruebaborrado.png"&gt;   &lt;/p&gt;
 &lt;p&gt;Para desmontar utiliza fusermount con la opción -u sobre la carpeta:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fusermount -u Gdrive
 &lt;/pre&gt;&lt;/div&gt;
@@ -264,7 +264,7 @@ A continuación se muestran unas capturas del montaje y borrado de un fichero en
 
 &lt;p&gt;Como podemos observar en el fichero agregamos 5 discos para realizar distintas pruebas a lo largo del ejercicio.&lt;/p&gt;
 &lt;p&gt;Una vez iniciada la máquina deberías obtener con el comando &lt;code&gt;lsblk&lt;/code&gt; lo siguiente:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="lsblk" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblk.png"&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblk" src="https://arpovea.vercel.app/images/TareaRAID5/lsblk.png"&gt;  &lt;/p&gt;
 &lt;p&gt;Lo siguiente es instalar el paquete &lt;code&gt;mdadm&lt;/code&gt;, si no lo tenéis ya instalado en la máquina virtual:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt install -y mdadm
 &lt;/pre&gt;&lt;/div&gt;
@@ -279,7 +279,7 @@ A continuación se muestran unas capturas del montaje y borrado de un fichero en
 
 
 &lt;p&gt;Si realizas de nuevo un &lt;code&gt;lsblk&lt;/code&gt; obtendrás algo como esto:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="lsblk2" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblk2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblk2" src="https://arpovea.vercel.app/images/TareaRAID5/lsblk2.png"&gt;&lt;/p&gt;
 &lt;p&gt;La diferencia entre RAID5 y RAID1 es:&lt;/p&gt;
 &lt;p&gt;En RAID5 los bloques estan distribuidos entre los 3 discos(los mínimos en RAID5) y soporta la pérdida total de unos de ellos, ya que distribuye la paridad entre los 3 dispositivos, pudiendo con dos recuperar toda la información.&lt;/p&gt;
 &lt;p&gt;En RAID1 se utilizan dos discos y uno es una copia exacta del otro, tiene ventajas en velocidades de lectura, ya que se puede leer de los dos discos, pero tiene desventaja en la escritura ya debe escribir en ambos discos la misma información.&lt;/p&gt;
@@ -300,7 +300,7 @@ A continuación se muestran unas capturas del montaje y borrado de un fichero en
 
 
 &lt;p&gt;En la siguiente imagen se pueden ver tanto el estado como los detalles:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="mdadmstatus" src="{{ site.baseurl }}/assets/img/TareaRAID5/comprobacionstadoraid.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="mdadmstatus" src="https://arpovea.vercel.app/images/TareaRAID5/comprobacionstadoraid.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Tarea 3: Crea un volumen lógico (LVM) de 500MB en el RAID5.&lt;/h4&gt;
 &lt;p&gt;Para esto hay que añadir el RAID5 a los volúmenes físicos, crear un grupo de volúmenes que utilize ese dispositivo y luego crear el volumen lógico:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pvcreate /dev/md5
@@ -310,7 +310,7 @@ sudo lvcreate tareas -L 500M -n tarea3
 
 
 &lt;p&gt;Quedando como en la siguiente imagen:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Vlogico" src="{{ site.baseurl }}/assets/img/TareaRAID5/Vlogico.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Vlogico" src="https://arpovea.vercel.app/images/TareaRAID5/Vlogico.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Tarea 4: Formatea ese volumen con un sistema de archivo &lt;code&gt;xfs&lt;/code&gt;.&lt;/h4&gt;
 &lt;p&gt;Realiza el siguiente comando:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mkfs.xfs /dev/tareas/tarea3
@@ -338,7 +338,7 @@ touch /mnt/RAID5/fich.txt
 
 
 &lt;p&gt;Mostrará algo similar a la siguiente imagen donde se observa que el disco esta marcado como fallido:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="fallovdb" src="{{ site.baseurl }}/assets/img/TareaRAID5/fallovdb.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="fallovdb" src="https://arpovea.vercel.app/images/TareaRAID5/fallovdb.png"&gt;&lt;/p&gt;
 &lt;p&gt;El fichero se puede seguir visualizando sin problema.&lt;/p&gt;
 &lt;h4&gt;Tarea 7: Una vez marcado como estropeado, lo tenemos que retirar del raid.&lt;/h4&gt;
 &lt;p&gt;Para ello utiliza el siguiente comando:&lt;/p&gt;
@@ -351,7 +351,7 @@ touch /mnt/RAID5/fich.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="removevdb" src="{{ site.baseurl }}/assets/img/TareaRAID5/removevdb.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="removevdb" src="https://arpovea.vercel.app/images/TareaRAID5/removevdb.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Tarea 8: Imaginemos que lo cambiamos por un nuevo disco nuevo (el dispositivo de bloque se llama igual), añádelo al array y&lt;/h4&gt;
 &lt;p&gt;comprueba como se sincroniza con el anterior. &lt;/p&gt;
 &lt;p&gt;Para ello en este caso con un nuevo disco "vde":&lt;/p&gt;
@@ -366,7 +366,7 @@ cat /proc/mdstat
 
 
 &lt;p&gt;Obteniendo algo similar a lo siguiente:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="agregandovde" src="{{ site.baseurl }}/assets/img/TareaRAID5/agregandovde.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="agregandovde" src="https://arpovea.vercel.app/images/TareaRAID5/agregandovde.png"&gt;&lt;/p&gt;
 &lt;h4&gt;Tarea 9: Añade otro disco como reserva. Vuelve a simular el fallo de un disco y comprueba como automáticamente se realiza la sincronización con el disco de reserva.&lt;/h4&gt;
 &lt;p&gt;Realiza los siguiente comandos para añadir el disco como reserva:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mdadm --manage /dev/md5 -add /dev/vdf
@@ -389,7 +389,7 @@ cat /proc/mdstat
 
 
 &lt;p&gt;Como podemos ver en la siguiente imagen el disco pasa de SPARE (S) a activo y el otro se marca como FAIL (F)&lt;/p&gt;
-&lt;p&gt;&lt;img alt="SPAREautilizado" src="{{ site.baseurl }}/assets/img/TareaRAID5/SPAREautilizado.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="SPAREautilizado" src="https://arpovea.vercel.app/images/TareaRAID5/SPAREautilizado.png"&gt;&lt;/p&gt;
 &lt;p&gt;Como repunte, si quisieras que el disco se agrege como dispositivo adicional para aumentar las dimesiones del raid, después de agregarlo, realiza el siguiente comando:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo mdadm --grow /dev/md5 --raid-devices&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -409,6 +409,6 @@ sudo xfs_growfs /mnt/RAID5/
 
 &lt;p&gt;Recalcar que con &lt;code&gt;xfs&lt;/code&gt;se puede realizar esta acción en caliente con otros sistemas de ficheros podría ocasionar errores o pérdida de datos.&lt;/p&gt;
 &lt;p&gt;Al finalizar todas las tareas en este orden la orden &lt;code&gt;lsblk -f&lt;/code&gt; debería mostrar algo así:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="lsblkfinal" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblkfinal.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lsblkfinal" src="https://arpovea.vercel.app/images/TareaRAID5/lsblkfinal.png"&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Seguridad"></category></entry></feed>

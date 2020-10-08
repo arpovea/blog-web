@@ -112,17 +112,17 @@
 <p>Una vez realizado esto comanzará la descarga que dependerá de la velocidad de conexión de cada uno, una vez descargada esta se encontrará en el directorio actual donde comenzaste con los comandos FTP. Para salir de la línea de comandos FTP utiliza <code>exit</code>.    </p>
 <p>A continución se muestran las capturas de Wireshark desde la primera conexión hasta el fin:    </p>
 <p>Conexiones Cliente-Servidor:  <br>
-<img alt="ftp1" src="{{ site.baseurl }}/assets/img/FTP/FTPWireshark.png">    </p>
+<img alt="ftp1" src="https://arpovea.vercel.app/images/FTP/FTPWireshark.png">    </p>
 <p>Descarga imagen ISO:  <br>
-<img alt="ftp2" src="{{ site.baseurl }}/assets/img/FTP/DescargaISO.png">    </p>
+<img alt="ftp2" src="https://arpovea.vercel.app/images/FTP/DescargaISO.png">    </p>
 <p>Como se puede observar en las capturas de Wireshark el cliente mantiene una conversación con el servidor mediante los puertos "21" del servidor y el puerto "41416" del cliente, cuando inicia la descarga estos puertos cambian del "20" del servidor al "54117" del cliente. Esto significa que el modo de FTP esta en ACTIVO.    </p>
 <p>Recordemos la diferencia entre FTP activo y FTP pasivo:    </p>
 <h3>FTP activo (predeterminado)</h3>
 <p>En este modo el cliente se conecta desde un puerto aleatorio hacia el puerto "21" del servidor para la transferencia de un archivo, el servidor a tráves de su puerto "21" se pone en contacto con el cliente en el siguiente puerto del cliente es decir, si para la primera conexión el cliente utilizó el puerto "1500" el servidor se comunicará con el puerto "1501", aquí el servidor establece la conexión de datos por lo que si hay un firewall este rechazaría la conexión y sería imposible conectarse, ya que el servidor aquí es el que establece el canal de datos.    </p>
-<p><img alt="ftpactivo" src="{{ site.baseurl }}/assets/img/FTP/FTP-Modo-activo.jpg">    </p>
+<p><img alt="ftpactivo" src="https://arpovea.vercel.app/images/FTP/FTP-Modo-activo.jpg">    </p>
 <h3>FTP pasivo</h3>
 <p>En este modo el cliente se conecta al servidor de la misma manera solo que, el servidor le indica al cliente que tiene que conectarse a un puerto distinto del "20" para la descarga de datos, por lo que el cliente inicia una conexíon a un puerto aleatorio del servidor. Así el cliente es el que establece el canal de datos por lo que el firewall no rechazariá la conexión.     </p>
-<p><img alt="ftpasivo" src="{{ site.baseurl }}/assets/img/FTP/FTP-Modo-Pasivo-FTP.jpg">    </p>
+<p><img alt="ftpasivo" src="https://arpovea.vercel.app/images/FTP/FTP-Modo-Pasivo-FTP.jpg">    </p>
 <hr>
 <p>Muchas gracias por leer hasta aquí espero que sirva de ayuda. Un saludo.   </p>
         </section>
