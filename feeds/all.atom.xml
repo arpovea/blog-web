@@ -163,7 +163,7 @@
 &lt;p&gt;Continuando pedirá las mismas opciones ya explicadas en el apartado de Dropbox finalizando sin problemas.&lt;/p&gt;
 &lt;h3&gt;Opciones de Rclone&lt;/h3&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Artículos"></category></entry><entry><title>Tareas con RAID5</title><link href="https://arpovea.vercel.app/tareas-con-raid5.html" rel="alternate"></link><published>2020-09-28T00:00:00+02:00</published><updated>2020-09-28T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-28:/tareas-con-raid5.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="misc"></category></entry><entry><title>Tareas con RAID5</title><link href="https://arpovea.vercel.app/tareas-con-raid5.html" rel="alternate"></link><published>2020-09-28T00:00:00+02:00</published><updated>2020-09-28T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-28:/tareas-con-raid5.html</id><summary type="html">&lt;h2&gt;- Adrián Rodríguez Povea&lt;/h2&gt;
 &lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión vamos a realizar un RAID5 y vamos a realizar varias pruebas. Utilizaremos RAID software en Linux con &lt;code&gt;mdadm&lt;/code&gt;.&lt;/p&gt;
 &lt;hr&gt;
@@ -343,4 +343,4 @@ sudo xfs_growfs /mnt/RAID5/
 &lt;p&gt;Al finalizar todas las tareas en este orden la orden &lt;code&gt;lsblk -f&lt;/code&gt; debería mostrar algo así:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="lsblkfinal" src="{{ site.baseurl }}/assets/img/TareaRAID5/lsblkfinal.png"&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Artículos"></category></entry></feed>
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="misc"></category></entry></feed>
