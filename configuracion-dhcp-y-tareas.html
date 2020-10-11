@@ -108,31 +108,32 @@
 <p>El servidor DHCP tendrá en un principio dos interfaces de red, una pública con salida a internet y otra privada en la cual repartirá direcciones del rango 192.168.100.0/24.</p>
 <p>Previamente se han creado las redes "lan1" y "lan2" que serán necesarias para las pruebas a realizar, esto se ha hecho con la ayuda de <code>virsh</code> y ficheros "xml" para configurar estas redes. A continuación se muestra el contenido de estos ficheros:</p>
 <ul>
-<li>lan1</li>
+<li>
+<p>lan1
+  <code>xml
+  &lt;network&gt;
+    &lt;name&gt;lan1&lt;/name&gt;
+    &lt;bridge name="virbr2"/&gt;
+    &lt;ip address="192.168.100.1" netmask="255.255.255.0"/&gt;
+  &lt;/network&gt;</code></p>
+</li>
+<li>
+<p>lan2
+  <code>xml
+  &lt;network&gt;
+    &lt;name&gt;lan2&lt;/name&gt;
+    &lt;bridge name="virbr3"/&gt;
+    &lt;ip address="192.168.200.1" netmask="255.255.255.0"/&gt;
+  &lt;/network&gt;</code></p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
-  <span class="nt">&lt;name&gt;</span>lan1<span class="nt">&lt;/name&gt;</span>
-  <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&quot;virbr2&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;ip</span> <span class="na">address=</span><span class="s">&quot;192.168.100.1&quot;</span> <span class="na">netmask=</span><span class="s">&quot;255.255.255.0&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/network&gt;</span>
-</pre></div>
-
-
-<ul>
-<li>lan2</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
-  <span class="nt">&lt;name&gt;</span>lan2<span class="nt">&lt;/name&gt;</span>
-  <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&quot;virbr3&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;ip</span> <span class="na">address=</span><span class="s">&quot;192.168.200.1&quot;</span> <span class="na">netmask=</span><span class="s">&quot;255.255.255.0&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/network&gt;</span>
-</pre></div>
-
-
 <p>Así como <code>br0</code> en el fichero <code>etc/network/interfaces</code> de la máquina anfitrión:</p>
-<p><code>auto br0
-iface br0 inet dhcp
-bridge_ports enp61s0</code></p>
+<div class="highlight"><pre><span></span><span class="go">auto br0</span>
+<span class="go">iface br0 inet dhcp</span>
+<span class="go">bridge_ports enp61s0</span>
+</pre></div>
+
+
 <p>A continuación se expone el contenido del fichero Vagrantfile:</p>
 <div class="highlight"><pre><span></span><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
   <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span> <span class="ss">:dhcp</span> <span class="k">do</span> <span class="o">|</span><span class="n">dhcp</span><span class="o">|</span>
@@ -184,17 +185,21 @@ bridge_ports enp61s0</code></p>
 <p><code>INTERFACESv4="ens7"</code></p>
 <p>Una vez realizado esto el fichero de configuración principal del DHCP es <code>/etc/dhcp/dhcpd.conf</code>.</p>
 <p>Edita el fichero dejando la siguiente configuración:</p>
-<p><code>ddns-update-style none;
-autoritative;
-subnet 192.168.100.0 netmask 255.255.255.0 {
- range 192.168.100.2 192.168.100.254;
- max-lease-time 43200;
- default-lease-time 600;
- option subnet-mask 255.255.255.0;
- option broadcast-address 192.168.100.255;
- option routers 192.168.100.1;
- option domain-name-servers 192.168.1.1;
-}</code></p>
+<div class="highlight"><pre><span></span><span class="go">ddns-update-style none;</span>
+<span class="go">autoritative;</span>
+
+<span class="go">subnet 192.168.100.0 netmask 255.255.255.0 {</span>
+<span class="go"> range 192.168.100.2 192.168.100.254;</span>
+<span class="go"> max-lease-time 43200;</span>
+<span class="go"> default-lease-time 600;</span>
+<span class="go"> option subnet-mask 255.255.255.0;</span>
+<span class="go"> option broadcast-address 192.168.100.255;</span>
+<span class="go"> option routers 192.168.100.1;</span>
+<span class="go"> option domain-name-servers 192.168.1.1;</span>
+<span class="go">}</span>
+</pre></div>
+
+
 <p>Recalcar que se ha asignado un tiempo corto de renovación, para comprobar los cambios en el escenario en las distintas pruebas.</p>
 <p>Una vez realizado estos cambios hay que reiniciar el servidor DHCP:</p>
 <p><code>sudo sistemctl restart isc-dhcp-server</code></p>
@@ -206,8 +211,11 @@ subnet 192.168.100.0 netmask 255.255.255.0 {
 <hr>
 <h2>Configuración en el cliente.</h2>
 <p>En el cliente modifica el fichero <code>/etc/network/interfaces</code> dejándolo así:</p>
-<p><code>auto ens6
-iface ens6 inet dhcp</code></p>
+<div class="highlight"><pre><span></span><span class="go">auto ens6</span>
+<span class="go">iface ens6 inet dhcp</span>
+</pre></div>
+
+
 <p>Reinicia el servicio "networking" en el cliente:</p>
 <p><code>sudo systemctl restart networking</code></p>
 <p>Tambien puedes solicitar una IP, realiza el siguiente comando:</p>
@@ -249,10 +257,13 @@ iface ens6 inet dhcp</code></p>
 <hr>
 <h2>Creando reservas en el servidor DHCP</h2>
 <p>Para crear una reserva se añade la siguiente información al fichero <code>/etc/dhcp/dhcpd.conf</code>:</p>
-<p><code>host clinux {
-hardware ethernet 52:54:00:20:cb:8f;
-fixed-address 192.168.100.100;
-}</code></p>
+<div class="highlight"><pre><span></span><span class="go">host clinux {</span>
+<span class="go">hardware ethernet 52:54:00:20:cb:8f;</span>
+<span class="go">fixed-address 192.168.100.100;</span>
+<span class="go">}</span>
+</pre></div>
+
+
 <p>Como se puede observar necesitaras la direccion MAC de la tarjeta del cliente.</p>
 <p>Una vez realizados los cambios se reinicia el servidor y pasado el tiempo de renovación, esta cambiara la IP.</p>
 <p><img alt="reserva" src="https://arpovea.vercel.app/images/DHCP/reserva.png"></p>
@@ -321,37 +332,46 @@ fixed-address 192.168.100.100;
 <p>En el servidor hay que agregar la nueva interfaz por la cual se va a repartir direcciones editando de nuevo el fichero <code>/etc/default/isc-dhcp-server</code>, quedando así:</p>
 <p><code>INTERFACESv4="ens7 ens8"</code></p>
 <p>A continuación agregar el nuevo ambito en el fichero <code>/etc/dhcp/dhcpd.conf</code>, quedando así:</p>
-<p><code>ddns-update-style none;
-autoritative;
-subnet 192.168.100.0 netmask 255.255.255.0 {
- range 192.168.100.2 192.168.100.254;
- max-lease-time 43200;
- default-lease-time 600;
- option subnet-mask 255.255.255.0;
- option broadcast-address 192.168.100.255;
- option routers 192.168.100.1;
- option domain-name-servers 192.168.1.1;
-}
-host clinux {
-hardware ethernet 52:54:00:20:cb:8f;
-fixed-address 192.168.100.100;
-}
-subnet 192.168.200.0 netmask 255.255.255.0 {
- range 192.168.200.2 192.168.200.254;
- max-lease-time 43200;
- default-lease-time 600;
- option subnet-mask 255.255.255.0;
- option broadcast-address 192.168.200.255;
- option routers 192.168.200.1;
- option domain-name-servers 192.168.1.1;
-}</code></p>
+<div class="highlight"><pre><span></span><span class="go">ddns-update-style none;</span>
+<span class="go">autoritative;</span>
+
+<span class="go">subnet 192.168.100.0 netmask 255.255.255.0 {</span>
+<span class="go"> range 192.168.100.2 192.168.100.254;</span>
+<span class="go"> max-lease-time 43200;</span>
+<span class="go"> default-lease-time 600;</span>
+<span class="go"> option subnet-mask 255.255.255.0;</span>
+<span class="go"> option broadcast-address 192.168.100.255;</span>
+<span class="go"> option routers 192.168.100.1;</span>
+<span class="go"> option domain-name-servers 192.168.1.1;</span>
+<span class="go">}</span>
+
+<span class="go">host clinux {</span>
+<span class="go">hardware ethernet 52:54:00:20:cb:8f;</span>
+<span class="go">fixed-address 192.168.100.100;</span>
+<span class="go">}</span>
+
+<span class="go">subnet 192.168.200.0 netmask 255.255.255.0 {</span>
+<span class="go"> range 192.168.200.2 192.168.200.254;</span>
+<span class="go"> max-lease-time 43200;</span>
+<span class="go"> default-lease-time 600;</span>
+<span class="go"> option subnet-mask 255.255.255.0;</span>
+<span class="go"> option broadcast-address 192.168.200.255;</span>
+<span class="go"> option routers 192.168.200.1;</span>
+<span class="go"> option domain-name-servers 192.168.1.1;</span>
+<span class="go">}</span>
+</pre></div>
+
+
 <p>Reinicia el servicio con:</p>
 <p><code>systemctl restart isc-server-dhcp</code></p>
 <p>Agregar la ruta a IPTABLES para la nueva red:</p>
 <p><code>sudo iptables -t nat -A POSTROUTING -s 192.168.200.0/24 -o ens6 -j MASQUERADE</code></p>
 <p>En el nuevo cliente "clinux2" cambiar el fichero <code>/etc/network/interfaces</code>, quedando así</p>
-<p><code>auto ens6
-iface ens6 inet dhcp</code></p>
+<div class="highlight"><pre><span></span><span class="go">auto ens6</span>
+<span class="go">iface ens6 inet dhcp</span>
+</pre></div>
+
+
 <p>Reinicia el servicio "networking" en el cliente:</p>
 <p><code>sudo systemctl restart networking</code></p>
 <p>A continuación se muestran unas capturas de ambos clientes saliendo a internet:</p>
