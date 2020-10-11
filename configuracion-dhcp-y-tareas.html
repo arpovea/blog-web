@@ -130,12 +130,9 @@
 
 
 <p>Así como <code>br0</code> en el fichero <code>etc/network/interfaces</code> de la máquina anfitrión:</p>
-<div class="highlight"><pre><span></span><span class="err">auto br0</span>
-<span class="err">iface br0 inet dhcp</span>
-<span class="err">bridge_ports enp61s0</span>
-</pre></div>
-
-
+<p><code>auto br0
+iface br0 inet dhcp
+bridge_ports enp61s0</code></p>
 <p>A continuación se expone el contenido del fichero Vagrantfile:</p>
 <div class="highlight"><pre><span></span><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
   <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span> <span class="ss">:dhcp</span> <span class="k">do</span> <span class="o">|</span><span class="n">dhcp</span><span class="o">|</span>
@@ -187,21 +184,17 @@
 <p><code>INTERFACESv4="ens7"</code></p>
 <p>Una vez realizado esto el fichero de configuración principal del DHCP es <code>/etc/dhcp/dhcpd.conf</code>.</p>
 <p>Edita el fichero dejando la siguiente configuración:</p>
-<div class="highlight"><pre><span></span><span class="n">ddns</span><span class="o">-</span><span class="k">update</span><span class="o">-</span><span class="n">style</span> <span class="k">none</span><span class="p">;</span>
-<span class="n">autoritative</span><span class="p">;</span>
-
-<span class="n">subnet</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">100</span><span class="p">.</span><span class="mi">0</span> <span class="n">netmask</span> <span class="mi">255</span><span class="p">.</span><span class="mi">255</span><span class="p">.</span><span class="mi">255</span><span class="p">.</span><span class="mi">0</span> <span class="err">{</span>
- <span class="n">range</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">100</span><span class="p">.</span><span class="mi">2</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">100</span><span class="p">.</span><span class="mi">254</span><span class="p">;</span>
- <span class="k">max</span><span class="o">-</span><span class="n">lease</span><span class="o">-</span><span class="k">time</span> <span class="mi">43200</span><span class="p">;</span>
- <span class="k">default</span><span class="o">-</span><span class="n">lease</span><span class="o">-</span><span class="k">time</span> <span class="mi">600</span><span class="p">;</span>
- <span class="k">option</span> <span class="n">subnet</span><span class="o">-</span><span class="n">mask</span> <span class="mi">255</span><span class="p">.</span><span class="mi">255</span><span class="p">.</span><span class="mi">255</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
- <span class="k">option</span> <span class="n">broadcast</span><span class="o">-</span><span class="n">address</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">100</span><span class="p">.</span><span class="mi">255</span><span class="p">;</span>
- <span class="k">option</span> <span class="n">routers</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">100</span><span class="p">.</span><span class="mi">1</span><span class="p">;</span>
- <span class="k">option</span> <span class="k">domain</span><span class="o">-</span><span class="n">name</span><span class="o">-</span><span class="n">servers</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">;</span>
-<span class="err">}</span>
-</pre></div>
-
-
+<p><code>ddns-update-style none;
+autoritative;
+subnet 192.168.100.0 netmask 255.255.255.0 {
+ range 192.168.100.2 192.168.100.254;
+ max-lease-time 43200;
+ default-lease-time 600;
+ option subnet-mask 255.255.255.0;
+ option broadcast-address 192.168.100.255;
+ option routers 192.168.100.1;
+ option domain-name-servers 192.168.1.1;
+}</code></p>
 <p>Recalcar que se ha asignado un tiempo corto de renovación, para comprobar los cambios en el escenario en las distintas pruebas.</p>
 <p>Una vez realizado estos cambios hay que reiniciar el servidor DHCP:</p>
 <p><code>sudo sistemctl restart isc-dhcp-server</code></p>
@@ -213,13 +206,12 @@
 <hr>
 <h2>Configuración en el cliente.</h2>
 <p>En el cliente modifica el fichero <code>/etc/network/interfaces</code> dejándolo así:</p>
-<div class="highlight"><pre><span></span><span class="err">auto ens6</span>
-<span class="err">iface ens6 inet dhcp</span>
-</pre></div>
-
-
-<p>Para solicitar una ip realiza el siguiente comando:</p>
-<p><code>dhclient ens6</code></p>
+<p><code>auto ens6
+iface ens6 inet dhcp</code></p>
+<p>Reinicia el servicio "networking" en el cliente:</p>
+<p><code>sudo systemctl restart networking</code></p>
+<p>Tambien puedes solicitar una IP, realiza el siguiente comando:</p>
+<p><code>sudo dhclient ens6</code></p>
 <p>Obteniendo la siguiente IP:</p>
 <p><img alt="ipclinux" src="https://arpovea.vercel.app/images/DHCP/ipclinux.png"></p>
 <hr>
@@ -244,7 +236,7 @@
 <p><img alt="iprclinux" src="https://arpovea.vercel.app/images/DHCP/capturaiprclinux.png"></p>
 <p><img alt="tracerouteclinux" src="https://arpovea.vercel.app/images/DHCP/capturatracrouteclinux.png"></p>
 <p>A continuación se realiza una captura de los paquetes que corresponden a una conseción utilizando el comando <code>tcpdum</code>:</p>
-<p><code>tcpdump -i ens7 -pvn port 67 and port 68</code></p>
+<p><code>sudo tcpdump -i ens7 -pvn port 67 and port 68</code></p>
 <p><img alt="tcpdump" src="https://arpovea.vercel.app/images/DHCP/tcpdump.png"></p>
 <hr>
 <h2>Pruebas a realizar con el escenario y los clientes</h2>
@@ -257,13 +249,10 @@
 <hr>
 <h2>Creando reservas en el servidor DHCP</h2>
 <p>Para crear una reserva se añade la siguiente información al fichero <code>/etc/dhcp/dhcpd.conf</code>:</p>
-<div class="highlight"><pre><span></span><span class="err">host clinux {</span>
-<span class="err">hardware ethernet 52:54:00:20:cb:8f;</span>
-<span class="err">fixed-address 192.168.100.100;</span>
-<span class="err">}</span>
-</pre></div>
-
-
+<p><code>host clinux {
+hardware ethernet 52:54:00:20:cb:8f;
+fixed-address 192.168.100.100;
+}</code></p>
 <p>Como se puede observar necesitaras la direccion MAC de la tarjeta del cliente.</p>
 <p>Una vez realizados los cambios se reinicia el servidor y pasado el tiempo de renovación, esta cambiara la IP.</p>
 <p><img alt="reserva" src="https://arpovea.vercel.app/images/DHCP/reserva.png"></p>
@@ -332,46 +321,39 @@
 <p>En el servidor hay que agregar la nueva interfaz por la cual se va a repartir direcciones editando de nuevo el fichero <code>/etc/default/isc-dhcp-server</code>, quedando así:</p>
 <p><code>INTERFACESv4="ens7 ens8"</code></p>
 <p>A continuación agregar el nuevo ambito en el fichero <code>/etc/dhcp/dhcpd.conf</code>, quedando así:</p>
-<div class="highlight"><pre><span></span><span class="nt">ddns-update-style</span> <span class="nt">none</span><span class="o">;</span>
-<span class="nt">autoritative</span><span class="o">;</span>
-
-<span class="nt">subnet</span> <span class="nt">192</span><span class="p">.</span><span class="nc">168</span><span class="p">.</span><span class="nc">100</span><span class="p">.</span><span class="nc">0</span> <span class="nt">netmask</span> <span class="nt">255</span><span class="p">.</span><span class="nc">255</span><span class="p">.</span><span class="nc">255</span><span class="p">.</span><span class="nc">0</span> <span class="p">{</span>
- <span class="err">range</span> <span class="err">192.168.100.2</span> <span class="err">192.168.100.254</span><span class="p">;</span>
- <span class="err">max-lease-time</span> <span class="err">43200</span><span class="p">;</span>
- <span class="err">default-lease-time</span> <span class="err">600</span><span class="p">;</span>
- <span class="err">option</span> <span class="err">subnet-mask</span> <span class="err">255.255.255.0</span><span class="p">;</span>
- <span class="err">option</span> <span class="err">broadcast-address</span> <span class="err">192.168.100.255</span><span class="p">;</span>
- <span class="err">option</span> <span class="err">routers</span> <span class="err">192.168.100.1</span><span class="p">;</span>
- <span class="err">option</span> <span class="err">domain-name-servers</span> <span class="err">192.168.1.1</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">host</span> <span class="nt">clinux</span> <span class="p">{</span>
-<span class="err">hardware</span> <span class="err">ethernet</span> <span class="err">52:54:00:20:</span><span class="n">cb</span><span class="p">:</span><span class="mi">8</span><span class="n">f</span><span class="p">;</span>
-<span class="err">fixed-address</span> <span class="err">192.168.100.100</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="nt">subnet</span> <span class="nt">192</span><span class="p">.</span><span class="nc">168</span><span class="p">.</span><span class="nc">200</span><span class="p">.</span><span class="nc">0</span> <span class="nt">netmask</span> <span class="nt">255</span><span class="p">.</span><span class="nc">255</span><span class="p">.</span><span class="nc">255</span><span class="p">.</span><span class="nc">0</span> <span class="p">{</span>
- <span class="err">range</span> <span class="err">192.168.200.2</span> <span class="err">192.168.200.254</span><span class="p">;</span>
- <span class="err">max-lease-time</span> <span class="err">43200</span><span class="p">;</span>
- <span class="err">default-lease-time</span> <span class="err">600</span><span class="p">;</span>
- <span class="err">option</span> <span class="err">subnet-mask</span> <span class="err">255.255.255.0</span><span class="p">;</span>
- <span class="err">option</span> <span class="err">broadcast-address</span> <span class="err">192.168.200.255</span><span class="p">;</span>
- <span class="err">option</span> <span class="err">routers</span> <span class="err">192.168.200.1</span><span class="p">;</span>
- <span class="err">option</span> <span class="err">domain-name-servers</span> <span class="err">192.168.1.1</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
+<p><code>ddns-update-style none;
+autoritative;
+subnet 192.168.100.0 netmask 255.255.255.0 {
+ range 192.168.100.2 192.168.100.254;
+ max-lease-time 43200;
+ default-lease-time 600;
+ option subnet-mask 255.255.255.0;
+ option broadcast-address 192.168.100.255;
+ option routers 192.168.100.1;
+ option domain-name-servers 192.168.1.1;
+}
+host clinux {
+hardware ethernet 52:54:00:20:cb:8f;
+fixed-address 192.168.100.100;
+}
+subnet 192.168.200.0 netmask 255.255.255.0 {
+ range 192.168.200.2 192.168.200.254;
+ max-lease-time 43200;
+ default-lease-time 600;
+ option subnet-mask 255.255.255.0;
+ option broadcast-address 192.168.200.255;
+ option routers 192.168.200.1;
+ option domain-name-servers 192.168.1.1;
+}</code></p>
 <p>Reinicia el servicio con:</p>
 <p><code>systemctl restart isc-server-dhcp</code></p>
 <p>Agregar la ruta a IPTABLES para la nueva red:</p>
 <p><code>sudo iptables -t nat -A POSTROUTING -s 192.168.200.0/24 -o ens6 -j MASQUERADE</code></p>
 <p>En el nuevo cliente "clinux2" cambiar el fichero <code>/etc/network/interfaces</code>, quedando así</p>
-<div class="highlight"><pre><span></span><span class="err">auto ens6</span>
-<span class="err">iface ens6 inet dhcp</span>
-</pre></div>
-
-
+<p><code>auto ens6
+iface ens6 inet dhcp</code></p>
+<p>Reinicia el servicio "networking" en el cliente:</p>
+<p><code>sudo systemctl restart networking</code></p>
 <p>A continuación se muestran unas capturas de ambos clientes saliendo a internet:</p>
 <p><img alt="traceroute2clinux" src="https://arpovea.vercel.app/images/DHCP/traceroute2clinux.png"></p>
 <p><img alt="traceroute2clinux2" src="https://arpovea.vercel.app/images/DHCP/traceroute2clinux2.png"></p>
