@@ -91,21 +91,21 @@
 <h2>Un poco de Teoría</h2>
 <p><img alt="graficodhcp" src="https://arpovea.vercel.app/images/DHCP/graficodhcp.png"></p>
 <p>La anterior imagen refleja el comportamiento que tiene el cliente y el servidor en cuánto a la demanda y oferta de IPs en las distintas situaciones por las que pasan, a continuación se explicará cada uno de estas fases.</p>
-<p>Cuanto se inicia el cliente esta en modo INIT, este realiza una petición (DHCPDISCOVER) al broadcast (255.255.255.255) ya que no tiene configuración IP, después de enviar esta petición el cliente pasa al estado SELECTING, donde recibe los mensajes (DHCPOFFER) de los servidores DHCP, entonces el cliente envia un mensaje (PREREQUEST) para elegir el servidor DHCP, el cual contestará con un (DHCPACK) el cual contiene una IP, el cliente en este momento comprueba que esa IP no la tenga nadie en la red, mediante un mensaje al brodcast preguntando por esa IP, si alguien contesta descarta la IP mandando al DHCP un mensaje (DHCPDECLINE) con lo cual el cliente vuelve al estado INIT, de lo contrario si nadie contesta el cliente acepta el (DHCPACK) y el servidor confirma la consesión con un (ACK) y el cliente pasa al estado BOUND.</p>
-<p>En el DHCPACK que envia el servidor se manda la siguiente información aparte de la IP:</p>
+<p>Cuanto se inicia el cliente esta en modo INIT, este realiza una petición (DHCPDISCOVER) al broadcast (255.255.255.255) ya que no tiene configuración IP, después de enviar esta petición el cliente pasa al estado SELECTING, donde recibe los mensajes (DHCPOFFER) de los servidores DHCP, entonces el cliente envía un mensaje (PREREQUEST) para elegir el servidor DHCP, el cual contestará con un (DHCPACK) el cual contiene una IP, el cliente en este momento comprueba que esa IP no la tenga nadie en la red, mediante un mensaje al brodcast preguntando por esa IP, si alguien contesta descarta la IP mandando al DHCP un mensaje (DHCPDECLINE) con lo cual el cliente vuelve al estado INIT, de lo contrario si nadie contesta el cliente acepta el (DHCPACK) y el servidor confirma la concesión con un (ACK) y el cliente pasa al estado BOUND.</p>
+<p>En el DHCPACK que envía el servidor se manda la siguiente información aparte de la IP:</p>
 <ul>
 <li>T1 es el temporizador de renovación de alquiler.</li>
 <li>T2 es el temporizador de reenganche.</li>
 <li>T3 es la duración del alquiler.</li>
 </ul>
-<p>El estado de RENEWING ocurre una vez que el tiempo de T1 expira, el cliente pasa a este estado, en el cual el cliente tiene que negociar la renovación del alquiler de la IP actual, si por alguna razón el servidor no renueva el alquiler le manda un mensaje (DHCPNACK) al cliente y este pasa de nuevo a fase INIT para obtener de nuevo otra dirección, en caso contrario el servidor manda un mensaje (DHCPACK) con los nuevos tiempo, y el cliente toma estos valores y se mueve al estado BOUND.</p>
+<p>El estado de RENEWING ocurre una vez que el tiempo de T1 expira, el cliente pasa a este estado, en el cual el cliente tiene que negociar la renovación del alquiler de la IP actual, si por alguna razón el servidor no renueva el alquiler le manda un mensaje (DHCPNACK) al cliente y este pasa de nuevo a fase INIT para obtener de nuevo otra dirección, en caso contrario el servidor manda un mensaje (DHCPACK) con los nuevos tiempos, y el cliente toma estos valores y se mueve al estado BOUND.</p>
 <p>El estado REBINDING ocurre una vez que el tiempo de T2 expira, en este momento el cliente comienza a enviar (DHCPREQUEST) al brodcast, asumiendo que pasado el tiempo de T2 el servidor DHCP original no esta disponible, buscando alguien que le renueve el alquiler actual, si algun otro DHCP contesta con un (DHCPACK), el cliente toma los valores y vuelve al estado BOUND, en caso de que nadie contesta el alquiler cesa y vuelve al estado INIT.</p>
-<p>Al expirar la concesión el cliente debe devolver la IP y cesar todas las acciones con dicha IP, hay que recalcar que el cliente no siempre tiene que esperar la expiración del alquiler, el en cualquier momento puede renunciar a una dirección IP cancelando su alquiler.Esto se realiza por ejemplo cuando un equipo de desconecta de la red antes del tiempo de expiración del alquiler, en esta situacion el cliente manda un mensaje (DHCPRELEASE) al servidor DHCP para cancelar el alquiler, quedando esa IP libre.</p>
+<p>Al expirar la concesión el cliente debe devolver la IP y cesar todas las acciones con dicha IP, hay que recalcar que el cliente no siempre tiene que esperar la expiración del alquiler, él, en cualquier momento, puede renunciar a una dirección IP cancelando su alquiler. Esto se realiza por ejemplo cuando un equipo de desconecta de la red antes del tiempo de expiración del alquiler, en esta situación el cliente manda un mensaje (DHCPRELEASE) al servidor DHCP para cancelar el alquiler, quedando esa IP libre.</p>
 <p>Si los clientes DHCP estan en ordenadores que tienen disco duro, la dirección IP asignada puede ser almacenada en este dispositivo y, cuando reinicie sus operaciones, puede hacer una nueva petición usando esta dirección IP.</p>
 <hr>
 <h2>Preparación del escenario</h2>
 <p>El escenario se va a realizar con Vagrant utilizando libvirt para la virtualización. Se van a definir dos máquinas, una donde se instalará el servidor DHCP y otra que servirá como cliente.</p>
-<p>El servidor DHCP tendrá en un principio dos interfaces de red, una pública con salida a internet y otra privada en la cual repartirá direcciones del rango 192.168.100.0/24.</p>
+<p>El servidor DHCP tendrá en un principio dos interfaces de red, una pública con salida a internet y otra privada en la cual repartirá direcciones del rango <code>192.168.100.0/24</code>.</p>
 <p>Previamente se han creado las redes "lan1" y "lan2" que serán necesarias para las pruebas a realizar, esto se ha hecho con la ayuda de <code>virsh</code> y ficheros "xml" para configurar estas redes. A continuación se muestra el contenido de estos ficheros:</p>
 <ul>
 <li>lan1</li>
@@ -177,12 +177,12 @@
 </pre></div>
 
 
-<p>Como se puede observar en esta configuración, se borra la ruta de encaminamiento que crea vagrant por defecto, para que salga exclusivamente por la que se ha especificado.Tambien se modifica el fichero <code>resolv.conf</code> para indicarle el servidor DNS, esto una vez la máquina del servidor esta arrancada.</p>
+<p>Como se puede observar en esta configuración, se borra la ruta de encaminamiento que crea vagrant por defecto, para que salga exclusivamente por la que se ha especificado.También se modifica el fichero <code>resolv.conf</code> para indicarle el servidor DNS, esto una vez la máquina del servidor esta arrancada.</p>
 <hr>
 <h2>Instalación y configuración del servidor DHCP</h2>
 <p>Una vez iniciado el escenario, accede a la máquina <code>dhcp</code> donde se instalará el servidor DHCP. Para ello:</p>
 <p><code>sudo apt update &amp;&amp; sudo apt install isc-dhcp-server</code></p>
-<p>Al instalarlo el servicio fallará y mandará un mensaje de error, pero es normal ya que aún no esta configurado.</p>
+<p>Al instalarlo el servicio fallará y mandará un mensaje de error, pero es normal ya que aún no está configurado.</p>
 <p>El primer fichero que hay que editar es <code>/etc/default/isc-dhcp-server</code> en el cual se indica la interfaz de red donde va a trabajar el servidor DHCP. Dejandolo así:</p>
 <p><code>INTERFACESv4="ens7"</code></p>
 <p>Una vez realizado esto el fichero de configuración principal del DHCP es <code>/etc/dhcp/dhcpd.conf</code>.</p>
@@ -206,7 +206,7 @@
 <p>Una vez realizado estos cambios hay que reiniciar el servidor DHCP:</p>
 <p><code>sudo sistemctl restart isc-dhcp-server</code></p>
 <p>Con esto el servidor ya debe de repartir las direcciones en "lan1".</p>
-<p>La lista de conseciones del servidor se puede mirar en fichero <code>/var/lib/dhcp/dhcp.leases</code> realizando por ejemplo el siguiente comando se puede observar la última concesión:</p>
+<p>La lista de concesiones del servidor se puede mirar en fichero <code>/var/lib/dhcp/dhcp.leases</code> realizando por ejemplo el siguiente comando se puede observar la última concesión:</p>
 <p><code>tail /var/lib/dhcp/dhcpd.leases</code></p>
 <p>En este caso muestra la siguiente información:</p>
 <p><img alt="ultimaconsesión" src="https://arpovea.vercel.app/images/DHCP/ultimaconcesion.png"></p>
@@ -220,7 +220,7 @@
 
 <p>Reinicia el servicio "networking" en el cliente:</p>
 <p><code>sudo systemctl restart networking</code></p>
-<p>Tambien puedes solicitar una IP, realiza el siguiente comando:</p>
+<p>También puedes solicitar una IP, realiza el siguiente comando:</p>
 <p><code>sudo dhclient ens6</code></p>
 <p>Obteniendo la siguiente IP:</p>
 <p><img alt="ipclinux" src="https://arpovea.vercel.app/images/DHCP/ipclinux.png"></p>
@@ -231,7 +231,7 @@
 <li>Activar el bit de enrutamiento en el fichero <code>/etc/sysctl.conf</code> Para ello:</li>
 </ul>
 <p><code>sudo nano /etc/sysctl.conf</code></p>
-<p>Y descomenta la siguiente linea:</p>
+<p>Y descomenta la siguiente línea:</p>
 <p><code>net.ipv4.ip_forward=1</code></p>
 <p>Y luego:</p>
 <p><code>sudo sysctl -p</code></p>
@@ -245,15 +245,15 @@
 <p><img alt="iprdhcp" src="https://arpovea.vercel.app/images/DHCP/iprdhcp.png"></p>
 <p><img alt="iprclinux" src="https://arpovea.vercel.app/images/DHCP/capturaiprclinux.png"></p>
 <p><img alt="tracerouteclinux" src="https://arpovea.vercel.app/images/DHCP/capturatracrouteclinux.png"></p>
-<p>A continuación se realiza una captura de los paquetes que corresponden a una conseción utilizando el comando <code>tcpdum</code>:</p>
+<p>A continuación se realiza una captura de los paquetes que corresponden a una concesión utilizando el comando <code>tcpdum</code>:</p>
 <p><code>sudo tcpdump -i ens7 -pvn port 67 and port 68</code></p>
 <p><img alt="tcpdump" src="https://arpovea.vercel.app/images/DHCP/tcpdump.png"></p>
 <hr>
 <h2>Pruebas a realizar con el escenario y los clientes</h2>
-<h4>Los clientes toman una configuración, y a continuación apagamos el servidor dhcp. ¿qué ocurre con el cliente windows? ¿Y con el cliente linux?</h4>
+<h4>Los clientes toman una configuración, y a continuación apagamos el servidor dhcp. ¿Qué ocurre con el cliente windows? ¿Y con el cliente linux?</h4>
 <p>A continuación dejo un video en el que se explica lo ocurrido:</p>
 <p><a href="http://www.youtube.com/watch?v=5x13rKnYLYE" title=""><img alt="Tarea6" src="http://img.youtube.com/vi/5x13rKnYLYE/0.jpg"></a></p>
-<h4>Los clientes toman una configuración, y a continuación cambiamos la configuración del servidor dhcp (por ejemplo el rango). ¿qué ocurriría con un cliente windows? ¿Y con el cliente linux?</h4>
+<h4>Los clientes toman una configuración, y a continuación cambiamos la configuración del servidor dhcp (por ejemplo el rango). ¿Qué ocurriría con un cliente windows? ¿Y con el cliente linux?</h4>
 <p>A continuación dejo un video en el que se explica lo ocurrido:</p>
 <p><a href="http://www.youtube.com/watch?v=LEzdYdzjwqg" title=""><img alt="Tarea7" src="http://img.youtube.com/vi/LEzdYdzjwqg/0.jpg"></a></p>
 <hr>
@@ -266,8 +266,8 @@
 </pre></div>
 
 
-<p>Como se puede observar necesitaras la direccion MAC de la tarjeta del cliente.</p>
-<p>Una vez realizados los cambios se reinicia el servidor y pasado el tiempo de renovación, esta cambiara la IP.</p>
+<p>Como se puede observar necesitaras la dirección MAC de la tarjeta del cliente.</p>
+<p>Una vez realizados los cambios se reinicia el servidor y pasado el tiempo de renovación, esta cambiará la IP.</p>
 <p><img alt="reserva" src="https://arpovea.vercel.app/images/DHCP/reserva.png"></p>
 <hr>
 <h2>Configurar varios ambitos</h2>
@@ -333,7 +333,7 @@
 
 <p>En el servidor hay que agregar la nueva interfaz por la cual se va a repartir direcciones editando de nuevo el fichero <code>/etc/default/isc-dhcp-server</code>, quedando así:</p>
 <p><code>INTERFACESv4="ens7 ens8"</code></p>
-<p>A continuación agregar el nuevo ambito en el fichero <code>/etc/dhcp/dhcpd.conf</code>, quedando así:</p>
+<p>A continuación agregar el nuevo ámbito en el fichero <code>/etc/dhcp/dhcpd.conf</code>, quedando así:</p>
 <div class="highlight"><pre><span></span><span class="go">ddns-update-style none;</span>
 <span class="go">autoritative;</span>
 
