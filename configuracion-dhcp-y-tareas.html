@@ -230,32 +230,26 @@
 <ul>
 <li>
 <p>Activar el bit de enrutamiento en el fichero <code>/etc/sysctl.conf</code> Para ello:</p>
-</li>
-<li>
-<p><code>sudo nano /etc/sysctl.conf</code></p>
-</li>
-<li>
-<p>Y descomenta la siguiente línea:</p>
 <ul>
+<li><code>sudo nano /etc/sysctl.conf</code></li>
+<li>Y descomenta la siguiente línea:<ul>
 <li><code>net.ipv4.ip_forward=1</code></li>
 </ul>
 </li>
-<li>
-<p>Y luego:</p>
-<ul>
+<li>Y luego:<ul>
 <li><code>sudo sysctl -p</code></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
 <p>Crear la ruta de IPTABLES. Para ello:</p>
-</li>
-<li>
-<p><code>sudo iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o ens6 -j MASQUERADE</code></p>
-</li>
-<li>
-<p>A continuación reinicia el servicio:</p>
 <ul>
+<li><code>sudo iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o ens6 -j MASQUERADE</code></li>
+<li>A continuación reinicia el servicio:<ul>
 <li><code>sudo systemctl restart networking</code></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
