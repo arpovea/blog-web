@@ -108,25 +108,27 @@
 <p>El servidor DHCP tendrá en un principio dos interfaces de red, una pública con salida a internet y otra privada en la cual repartirá direcciones del rango 192.168.100.0/24.</p>
 <p>Previamente se han creado las redes "lan1" y "lan2" que serán necesarias para las pruebas a realizar, esto se ha hecho con la ayuda de <code>virsh</code> y ficheros "xml" para configurar estas redes. A continuación se muestra el contenido de estos ficheros:</p>
 <ul>
-<li>
-<p>lan1
-  <code>xml
-  &lt;network&gt;
-    &lt;name&gt;lan1&lt;/name&gt;
-    &lt;bridge name="virbr2"/&gt;
-    &lt;ip address="192.168.100.1" netmask="255.255.255.0"/&gt;
-  &lt;/network&gt;</code></p>
-</li>
-<li>
-<p>lan2
-  <code>xml
-  &lt;network&gt;
-    &lt;name&gt;lan2&lt;/name&gt;
-    &lt;bridge name="virbr3"/&gt;
-    &lt;ip address="192.168.200.1" netmask="255.255.255.0"/&gt;
-  &lt;/network&gt;</code></p>
-</li>
+<li>lan1</li>
 </ul>
+<div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
+  <span class="nt">&lt;name&gt;</span>lan1<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&quot;virbr2&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ip</span> <span class="na">address=</span><span class="s">&quot;192.168.100.1&quot;</span> <span class="na">netmask=</span><span class="s">&quot;255.255.255.0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>lan2</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
+  <span class="nt">&lt;name&gt;</span>lan2<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&quot;virbr3&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ip</span> <span class="na">address=</span><span class="s">&quot;192.168.200.1&quot;</span> <span class="na">netmask=</span><span class="s">&quot;255.255.255.0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+
+
 <p>Así como <code>br0</code> en el fichero <code>etc/network/interfaces</code> de la máquina anfitrión:</p>
 <div class="highlight"><pre><span></span><span class="go">auto br0</span>
 <span class="go">iface br0 inet dhcp</span>
