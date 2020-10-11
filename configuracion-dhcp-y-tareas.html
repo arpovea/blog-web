@@ -108,20 +108,18 @@
 <p>El servidor DHCP tendrá en un principio dos interfaces de red, una pública con salida a internet y otra privada en la cual repartirá direcciones del rango <code>192.168.100.0/24</code>.</p>
 <p>Previamente se han creado las redes "lan1" y "lan2" que serán necesarias para las pruebas a realizar, esto se ha hecho con la ayuda de <code>virsh</code> y ficheros "xml" para configurar estas redes. A continuación se muestra el contenido de estos ficheros:</p>
 <ul>
-<li>
-<p>lan1</p>
-<ul>
-<li><code>xml
-&lt;network&gt;
-&lt;name&gt;lan1&lt;/name&gt;
-&lt;bridge name="virbr2"/&gt;
-&lt;ip address="192.168.100.1" netmask="255.255.255.0"/&gt;
-&lt;/network&gt;</code></li>
+<li>lan1:</li>
 </ul>
-</li>
-<li>
-<p>lan2</p>
-</li>
+<div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
+  <span class="nt">&lt;name&gt;</span>lan1<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&quot;virbr2&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ip</span> <span class="na">address=</span><span class="s">&quot;192.168.100.1&quot;</span> <span class="na">netmask=</span><span class="s">&quot;255.255.255.0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>lan2:</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
   <span class="nt">&lt;name&gt;</span>lan2<span class="nt">&lt;/name&gt;</span>
@@ -230,19 +228,37 @@
 <h2>Configuración del servidor para que los clientes realizen NAT</h2>
 <p>Para ello hay que realizar dos tareas:</p>
 <ul>
-<li>Activar el bit de enrutamiento en el fichero <code>/etc/sysctl.conf</code> Para ello:</li>
-</ul>
+<li>
+<p>Activar el bit de enrutamiento en el fichero <code>/etc/sysctl.conf</code> Para ello:</p>
+</li>
+<li>
 <p><code>sudo nano /etc/sysctl.conf</code></p>
+</li>
+<li>
 <p>Y descomenta la siguiente línea:</p>
-<p><code>net.ipv4.ip_forward=1</code></p>
-<p>Y luego:</p>
-<p><code>sudo sysctl -p</code></p>
 <ul>
-<li>Crear la ruta de IPTABLES. Para ello:</li>
+<li><code>net.ipv4.ip_forward=1</code></li>
 </ul>
+</li>
+<li>
+<p>Y luego:</p>
+<ul>
+<li><code>sudo sysctl -p</code></li>
+</ul>
+</li>
+<li>
+<p>Crear la ruta de IPTABLES. Para ello:</p>
+</li>
+<li>
 <p><code>sudo iptables -t nat -A POSTROUTING -s 192.168.100.0/24 -o ens6 -j MASQUERADE</code></p>
+</li>
+<li>
 <p>A continuación reinicia el servicio:</p>
-<p><code>sudo systemctl restart networking</code></p>
+<ul>
+<li><code>sudo systemctl restart networking</code></li>
+</ul>
+</li>
+</ul>
 <p>Una vez realizado esto el servidor queda configurado para que el cliente pueda salir a internet realizando NAT, en las siguientes imagenes se puede comprobar las configuraciones realizadas y la navegación del cliente:</p>
 <p><img alt="iprdhcp" src="https://arpovea.vercel.app/images/DHCP/iprdhcp.png"></p>
 <p><img alt="iprclinux" src="https://arpovea.vercel.app/images/DHCP/capturaiprclinux.png"></p>
