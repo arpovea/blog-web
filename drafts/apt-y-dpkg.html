@@ -124,6 +124,8 @@ dpkg-reconfigure locales</p>
 <p>apt-get -f install
 dpkg-reconfigure --force</p>
 <h4>Explica la instrucción que utilizarías para hacer una actualización completa de todos los paquetes de tu sistema de manera completamente no interactiva</h4>
+<p>export DEBIAN_FRONTEND=noninteractive
+yes '' | apt-get -y -o DPkg::options::="--force-confdef" -o DPkg::options::="--force-confold" dist-upgrade</p>
 <h4>Bloquea la actualización de determinados paquetes.</h4>
 <p>Este comando marca:
 apt-mark hold [paquete] 
