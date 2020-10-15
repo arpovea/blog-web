@@ -306,7 +306,52 @@
 &lt;p&gt;&lt;img alt="traceroute2clinux" src="https://arpovea.vercel.app/images/DHCP/traceroute2clinux.png"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="traceroute2clinux2" src="https://arpovea.vercel.app/images/DHCP/traceroute2clinux2.png"&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Servicios"></category></entry><entry><title>RCLONE</title><link href="https://arpovea.vercel.app/rclone.html" rel="alternate"></link><published>2020-09-29T00:00:00+02:00</published><updated>2020-09-29T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-29:/rclone.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Servicios"></category></entry><entry><title>APT y DPKG</title><link href="https://arpovea.vercel.app/apt-y-dpkg.html" rel="alternate"></link><published>2020-10-05T00:00:00+02:00</published><updated>2020-10-05T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-10-05:/apt-y-dpkg.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;Buenas! En esta ocasión se va a realizar una serie de ejercicios con APT y DPKG.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Ejercicios APT&lt;/h2&gt;
+&lt;h4&gt;Que acciones consigo al realizar apt update y apt upgrade. Explica detalladamente.&lt;/h4&gt;
+&lt;p&gt;Al realizar un &lt;code&gt;apt update&lt;/code&gt;, revisa los repositorios listados en el fichero &lt;code&gt;source.list&lt;/code&gt; o en los ficheros de &lt;code&gt;source.list.d&lt;/code&gt;, obteniendo la lista de los paquetes y sus versiones disponibles en esos repositorios.&lt;/p&gt;
+&lt;p&gt;Cuando se realiza un &lt;code&gt;apt upgrade&lt;/code&gt; se actualizan los paquetes que estan instalados en el sistema de los cuales hay versiones mas actualizadas en los repositorios.&lt;/p&gt;
+&lt;h4&gt;Lista la relación de paquetes que pueden ser actualizados. ¿Qué información puedes sacar a tenor de lo mostrado en el listado?.&lt;/h4&gt;
+&lt;p&gt;Despues de realizar un &lt;code&gt;apt update&lt;/code&gt; realiza el comando &lt;code&gt;apt list --upgradable&lt;/code&gt; esto mostrará el listado de paquetes que se pueden utilizar y se indica la versión final y la versión del sistema local, normalmente son parches de seguridad puesto que no cambian la versión pero al final añaden una terminología como por ejemplo u1, u2, u3 etc.&lt;/p&gt;
+&lt;h4&gt;Indica la versión instalada, candidata así como la prioridad del paquete openssh-client.&lt;/h4&gt;
+&lt;p&gt;Con &lt;code&gt;apt policy openssh-client&lt;/code&gt;.&lt;/p&gt;
+&lt;h4&gt;¿Cómo puedes sacar información de un paquete oficial instalado o que no este instalado?&lt;/h4&gt;
+&lt;p&gt;Con &lt;code&gt;apt show [[nombre paquete]]&lt;/code&gt; puedes obtener información de dicho paquete.&lt;/p&gt;
+&lt;h4&gt;Saca toda la información que puedas del paquete openssh-client que tienes actualmente instalado en tu máquina.&lt;/h4&gt;
+&lt;p&gt;Con dpkg -L openssh-client se muestra todo el contenido del paquete&lt;/p&gt;
+&lt;h4&gt;Saca toda la información que puedas del paquete openssh-client candidato a actualizar en tu máquina.&lt;/h4&gt;
+&lt;h4&gt;Lista todo el contenido referente al paquete openssh-client actual de tu máquina. Utiliza para ello tanto dpkg como apt.&lt;/h4&gt;
+&lt;h4&gt;Listar el contenido de un paquete sin la necesidad de instalarlo o descargarlo.&lt;/h4&gt;
+&lt;h4&gt;Simula la instalación del paquete openssh-client.&lt;/h4&gt;
+&lt;h4&gt;¿Qué comando te informa de los posible bugs que presente un determinado paquete?&lt;/h4&gt;
+&lt;h4&gt;Después de realizar un apt update &amp;amp;&amp;amp; apt upgrade. Si quisieras actualizar únicamente los paquetes que tienen de cadena openssh. ¿Qué procedimiento seguirías?. Realiza esta acción, con las estructuras repetitivas que te ofrece bash, así como con el comando xargs.&lt;/h4&gt;
+&lt;h4&gt;¿Cómo encontrarías qué paquetes dependen de un paquete específico.&lt;/h4&gt;
+&lt;p&gt;apt-rdepends openssh-client&lt;/p&gt;
+&lt;h4&gt;Como procederías para encontrar el paquete al que pertenece un determinado archivo.&lt;/h4&gt;
+&lt;p&gt;apt-file search shh | egrep /bin/ssh$
+dpkg -S &lt;code&gt;which ssh&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;¿Que procedimientos emplearías para eliminar liberar la cache en cuanto a descargas de paquetería?&lt;/h4&gt;
+&lt;p&gt;apt autoclean
+Aqui estan alojados estos paquetes /var/cache/apt/archives&lt;/p&gt;
+&lt;h4&gt;Realiza la instalación del paquete keyboard-configuration pasando previamente los valores de los parámetros de configuración como variables de entorno.&lt;/h4&gt;
+&lt;p&gt;debconf es el paquete de debian que realiza la configuracion de los paquetes&lt;/p&gt;
+&lt;p&gt;Si realizas un dpkg-reconfigure debconf configuramos este paquete para que te pregunte por las configuraciones de los paquetes.&lt;/p&gt;
+&lt;h4&gt;Reconfigura el paquete locales de tu equipo, añadiendo una localización que no exista previamente. Comprueba a modificar las variables de entorno correspondientes para que la sesión del usuario utilice otra localización.&lt;/h4&gt;
+&lt;p&gt;Modificando la variable LANG se puede agregar directamente
+dpkg-reconfigure locales&lt;/p&gt;
+&lt;h4&gt;Interrumpe la configuración de un paquete y explica los pasos a dar para continuar la instalación.&lt;/h4&gt;
+&lt;p&gt;apt-get -f install
+dpkg-reconfigure --force&lt;/p&gt;
+&lt;h4&gt;Explica la instrucción que utilizarías para hacer una actualización completa de todos los paquetes de tu sistema de manera completamente no interactiva&lt;/h4&gt;
+&lt;p&gt;export DEBIAN_FRONTEND=noninteractive
+yes '' | apt-get -y -o DPkg::options::="--force-confdef" -o DPkg::options::="--force-confold" dist-upgrade&lt;/p&gt;
+&lt;h4&gt;Bloquea la actualización de determinados paquetes.&lt;/h4&gt;
+&lt;p&gt;Este comando marca:
+apt-mark hold [paquete] 
+Este comando muestra los paquetes marcados:
+apt-mark showhold &lt;/p&gt;</content><category term="Sistemas"></category></entry><entry><title>RCLONE</title><link href="https://arpovea.vercel.app/rclone.html" rel="alternate"></link><published>2020-09-29T00:00:00+02:00</published><updated>2020-09-29T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-09-29:/rclone.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a utilizar la herramienta Rclone, como instalar, como configurar varios almacenamientos de la nube y distintas funcionalidades.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;RClone&lt;/h2&gt;
