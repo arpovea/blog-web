@@ -1,5 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/all-es.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-10-08T00:00:00+02:00</updated><entry><title>Configuración DHCP y Tareas</title><link href="https://arpovea.vercel.app/configuracion-dhcp-y-tareas.html" rel="alternate"></link><published>2020-10-08T00:00:00+02:00</published><updated>2020-10-08T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-10-08:/configuracion-dhcp-y-tareas.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a realizar la instalación de un servidor DHCP, en un escenario creado con Vagrant, se van a realizar distintas configuraciones y pruebas.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/all-es.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-10-15T00:00:00+02:00</updated><entry><title>Criptografía: GPG y OPENSSL</title><link href="https://arpovea.vercel.app/criptografia-gpg-y-openssl.html" rel="alternate"></link><published>2020-10-15T00:00:00+02:00</published><updated>2020-10-15T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-10-15:/criptografia-gpg-y-openssl.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se van a realizar una serie de pruebas con GPG y OPENSSL.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;Buenas! En esta ocasión se van a realizar una serie de pruebas con GPG y OPENSSL.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;GPG&lt;/h2&gt;
+&lt;h4&gt;Creación de claves pública y privada:&lt;/h4&gt;
+&lt;p&gt;Para ello se realiza el siguiente comando, el cual te realizará una serie de preguntas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg --gen-key&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Si quieres crearla con mas detalles y diálogo realiza:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg --full-generate-key&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Al final mostrará algo como esto:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="clavepubl" src="https://arpovea.vercel.app/images/Criptografía/clavepublicaadri.png"&gt; &lt;/p&gt;
+&lt;p&gt;Todo lo referente a las claves "GPG" esta en el directorio "~/.gnupg" de cada usuario.&lt;/p&gt;
+&lt;p&gt;Para listar las claves públicas utiliza el comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg --list-keys&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Los datos mostrados son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;El tipo de clave y el sistema de criptografía que tiene.Por ejemplo "rsa4096".&lt;/li&gt;
+&lt;li&gt;El uid, número que identifica la clave, para identificarla se pueden utilizar los últimos 8 dígitos.&lt;/li&gt;
+&lt;li&gt;El nombre del propietario junto con su correo y comentario si dispone de él.&lt;/li&gt;
+&lt;li&gt;Confianza que se tiene sobre esa clave.&lt;/li&gt;
+&lt;li&gt;Fecha de validez si dispone de ella.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Para darle fecha de validez a la clave, cuando se genera la clave con "gpg gen-key" o "gpg --full-generate-key" preguntará algo como esto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;Por favor, especifique el período de validez de la clave.&lt;/span&gt;
+&lt;span class="go"&gt;         0 = la clave nunca caduca&lt;/span&gt;
+&lt;span class="go"&gt;      &amp;lt;n&amp;gt;  = la clave caduca en n días&lt;/span&gt;
+&lt;span class="go"&gt;      &amp;lt;n&amp;gt;w = la clave caduca en n semanas&lt;/span&gt;
+&lt;span class="go"&gt;      &amp;lt;n&amp;gt;m = la clave caduca en n meses&lt;/span&gt;
+&lt;span class="go"&gt;      &amp;lt;n&amp;gt;y = la clave caduca en n años&lt;/span&gt;
+&lt;span class="go"&gt;¿Validez de la clave (0)? 1M&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En el ejemplo de arriba al final se le asigno 1 mes.&lt;/p&gt;
+&lt;p&gt;Para ver las claves privadas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg --list-secret-keys&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Importar y Exportar claves públicas.&lt;/h4&gt;
+&lt;p&gt;A continuación se mostrarán los comandos para exportar una clave pública en formato ASCII. Para ello:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;gpg&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;export&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;uid_o_nombre usuario&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;clavepublica&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;asc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como se muestra en la siguiente imagen:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="exportclavepub" src="https://arpovea.vercel.app/images/Criptografía/expportarclavepub.png"&gt; &lt;/p&gt;
+&lt;p&gt;A continuación se mostrarán los comando para importar la clave de un compañero a nuestro anillo de claves:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;gpg&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pepito_perez.asc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como se muestra en la siguiente imagen:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="importpepito" src="https://arpovea.vercel.app/images/Criptografía/importpepito.png"&gt; &lt;/p&gt;
+&lt;h4&gt;Cifrado y Descifrado de documentos&lt;/h4&gt;
+&lt;p&gt;A continuación se muestran los comandos para cifrar y descifrar documentos:&lt;/p&gt;
+&lt;p&gt;Para cifrar un documento:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg -e mensaje.txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Esto pedirá el uid del destinatario en nuestro caso el de Pepito Pérez, en la siguiente imagen se muestra todo el proceso y el fichero "mensaje.txt.gpg":&lt;/p&gt;
+&lt;p&gt;&lt;img alt="gpgcifrado" src="https://arpovea.vercel.app/images/Criptografía/gpgcifrado.png"&gt; &lt;/p&gt;
+&lt;p&gt;Tambien se puede utilizar el comando con argumentos para que no sea de forma interactiva:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg -e -u &amp;quot;Adrian Rodriguez&amp;quot; -r &amp;quot;pepito perez&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cualquiera que no este en la lista al crear el mensaje cifrado, no puede descifrarlo. Le lanzara un mensaje de error del estilo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;gpg&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;descifrado&lt;/span&gt; &lt;span class="n"&gt;fallido&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;No&lt;/span&gt; &lt;span class="n"&gt;secret&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez Pepito tiene el mensaje cifrado utiliza:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg -o mensaje.txt -d mensaje.txt.gpg &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Al realizar este comando si tiene contraseña, la pedirá y luego descifrará el mensaje. Como se muestra en la siguiente imagen:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="gpgdescrifrado" src="https://arpovea.vercel.app/images/Criptografía/decryptmens.png"&gt;&lt;/p&gt;
+&lt;h4&gt;Borrar claves públicas o privadas:&lt;/h4&gt;
+&lt;p&gt;Para borrar las claves públicas utiliza el comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg --delete-key &amp;quot;uid_o_nombreusuario&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para borrar las claves privadas utiliza:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg --delete-secret-key &amp;quot;uid_onombreusuario&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Exportar clave a un servidor público de claves PGP&lt;/h4&gt;
+&lt;p&gt;Lo primero que se va a realizar es la clave de revocación por si existe algun problema con la clave, para ello:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg -gen-revoke &amp;quot;uid_o_nombreusuarito&amp;quot; &amp;gt; cert_revoc.asc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;También se puede utilizar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg --output cer_revoc.asc --gen-revoke &amp;quot;uid_o_nombreusuario&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Al realizar estos comandos preguntará la razón de la revocación como se muestra a continuación:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;¿Crear un certificado de revocación para esta clave? (s/N) s&lt;/span&gt;
+&lt;span class="err"&gt;Por favor elija una razón para la revocación:&lt;/span&gt;
+&lt;span class="err"&gt;  0 = No se dio ninguna razón&lt;/span&gt;
+&lt;span class="err"&gt;  1 = La clave ha sido comprometida&lt;/span&gt;
+&lt;span class="err"&gt;  2 = La clave ha sido reemplazada&lt;/span&gt;
+&lt;span class="err"&gt;  3 = La clave ya no está en uso&lt;/span&gt;
+&lt;span class="err"&gt;  Q = Cancelar&lt;/span&gt;
+&lt;span class="err"&gt;(Probablemente quería seleccionar 1 aquí)&lt;/span&gt;
+&lt;span class="err"&gt;¿Su decisión? 1&lt;/span&gt;
+&lt;span class="err"&gt;Introduzca una descripción opcional; acábela con una línea vacía:&lt;/span&gt;
+&lt;span class="err"&gt;&amp;gt; &lt;/span&gt;
+&lt;span class="err"&gt;Razón para la revocación: La clave ha sido comprometida&lt;/span&gt;
+&lt;span class="err"&gt;(No se dió descripción)&lt;/span&gt;
+&lt;span class="err"&gt;¿Es correcto? (s/N) s&lt;/span&gt;
+&lt;span class="err"&gt;se fuerza salida con armadura ASCII.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para utilizar esto solo hay que importar el certificado generado y se anulará la clave, si está en un servidor público hay que volver a subirla una vez revocada.&lt;/p&gt;
+&lt;p&gt;Una vez se ha generado el certificado de revocación estos son los comandos necesarios para subir tu clave pública a un servidor, en este caso "pgp.rediris.es":&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg --keyserver gpg.rediris.es --send-keys D4BB0593 &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para importar una clave de un servidor:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gpg --recv-keys --keyserver pgp.rediris.es D4BB0593&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En las siguientes imagenes se muestra como un usuario, sube la clave y otro importa esta clave desde el servidor:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="subirclaveserv" src="https://arpovea.vercel.app/images/Criptografía/subirclave.png"&gt;
+&lt;img alt="importarclaveserv" src="https://arpovea.vercel.app/images/Criptografía/importarclave.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Cifrado OPENSSL&lt;/h2&gt;
+&lt;p&gt;A continución se muestran los comandos para crear una clave privada en openssl y generar una clave pública de la clave privada.&lt;/p&gt;
+&lt;p&gt;Crear clave privada:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;openssl genrsa -out key.pem 2048&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Crear clave pública:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;openssl rsa -in key.pem -pubout -out key.public.pem&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se puede tambien encriptar la clave privada con una contraseña con el siguiente comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;openssl rsa -in key.pem -des3 -out enc-key.pem&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para cifrar un documento(Con la clave pública del destinatario):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;openssl rsautl -encrypt -inkey pub-key.pem -pubin -in mensaje.txt -out mensaje.txt.enc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para descifrar un mensaje sería lo mismo pero en el destinatario utilizando su clave privada:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;openssl rsautl -decrypt -inkey key.pem -in mensaje..txt.enc -out mensaje.txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A continuación se muestra un ejemplo en las siguientes imagenes:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="openssl1" src="https://arpovea.vercel.app/images/Criptografía/openssl1.png"&gt;
+&lt;img alt="openssl2" src="https://arpovea.vercel.app/images/Criptografía/openssl2.png"&gt;&lt;/p&gt;
+&lt;p&gt;Como dato extra también es posible cifrar con la clave privada y que descifren con la clave pública aunque es menos utilizado:&lt;/p&gt;
+&lt;p&gt;Cifrado con clave privada:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;openssl rsautl -inkey key.pem -in mensaje.txt -sign &amp;gt; mensaje.txt.enc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Descifrado con clave pública:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;openssl rsautl -inkey pub-key.pem -pubin -in mensaje.txt.enc -out mensaje.txt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Seguridad"></category></entry><entry><title>Configuración DHCP y Tareas</title><link href="https://arpovea.vercel.app/configuracion-dhcp-y-tareas.html" rel="alternate"></link><published>2020-10-08T00:00:00+02:00</published><updated>2020-10-08T00:00:00+02:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-10-08:/configuracion-dhcp-y-tareas.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a realizar la instalación de un servidor DHCP, en un escenario creado con Vagrant, se van a realizar distintas configuraciones y pruebas.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
 &lt;p&gt;Buenas! En esta ocasión se va a realizar la instalación de un servidor DHCP, en un escenario creado con Vagrant, se van a realizar distintas configuraciones y pruebas.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;Un poco de Teoría&lt;/h2&gt;

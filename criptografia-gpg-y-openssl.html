@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Criptografía: GPG y OPENSSL &ndash; Blog Informático</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Blog Informático &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="Adrián Rodríguez Povea" />
+    <meta property="article:section" content="Seguridad" />
+    <meta property="article:published_time" content="2020-10-15" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Criptografía: GPG y OPENSSL"/>
+    <meta property="og:description" content="Buenas! En esta ocasión se van a realizar una serie de pruebas con GPG y OPENSSL."/>
+    <meta property="og:site_name" content="Blog Informático" />
+    <meta property="og:url" content="https://arpovea.vercel.app/criptografia-gpg-y-openssl.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Criptografía: GPG y OPENSSL">
+    <meta name="twitter:description" content="Buenas! En esta ocasión se van a realizar una serie de pruebas con GPG y OPENSSL.">
+    <meta name="twitter:url" content="https://arpovea.vercel.app/criptografia-gpg-y-openssl.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/all.atom.xml" title="Blog Informático Atom Feed" />
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/Seguridad.atom.xml" title="Blog Informático Categories Atom Feed" />
+    <link rel="alternate" type="application/rss+xml" href="http://arpovea.disqus.com/latest.rss" title="Blog Informático Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/static/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://arpovea.vercel.app/theme/images/arpovealogo.PNG">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://arpovea.vercel.app/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="https://arpovea.vercel.app" id="header-logo" title="Home">AR</a>
+        <nav id="header-menu">
+          <ul>
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/redes.html">Redes</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="https://arpovea.vercel.app/category/seguridad.html">Seguridad</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/servicios.html">Servicios</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/sistemas.html">Sistemas</a></li>-->
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/categories.html">Categorías</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/archives.html">Artículos</a></li>
+            <li><a href="https://arpovea.vercel.app/pages/acerca-de.html">Acerca de</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Criptografía: GPG y OPENSSL</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2020-10-15T00:00:00+02:00">jue 15 octubre 2020</time> en <a href="https://arpovea.vercel.app/category/seguridad.html" title="All articles in category Seguridad">Seguridad</a></span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <hr>
+<p>Buenas! En esta ocasión se van a realizar una serie de pruebas con GPG y OPENSSL.</p>
+<hr>
+<h2>GPG</h2>
+<h4>Creación de claves pública y privada:</h4>
+<p>Para ello se realiza el siguiente comando, el cual te realizará una serie de preguntas:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg --gen-key</span>
+</pre></div>
+
+
+<p>Si quieres crearla con mas detalles y diálogo realiza:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg --full-generate-key</span>
+</pre></div>
+
+
+<p>Al final mostrará algo como esto:</p>
+<p><img alt="clavepubl" src="https://arpovea.vercel.app/images/Criptografía/clavepublicaadri.png"> </p>
+<p>Todo lo referente a las claves "GPG" esta en el directorio "~/.gnupg" de cada usuario.</p>
+<p>Para listar las claves públicas utiliza el comando:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg --list-keys</span>
+</pre></div>
+
+
+<p>Los datos mostrados son:</p>
+<ul>
+<li>El tipo de clave y el sistema de criptografía que tiene.Por ejemplo "rsa4096".</li>
+<li>El uid, número que identifica la clave, para identificarla se pueden utilizar los últimos 8 dígitos.</li>
+<li>El nombre del propietario junto con su correo y comentario si dispone de él.</li>
+<li>Confianza que se tiene sobre esa clave.</li>
+<li>Fecha de validez si dispone de ella.</li>
+</ul>
+<p>Para darle fecha de validez a la clave, cuando se genera la clave con "gpg gen-key" o "gpg --full-generate-key" preguntará algo como esto:</p>
+<div class="highlight"><pre><span></span><span class="go">Por favor, especifique el período de validez de la clave.</span>
+<span class="go">         0 = la clave nunca caduca</span>
+<span class="go">      &lt;n&gt;  = la clave caduca en n días</span>
+<span class="go">      &lt;n&gt;w = la clave caduca en n semanas</span>
+<span class="go">      &lt;n&gt;m = la clave caduca en n meses</span>
+<span class="go">      &lt;n&gt;y = la clave caduca en n años</span>
+<span class="go">¿Validez de la clave (0)? 1M</span>
+</pre></div>
+
+
+<p>En el ejemplo de arriba al final se le asigno 1 mes.</p>
+<p>Para ver las claves privadas:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg --list-secret-keys</span>
+</pre></div>
+
+
+<h4>Importar y Exportar claves públicas.</h4>
+<p>A continuación se mostrarán los comandos para exportar una clave pública en formato ASCII. Para ello:</p>
+<div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="k">export</span> <span class="o">-</span><span class="n">a</span> <span class="s2">&quot;uid_o_nombre usuario&quot;</span> <span class="o">&gt;</span> <span class="n">clavepublica</span><span class="o">.</span><span class="n">asc</span>
+</pre></div>
+
+
+<p>Como se muestra en la siguiente imagen:</p>
+<p><img alt="exportclavepub" src="https://arpovea.vercel.app/images/Criptografía/expportarclavepub.png"> </p>
+<p>A continuación se mostrarán los comando para importar la clave de un compañero a nuestro anillo de claves:</p>
+<div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">pepito_perez.asc</span>
+</pre></div>
+
+
+<p>Como se muestra en la siguiente imagen:</p>
+<p><img alt="importpepito" src="https://arpovea.vercel.app/images/Criptografía/importpepito.png"> </p>
+<h4>Cifrado y Descifrado de documentos</h4>
+<p>A continuación se muestran los comandos para cifrar y descifrar documentos:</p>
+<p>Para cifrar un documento:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg -e mensaje.txt</span>
+</pre></div>
+
+
+<p>Esto pedirá el uid del destinatario en nuestro caso el de Pepito Pérez, en la siguiente imagen se muestra todo el proceso y el fichero "mensaje.txt.gpg":</p>
+<p><img alt="gpgcifrado" src="https://arpovea.vercel.app/images/Criptografía/gpgcifrado.png"> </p>
+<p>Tambien se puede utilizar el comando con argumentos para que no sea de forma interactiva:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg -e -u &quot;Adrian Rodriguez&quot; -r &quot;pepito perez&quot;</span>
+</pre></div>
+
+
+<p>Cualquiera que no este en la lista al crear el mensaje cifrado, no puede descifrarlo. Le lanzara un mensaje de error del estilo:</p>
+<div class="highlight"><pre><span></span><span class="n">gpg</span><span class="o">:</span> <span class="n">descifrado</span> <span class="n">fallido</span><span class="o">:</span> <span class="n">No</span> <span class="n">secret</span> <span class="n">key</span>
+</pre></div>
+
+
+<p>Una vez Pepito tiene el mensaje cifrado utiliza:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg -o mensaje.txt -d mensaje.txt.gpg </span>
+</pre></div>
+
+
+<p>Al realizar este comando si tiene contraseña, la pedirá y luego descifrará el mensaje. Como se muestra en la siguiente imagen:</p>
+<p><img alt="gpgdescrifrado" src="https://arpovea.vercel.app/images/Criptografía/decryptmens.png"></p>
+<h4>Borrar claves públicas o privadas:</h4>
+<p>Para borrar las claves públicas utiliza el comando:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg --delete-key &quot;uid_o_nombreusuario&quot;</span>
+</pre></div>
+
+
+<p>Para borrar las claves privadas utiliza:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg --delete-secret-key &quot;uid_onombreusuario&quot;</span>
+</pre></div>
+
+
+<h4>Exportar clave a un servidor público de claves PGP</h4>
+<p>Lo primero que se va a realizar es la clave de revocación por si existe algun problema con la clave, para ello:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg -gen-revoke &quot;uid_o_nombreusuarito&quot; &gt; cert_revoc.asc</span>
+</pre></div>
+
+
+<p>También se puede utilizar:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg --output cer_revoc.asc --gen-revoke &quot;uid_o_nombreusuario&quot;</span>
+</pre></div>
+
+
+<p>Al realizar estos comandos preguntará la razón de la revocación como se muestra a continuación:</p>
+<div class="highlight"><pre><span></span><span class="err">¿Crear un certificado de revocación para esta clave? (s/N) s</span>
+<span class="err">Por favor elija una razón para la revocación:</span>
+<span class="err">  0 = No se dio ninguna razón</span>
+<span class="err">  1 = La clave ha sido comprometida</span>
+<span class="err">  2 = La clave ha sido reemplazada</span>
+<span class="err">  3 = La clave ya no está en uso</span>
+<span class="err">  Q = Cancelar</span>
+<span class="err">(Probablemente quería seleccionar 1 aquí)</span>
+<span class="err">¿Su decisión? 1</span>
+<span class="err">Introduzca una descripción opcional; acábela con una línea vacía:</span>
+<span class="err">&gt; </span>
+<span class="err">Razón para la revocación: La clave ha sido comprometida</span>
+<span class="err">(No se dió descripción)</span>
+<span class="err">¿Es correcto? (s/N) s</span>
+<span class="err">se fuerza salida con armadura ASCII.</span>
+</pre></div>
+
+
+<p>Para utilizar esto solo hay que importar el certificado generado y se anulará la clave, si está en un servidor público hay que volver a subirla una vez revocada.</p>
+<p>Una vez se ha generado el certificado de revocación estos son los comandos necesarios para subir tu clave pública a un servidor, en este caso "pgp.rediris.es":</p>
+<div class="highlight"><pre><span></span><span class="err">gpg --keyserver gpg.rediris.es --send-keys D4BB0593 </span>
+</pre></div>
+
+
+<p>Para importar una clave de un servidor:</p>
+<div class="highlight"><pre><span></span><span class="err">gpg --recv-keys --keyserver pgp.rediris.es D4BB0593</span>
+</pre></div>
+
+
+<p>En las siguientes imagenes se muestra como un usuario, sube la clave y otro importa esta clave desde el servidor:</p>
+<p><img alt="subirclaveserv" src="https://arpovea.vercel.app/images/Criptografía/subirclave.png">
+<img alt="importarclaveserv" src="https://arpovea.vercel.app/images/Criptografía/importarclave.png"></p>
+<h2>Cifrado OPENSSL</h2>
+<p>A continución se muestran los comandos para crear una clave privada en openssl y generar una clave pública de la clave privada.</p>
+<p>Crear clave privada:</p>
+<div class="highlight"><pre><span></span><span class="err">openssl genrsa -out key.pem 2048</span>
+</pre></div>
+
+
+<p>Crear clave pública:</p>
+<div class="highlight"><pre><span></span><span class="err">openssl rsa -in key.pem -pubout -out key.public.pem</span>
+</pre></div>
+
+
+<p>Se puede tambien encriptar la clave privada con una contraseña con el siguiente comando:</p>
+<div class="highlight"><pre><span></span><span class="err">openssl rsa -in key.pem -des3 -out enc-key.pem</span>
+</pre></div>
+
+
+<p>Para cifrar un documento(Con la clave pública del destinatario):</p>
+<div class="highlight"><pre><span></span><span class="err">openssl rsautl -encrypt -inkey pub-key.pem -pubin -in mensaje.txt -out mensaje.txt.enc</span>
+</pre></div>
+
+
+<p>Para descifrar un mensaje sería lo mismo pero en el destinatario utilizando su clave privada:</p>
+<div class="highlight"><pre><span></span><span class="err">openssl rsautl -decrypt -inkey key.pem -in mensaje..txt.enc -out mensaje.txt</span>
+</pre></div>
+
+
+<p>A continuación se muestra un ejemplo en las siguientes imagenes:</p>
+<p><img alt="openssl1" src="https://arpovea.vercel.app/images/Criptografía/openssl1.png">
+<img alt="openssl2" src="https://arpovea.vercel.app/images/Criptografía/openssl2.png"></p>
+<p>Como dato extra también es posible cifrar con la clave privada y que descifren con la clave pública aunque es menos utilizado:</p>
+<p>Cifrado con clave privada:</p>
+<div class="highlight"><pre><span></span><span class="err">openssl rsautl -inkey key.pem -in mensaje.txt -sign &gt; mensaje.txt.enc</span>
+</pre></div>
+
+
+<p>Descifrado con clave pública:</p>
+<div class="highlight"><pre><span></span><span class="err">openssl rsautl -inkey pub-key.pem -pubin -in mensaje.txt.enc -out mensaje.txt</span>
+</pre></div>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="http://arpovea.vercel.app"><img style="width: 60px; height: 60px;" src="theme/images/arpovealogo.PNG" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="http://arpovea.vercel.app"><span id="author-name" class="w3-hover-text-dark-grey">Adrián Rodríguez Povea</span></a>
+                  <p id="author-story">Apasionado de las tecnologías.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">¿Te ha gustado el artículo? ¡Compartelo!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=https%3A//arpovea.vercel.app/criptografia-gpg-y-openssl.html&amp;t=Blog%20Inform%C3%A1tico%3A%20Criptograf%C3%ADa%3A%20GPG%20y%20OPENSSL" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=https%3A//arpovea.vercel.app/criptografia-gpg-y-openssl.html&amp;text=Blog%20Inform%C3%A1tico%3A%20Criptograf%C3%ADa%3A%20GPG%20y%20OPENSSL" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=https%3A//arpovea.vercel.app/criptografia-gpg-y-openssl.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+<!--                    <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = 'https://arpovea.vercel.app';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'criptografia-gpg-y-openssl'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://arpovea.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+-->
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>&copy;  Adrián Rodríguez Povea</span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>
