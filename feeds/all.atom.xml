@@ -30,7 +30,7 @@
 &lt;li&gt;Confianza que se tiene sobre esa clave.&lt;/li&gt;
 &lt;li&gt;Fecha de validez si dispone de ella.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Para darle fecha de validez a la clave, cuando se genera la clave con "gpg gen-key" o "gpg --full-generate-key" preguntará algo como esto:&lt;/p&gt;
+&lt;p&gt;Para darle fecha de validez a la clave, cuando se genera la clave con "gpg --gen-key" o "gpg --full-generate-key" preguntará algo como esto:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;Por favor, especifique el período de validez de la clave.&lt;/span&gt;
 &lt;span class="go"&gt;         0 = la clave nunca caduca&lt;/span&gt;
 &lt;span class="go"&gt;      &amp;lt;n&amp;gt;  = la clave caduca en n días&lt;/span&gt;
