@@ -110,7 +110,7 @@
 
 <p>Los datos mostrados son:</p>
 <ul>
-<li>El tipo de clave y el sistema de criptografía que tiene.Por ejemplo "rsa4096".</li>
+<li>El tipo de clave y el sistema de criptografía que tiene. Por ejemplo "rsa4096".</li>
 <li>El uid, número que identifica la clave, para identificarla se pueden utilizar los últimos 8 dígitos.</li>
 <li>El nombre del propietario junto con su correo y comentario si dispone de él.</li>
 <li>Confianza que se tiene sobre esa clave.</li>
@@ -127,7 +127,7 @@
 </pre></div>
 
 
-<p>En el ejemplo de arriba al final se le asigno 1 mes.</p>
+<p>En el ejemplo de arriba al final se le asignó 1 mes.</p>
 <p>Para ver las claves privadas:</p>
 <div class="highlight"><pre><span></span><span class="err">gpg --list-secret-keys</span>
 </pre></div>
@@ -157,12 +157,12 @@
 
 <p>Esto pedirá el uid del destinatario en nuestro caso el de Pepito Pérez, en la siguiente imagen se muestra todo el proceso y el fichero "mensaje.txt.gpg":</p>
 <p><img alt="gpgcifrado" src="https://arpovea.vercel.app/images/Criptografía/gpgcifrado.png"> </p>
-<p>Tambien se puede utilizar el comando con argumentos para que no sea de forma interactiva:</p>
+<p>También se puede utilizar el comando con argumentos para que no sea de forma interactiva:</p>
 <div class="highlight"><pre><span></span><span class="err">gpg -e -u &quot;Adrian Rodriguez&quot; -r &quot;pepito perez&quot;</span>
 </pre></div>
 
 
-<p>Cualquiera que no este en la lista al crear el mensaje cifrado, no puede descifrarlo. Le lanzara un mensaje de error del estilo:</p>
+<p>Cualquiera que no esté en la lista al crear el mensaje cifrado, no puede descifrarlo. Le lanzará un mensaje de error del estilo:</p>
 <div class="highlight"><pre><span></span><span class="n">gpg</span><span class="o">:</span> <span class="n">descifrado</span> <span class="n">fallido</span><span class="o">:</span> <span class="n">No</span> <span class="n">secret</span> <span class="n">key</span>
 </pre></div>
 
@@ -226,11 +226,11 @@
 </pre></div>
 
 
-<p>En las siguientes imagenes se muestra como un usuario, sube la clave y otro importa esta clave desde el servidor:</p>
+<p>En las siguientes imágenes se muestra como un usuario, sube la clave y otro importa esta clave desde el servidor:</p>
 <p><img alt="subirclaveserv" src="https://arpovea.vercel.app/images/Criptografía/subirclave.png">
 <img alt="importarclaveserv" src="https://arpovea.vercel.app/images/Criptografía/importarclave.png"></p>
 <h2>Cifrado OPENSSL</h2>
-<p>A continución se muestran los comandos para crear una clave privada en openssl y generar una clave pública de la clave privada.</p>
+<p>A continuación se muestran los comandos para crear una clave privada en openssl y generar una clave pública de la clave privada.</p>
 <p>Crear clave privada:</p>
 <div class="highlight"><pre><span></span><span class="err">openssl genrsa -out key.pem 2048</span>
 </pre></div>
@@ -241,7 +241,7 @@
 </pre></div>
 
 
-<p>Se puede tambien encriptar la clave privada con una contraseña con el siguiente comando:</p>
+<p>Se puede también encriptar la clave privada con una contraseña con el siguiente comando:</p>
 <div class="highlight"><pre><span></span><span class="err">openssl rsa -in key.pem -des3 -out enc-key.pem</span>
 </pre></div>
 
