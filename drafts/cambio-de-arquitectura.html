@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Cambio de Arquitectura &ndash; Blog Informático</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Blog Informático &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="Adrián Rodríguez Povea" />
+    <meta property="article:section" content="Sistemas" />
+    <meta property="article:published_time" content="2020-10-15" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Cambio de Arquitectura"/>
+    <meta property="og:description" content="Buenas! En esta ocasión se va a realizar el cambio de una arquitectura x86_64 (amd64) a la arquitectura i386"/>
+    <meta property="og:site_name" content="Blog Informático" />
+    <meta property="og:url" content="https://arpovea.vercel.app/drafts/cambio-de-arquitectura.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Cambio de Arquitectura">
+    <meta name="twitter:description" content="Buenas! En esta ocasión se va a realizar el cambio de una arquitectura x86_64 (amd64) a la arquitectura i386">
+    <meta name="twitter:url" content="https://arpovea.vercel.app/drafts/cambio-de-arquitectura.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/all.atom.xml" title="Blog Informático Atom Feed" />
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/Sistemas.atom.xml" title="Blog Informático Categories Atom Feed" />
+    <link rel="alternate" type="application/rss+xml" href="http://arpovea.disqus.com/latest.rss" title="Blog Informático Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/static/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://arpovea.vercel.app/theme/images/arpovealogo.PNG">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://arpovea.vercel.app/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="https://arpovea.vercel.app" id="header-logo" title="Home">AR</a>
+        <nav id="header-menu">
+          <ul>
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/redes.html">Redes</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/seguridad.html">Seguridad</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/servicios.html">Servicios</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="https://arpovea.vercel.app/category/sistemas.html">Sistemas</a></li>-->
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/categories.html">Categorías</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/archives.html">Artículos</a></li>
+            <li><a href="https://arpovea.vercel.app/pages/acerca-de.html">Acerca de</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Cambio de Arquitectura</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2020-10-15T00:00:00+02:00">jue 15 octubre 2020</time> en <a href="https://arpovea.vercel.app/category/sistemas.html" title="All articles in category Sistemas">Sistemas</a></span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <hr>
+<p>Buenas! En esta ocasión se va a realizar el cambio de una arquitectura x86_64 (amd64) a una arquitectura i386 por completo, se va a utilizar una máquina con un sistema Debian Buster(amd64).</p>
+<hr>
+<h2>Cambio de Arquitectura (De amd64 a i386):</h2>
+<h4>Paso 1: Agregar arquitectura i386.</h4>
+<p>Para ello utiliza:</p>
+<div class="highlight"><pre><span></span><span class="err">sudo dpkg --add-architecture i386</span>
+</pre></div>
+
+
+<p>Luego actualizamos la lista de paquetes:</p>
+<div class="highlight"><pre><span></span><span class="err">sudo apt-get update</span>
+</pre></div>
+
+
+<h4>Paso 2: Guardar lista de paquetes instalados en el sistema amd64.</h4>
+<p>A continuacíon se creará un fichero con los nombres de todos los paquetes del sistema con la arquitectura "amd64":</p>
+<div class="highlight"><pre><span></span><span class="err">dpkg -l | grep &#39;^.i&#39; | awk &#39;{print $2}&#39; | grep :amd64 | tr &#39;\n&#39; &#39; &#39; &gt; paquetesamd64.txt</span>
+</pre></div>
+
+
+<p>Como se puede ver se excluye aquellos que tienen que ver con el kernel, puesto que estos se instalarán a mano.</p>
+<p>Una vez realizado esto, se crea otro fichero donde se almacenan los nombres de estos mismos paquetes pero cambiando :amd64 por :i386 (la arquitectura).</p>
+<div class="highlight"><pre><span></span><span class="err">dpkg -l | grep &#39;^.i&#39; | awk &#39;{print $2}&#39; | grep :amd64 | egrep -v &#39;linux-image-.*&#39; | sed &#39;s/:amd64/:i386/g&#39; | tr &#39;\n&#39; &#39; &#39; &gt; paquetesi386.txt</span>
+</pre></div>
+
+
+<h4>Paso 3: Instalación de paquetes</h4>
+<p>Se han realizado los ficheros con la lista de paquetes para descargar estos paquetes con "apt" y instalar con "dpkg", ya que "apt" al instalar paquetes de una arquitectura borra el de la anterior arquitectura, lo que provoca que el sistema se rompa.</p>
+<p>Los paquetes descargados se almacenan en "/var/cache/apt/archives/" por lo que interesa tener este directorio limpio, para ello:</p>
+<div class="highlight"><pre><span></span><span class="err">sudo apt-get clean</span>
+</pre></div>
+
+
+<p>Una vez limpio el directorio, realiza la descarga los paquetes de los distintos instaladores en su version i386:</p>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">recommends</span> <span class="o">--</span><span class="n">download</span><span class="o">-</span><span class="n">only</span> <span class="n">install</span> <span class="n">dpkg</span><span class="p">:</span><span class="n">i386</span> <span class="n">apt</span><span class="p">:</span><span class="n">i386</span> <span class="n">aptitude</span><span class="p">:</span><span class="n">i386</span> <span class="n">apt</span><span class="o">-</span><span class="n">utils</span><span class="p">:</span><span class="n">i386</span>
+</pre></div>
+
+
+<p>Luego instalalos con:</p>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">--</span><span class="n">install</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/*.</span><span class="n">deb</span>
+<span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">--</span><span class="n">install</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/</span><span class="n">dpkg_</span><span class="o">*.</span><span class="n">deb</span>
+</pre></div>
+
+
+<p>Si da problemas al procesar recuerda intentarlo de nuevo la instalación, si da problemas de configuración realiza: <code>sudo dpkg --configure -a</code></p>
+<p>Una vez instalados estos dara problemas de dependencias para arreglar esto utiliza:</p>
+<div class="highlight"><pre><span></span><span class="err">sudo apt --fix-broken -y --allow-remove-essential</span>
+</pre></div>
+
+
+<p>Una vez realizado descarga todos los paquetes del fichero paquetesi386.txt:</p>
+<div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">paquetesi386</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">xargs</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">recommends</span> <span class="o">--</span><span class="n">download</span><span class="o">-</span><span class="n">only</span> <span class="n">install</span>
+</pre></div>
+
+
+<p>Ahora instala las librerias y perl:</p>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">--</span><span class="n">install</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/</span><span class="n">lib</span><span class="o">*.</span><span class="n">deb</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/</span><span class="n">perl</span><span class="o">*.</span><span class="n">deb</span>
+</pre></div>
+
+
+<p>Luego instala los demas:</p>
+<div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">--</span><span class="n">install</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/*.</span><span class="n">deb</span>
+</pre></div>
+
+
+<h3>Borrado de paquetes amd64</h3>
+<p>Realizamos los siguiente:</p>
+<div class="highlight"><pre><span></span><span class="err">sudo apt-get autoremove</span>
+</pre></div>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="http://arpovea.vercel.app"><img style="width: 60px; height: 60px;" src="theme/images/arpovealogo.PNG" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="http://arpovea.vercel.app"><span id="author-name" class="w3-hover-text-dark-grey">Adrián Rodríguez Povea</span></a>
+                  <p id="author-story">Apasionado de las tecnologías.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">¿Te ha gustado el artículo? ¡Compartelo!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=https%3A//arpovea.vercel.app/drafts/cambio-de-arquitectura.html&amp;t=Blog%20Inform%C3%A1tico%3A%20Cambio%20de%20Arquitectura" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=https%3A//arpovea.vercel.app/drafts/cambio-de-arquitectura.html&amp;text=Blog%20Inform%C3%A1tico%3A%20Cambio%20de%20Arquitectura" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=https%3A//arpovea.vercel.app/drafts/cambio-de-arquitectura.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+<!--                    <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = 'https://arpovea.vercel.app';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'cambio-de-arquitectura'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://arpovea.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+-->
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>&copy;  Adrián Rodríguez Povea</span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>
