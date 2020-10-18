@@ -19,7 +19,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;Paso 3: Instalación de paquetes&lt;/h4&gt;
+&lt;h4&gt;Instalación de paquetes&lt;/h4&gt;
 &lt;p&gt;Se van a descargar estos paquetes con "apt" y instalar con "dpkg", ya que "apt" al instalar paquetes de una arquitectura borra el de la anterior arquitectura, lo que provoca que el sistema se rompa.&lt;/p&gt;
 &lt;p&gt;Los paquetes descargados se almacenan en "/var/cache/apt/archives/" por lo que interesa tener este directorio limpio, para ello:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;sudo apt-get clean&lt;/span&gt;
@@ -99,7 +99,7 @@
 
 &lt;h4&gt;Borrado de la arquitectura amd64&lt;/h4&gt;
 &lt;p&gt;Una vez realizado todo lo anterior se puede remover la arquitectura amd64 con:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;sudo dpkg --remove-architecture am64&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;sudo dpkg --remove-architecture amd64&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
