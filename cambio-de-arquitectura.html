@@ -89,113 +89,103 @@
 <p>Buenas! En esta ocasión se va a realizar el cambio de una arquitectura amd64 a una arquitectura i386 por completo, se va a utilizar una máquina con un sistema Debian Buster(amd64).</p>
 <hr>
 <h2>Cambio de Arquitectura (De amd64 a i386):</h2>
-<p>Lo primero que se va a realizar es una actualización de todos los paquetes de nuestro equipo a su última versión estable, para ello:</p>
-<p>:::console</p>
-<div class="highlight"><pre><span></span><span class="err">sudo apt-get update &amp;&amp; sudo apt-get upgrade -y</span>
+<p>Lo primero que se va a realizar es una actualización de todos los paquetes de nuestro equipo a su última versión estable, para ello,</p>
+<div class="highlight"><pre><span></span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade -y
 </pre></div>
 
 
 <h3>Agregar arquitectura i386.</h3>
 <p>Para ello utiliza:</p>
-<p>:::text</p>
-<div class="highlight"><pre><span></span><span class="err">sudo dpkg --add-architecture i386</span>
+<div class="highlight"><pre><span></span>sudo dpkg --add-architecture i386
 </pre></div>
 
 
 <p>Luego actualiza la lista de paquetes:</p>
-<p>```:::console
-sudo apt-get update</p>
-<div class="highlight"><pre><span></span><span class="c1">### Instalación de paquetes</span>
+<div class="highlight"><pre><span></span>sudo apt-get update
+</pre></div>
 
-<span class="n">Se</span> <span class="n">van</span> <span class="n">a</span> <span class="n">descargar</span> <span class="n">estos</span> <span class="n">paquetes</span> <span class="n">con</span> <span class="s2">&quot;apt&quot;</span> <span class="n">y</span> <span class="n">instalar</span> <span class="n">con</span> <span class="s2">&quot;dpkg&quot;</span><span class="p">,</span> <span class="n">ya</span> <span class="n">que</span> <span class="s2">&quot;apt&quot;</span> <span class="n">al</span> <span class="n">instalar</span> <span class="n">paquetes</span> <span class="n">de</span> <span class="n">una</span> <span class="n">arquitectura</span> <span class="n">borra</span> <span class="n">el</span> <span class="n">de</span> <span class="n">la</span> <span class="n">anterior</span> <span class="n">arquitectura</span><span class="p">,</span> <span class="n">lo</span> <span class="n">que</span> <span class="n">provoca</span> <span class="n">que</span> <span class="n">el</span> <span class="n">sistema</span> <span class="n">se</span> <span class="n">rompa</span><span class="o">.</span>
 
-<span class="n">Los</span> <span class="n">paquetes</span> <span class="n">descargados</span> <span class="n">se</span> <span class="n">almacenan</span> <span class="n">en</span> <span class="s2">&quot;/var/cache/apt/archives/&quot;</span> <span class="n">por</span> <span class="n">lo</span> <span class="n">que</span> <span class="n">interesa</span> <span class="n">tener</span> <span class="n">este</span> <span class="n">directorio</span> <span class="n">limpio</span><span class="p">,</span> <span class="n">para</span> <span class="n">ello</span><span class="p">:</span>
-
-<span class="err">```</span><span class="p">:::</span><span class="n">console</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">clean</span>
+<h3>Instalación de paquetes</h3>
+<p>Se van a descargar estos paquetes con "apt" y instalar con "dpkg", ya que "apt" al instalar paquetes de una arquitectura borra el de la anterior arquitectura, lo que provoca que el sistema se rompa.</p>
+<p>Los paquetes descargados se almacenan en "/var/cache/apt/archives/" por lo que interesa tener este directorio limpio, para ello:</p>
+<div class="highlight"><pre><span></span>sudo apt-get clean
 </pre></div>
 
 
 <p>Una vez limpio el directorio, realiza la descarga los paquetes de los distintos instaladores en su versión i386 esto provocará el cambio de arquitectura principal:</p>
-<p>```:::console
-sudo apt-get -y --no-install-recommends --download-only install dpkg:i386 apt:i386 aptitude:i386 apt-utils:i386</p>
-<div class="highlight"><pre><span></span><span class="n">Luego</span> <span class="n">instálalos</span> <span class="n">con</span><span class="p">:</span>
+<div class="highlight"><pre><span></span>sudo apt-get -y --no-install-recommends --download-only install dpkg:i386 apt:i386 aptitude:i386 apt-utils:i386
+</pre></div>
 
-<span class="err">```</span><span class="p">:::</span><span class="n">console</span>
-<span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">--</span><span class="n">install</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archives</span><span class="o">/*.</span><span class="n">deb</span>
+
+<p>Luego instálalos con:</p>
+<div class="highlight"><pre><span></span>sudo dpkg --install /var/cache/apt/archives/*.deb
 </pre></div>
 
 
 <p>Si da problemas al procesar recuerda intentar de nuevo la instalación, si da problemas de configuración realiza: <code>sudo dpkg --configure -a</code></p>
 <p>Una vez instalados estos dara problemas de dependencias, para arreglar esto utiliza:</p>
-<p>```:::console
-sudo apt-get --fix-broken install -y --allow-remove-essential</p>
-<div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">continuación</span> <span class="n">descarga</span> <span class="n">todos</span> <span class="n">los</span> <span class="n">paquetes</span> <span class="n">amd64</span> <span class="n">pero</span> <span class="n">con</span> <span class="n">la</span> <span class="n">versión</span> <span class="n">i386</span><span class="p">,</span> <span class="n">menos</span> <span class="n">el</span> <span class="n">kernel</span><span class="p">:</span>
+<div class="highlight"><pre><span></span>sudo apt-get --fix-broken install -y --allow-remove-essential
+</pre></div>
 
-<span class="err">```</span><span class="p">:::</span><span class="n">console</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="o">--</span><span class="n">download</span><span class="o">-</span><span class="n">only</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">recommends</span> <span class="n">install</span> <span class="err">`</span><span class="n">dpkg</span> <span class="o">-</span><span class="n">l</span> <span class="o">|</span> <span class="n">grep</span> <span class="s1">&#39;^.i&#39;</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{print $2}&#39;</span> <span class="o">|</span> <span class="n">grep</span> <span class="p">:</span><span class="n">amd64</span> <span class="o">|</span> <span class="n">egrep</span> <span class="o">-</span><span class="n">v</span> <span class="s1">&#39;linux-image-.*&#39;</span> <span class="o">|</span> <span class="n">sed</span> <span class="s1">&#39;s/:amd64/:i386/g&#39;</span><span class="err">`</span>
+
+<p>A continuación descarga todos los paquetes amd64 pero con la versión i386, menos el kernel:</p>
+<div class="highlight"><pre><span></span>sudo apt-get --download-only -y --no-install-recommends install <span class="sb">`</span>dpkg -l <span class="p">|</span> grep <span class="s1">&#39;^.i&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span> <span class="p">|</span> grep :amd64 <span class="p">|</span> egrep -v <span class="s1">&#39;linux-image-.*&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/:amd64/:i386/g&#39;</span><span class="sb">`</span>
 </pre></div>
 
 
 <p>Ahora instala las librerías y perl (esto suele reducir los errores):</p>
-<p>```:::console
-sudo dpkg --install /var/cache/apt/archives/lib<em>.deb /var/cache/apt/archives/perl</em>.deb</p>
-<div class="highlight"><pre><span></span><span class="n">Realiza</span> <span class="n">el</span> <span class="n">siguiente</span> <span class="n">comando</span> <span class="n">para</span> <span class="n">asegurar</span> <span class="n">que</span> <span class="k">no</span> <span class="n">hay</span> <span class="n">ningún</span> <span class="n">paquete</span> <span class="n">sin</span> <span class="n">configurar</span><span class="p">:</span> 
+<div class="highlight"><pre><span></span>sudo dpkg --install /var/cache/apt/archives/lib*.deb /var/cache/apt/archives/perl*.deb
+</pre></div>
 
-<span class="o">```</span><span class="p">:::</span><span class="n">console</span>
-<span class="n">sudo</span> <span class="n">dpkg</span> <span class="c1">--configure -a</span>
+
+<p>Realiza el siguiente comando para asegurar que no hay ningún paquete sin configurar: </p>
+<div class="highlight"><pre><span></span>sudo dpkg --configure -a
 </pre></div>
 
 
 <p>Instala los demás paquetes:</p>
-<p>```:::console
-sudo dpkg --install /var/cache/apt/archives/*.deb</p>
-<div class="highlight"><pre><span></span><span class="n">Recuerda</span> <span class="n">realizar</span> <span class="n">de</span> <span class="n">nuevo</span> <span class="n">la</span> <span class="n">instalación</span> <span class="n">si</span> <span class="n">algún</span> <span class="n">paquete</span> <span class="n">da</span> <span class="n">error</span><span class="p">,</span> <span class="n">sobre</span> <span class="n">todo</span> <span class="n">de</span> <span class="n">dependencias</span><span class="p">.</span>
+<div class="highlight"><pre><span></span>sudo dpkg --install /var/cache/apt/archives/*.deb
+</pre></div>
 
-<span class="o">***</span>
 
-<span class="o">###</span> <span class="n">Borrado</span> <span class="n">de</span> <span class="n">paquetes</span> <span class="n">amd64</span> <span class="n">y</span> <span class="n">instalacion</span> <span class="n">del</span> <span class="n">kernel</span> <span class="n">i386</span>
-
-<span class="n">Una</span> <span class="n">vez</span> <span class="n">instalados</span> <span class="n">todos</span> <span class="n">los</span> <span class="n">paquetes</span> <span class="n">de</span> <span class="n">la</span> <span class="n">arquitectura</span> <span class="n">i386</span><span class="p">,</span> <span class="n">solo</span> <span class="n">queda</span> <span class="n">borrar</span> <span class="n">los</span> <span class="n">paquetes</span> <span class="n">de</span> <span class="n">amd64</span> <span class="n">y</span> <span class="n">instalar</span> <span class="n">el</span> <span class="n">kernel</span> <span class="n">i386</span><span class="p">.</span>
-
-<span class="n">Realiza</span> <span class="n">el</span> <span class="n">siguiente</span> <span class="n">comando</span> <span class="n">para</span> <span class="n">borrar</span> <span class="n">los</span> <span class="n">paquetes</span> <span class="n">que</span> <span class="k">no</span> <span class="n">son</span> <span class="n">necesarios</span> <span class="n">en</span> <span class="n">el</span> <span class="n">sistema</span><span class="p">:</span>
-
-<span class="o">```</span><span class="p">:::</span><span class="n">console</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">autoremove</span> <span class="o">-</span><span class="n">y</span>
+<p>Recuerda realizar de nuevo la instalación si algún paquete da error, sobre todo de dependencias.</p>
+<hr>
+<h3>Borrado de paquetes amd64 y instalacion del kernel i386</h3>
+<p>Una vez instalados todos los paquetes de la arquitectura i386, solo queda borrar los paquetes de amd64 y instalar el kernel i386.</p>
+<p>Realiza el siguiente comando para borrar los paquetes que no son necesarios en el sistema:</p>
+<div class="highlight"><pre><span></span>sudo apt-get autoremove -y
 </pre></div>
 
 
 <p>Ahora instala el kernel i386:</p>
-<p>```:::console
-sudo apt-get install -y linux-image-686</p>
-<div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">continuación</span> <span class="n">reinicia</span> <span class="n">el</span> <span class="n">equipo</span><span class="p">:</span>
+<div class="highlight"><pre><span></span>sudo apt-get install -y linux-image-686
+</pre></div>
 
-<span class="o">```</span><span class="p">:::</span><span class="n">console</span>
-<span class="n">sudo</span> <span class="n">reboot</span>
+
+<p>A continuación reinicia el equipo:</p>
+<div class="highlight"><pre><span></span>sudo reboot
 </pre></div>
 
 
 <p>Comprueba que está el nuevo kernel funcionando con:</p>
-<p>```:::console
-uname -r</p>
-<div class="highlight"><pre><span></span><span class="n">Aquí</span> <span class="n">puede</span> <span class="n">ocurrir</span> <span class="n">que</span> <span class="n">esté</span> <span class="n">una</span> <span class="n">versión</span> <span class="ss">&quot;cloud&quot;</span> <span class="n">del</span> <span class="n">kernel</span> <span class="n">amd64</span><span class="p">,</span> <span class="n">pero</span> <span class="k">no</span> <span class="n">hay</span> <span class="n">problema</span><span class="p">,</span> <span class="n">como</span> <span class="n">ya</span> <span class="n">hay</span> <span class="n">una</span> <span class="n">entrada</span> <span class="n">en</span> <span class="ss">&quot;/boot/initrd.img-4.19.0-11-686&quot;</span> <span class="n">al</span> <span class="n">haber</span> <span class="n">realizado</span> <span class="n">la</span> <span class="n">instalación</span> <span class="n">del</span> <span class="n">otro</span> <span class="n">kernel</span> <span class="p">(</span><span class="n">i386</span><span class="p">),</span> <span class="n">en</span> <span class="n">el</span> <span class="n">siguiente</span> <span class="n">paso</span> <span class="n">que</span> <span class="n">se</span> <span class="n">eliminan</span> <span class="n">todos</span> <span class="n">los</span> <span class="n">paquetes</span> <span class="n">amd64</span> <span class="n">incluido</span> <span class="n">estos</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">se</span> <span class="n">sustituirá</span> <span class="n">automáticamente</span> <span class="n">por</span> <span class="n">el</span> <span class="n">de</span> <span class="n">i386</span><span class="p">.</span>
+<div class="highlight"><pre><span></span>uname -r
+</pre></div>
 
-<span class="n">Una</span> <span class="n">vez</span> <span class="n">este</span> <span class="n">el</span> <span class="n">kernel</span> <span class="n">i386</span> <span class="n">instalado</span> <span class="n">borra</span> <span class="n">todos</span> <span class="n">los</span> <span class="n">paquetes</span> <span class="n">amd64</span><span class="p">:</span>
 
-<span class="o">```</span><span class="p">:::</span><span class="n">console</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="k">get</span> <span class="n">remove</span> <span class="o">-</span><span class="n">y</span> <span class="o">`</span><span class="n">dpkg</span> <span class="o">-</span><span class="n">l</span> <span class="o">|</span> <span class="n">grep</span> <span class="s1">&#39;^.i&#39;</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{print $2}&#39;</span> <span class="o">|</span> <span class="n">grep</span> <span class="p">:</span><span class="n">amd64</span><span class="o">`</span>
+<p>Aquí puede ocurrir que esté una versión "cloud" del kernel amd64, pero no hay problema, como ya hay una entrada en "/boot/initrd.img-4.19.0-11-686" al haber realizado la instalación del otro kernel (i386), en el siguiente paso que se eliminan todos los paquetes amd64 incluido estos kernel, se sustituirá automáticamente por el de i386.</p>
+<p>Una vez este el kernel i386 instalado borra todos los paquetes amd64:</p>
+<div class="highlight"><pre><span></span>sudo apt-get remove -y <span class="sb">`</span>dpkg -l <span class="p">|</span> grep <span class="s1">&#39;^.i&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span> <span class="p">|</span> grep :amd64<span class="sb">`</span>
 </pre></div>
 
 
 <p>Reinicia el equipo para asegurar el cambio de kernel si fuera necesario.</p>
-<p>```:::console
-sudo reboot</p>
-<div class="highlight"><pre><span></span><span class="o">###</span> <span class="n">Borrado</span> <span class="n">de</span> <span class="n">la</span> <span class="n">arquitectura</span> <span class="n">amd64</span>
+<div class="highlight"><pre><span></span>sudo reboot
+</pre></div>
 
-<span class="n">Una</span> <span class="n">vez</span> <span class="n">realizado</span> <span class="n">todo</span> <span class="n">lo</span> <span class="n">anterior</span> <span class="n">se</span> <span class="n">puede</span> <span class="n">remover</span> <span class="n">la</span> <span class="n">arquitectura</span> <span class="n">amd64</span> <span class="n">con</span><span class="p">:</span>
 
-<span class="o">```</span><span class="p">:::</span><span class="n">console</span>
-<span class="n">sudo</span> <span class="n">dpkg</span> <span class="c1">--remove-architecture amd64</span>
+<h3>Borrado de la arquitectura amd64</h3>
+<p>Una vez realizado todo lo anterior se puede remover la arquitectura amd64 con:</p>
+<div class="highlight"><pre><span></span>sudo dpkg --remove-architecture amd64
 </pre></div>
 
 
