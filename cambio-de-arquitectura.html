@@ -94,7 +94,7 @@
 </pre></div>
 
 
-<h4>Agregar arquitectura i386.</h4>
+<h3>Agregar arquitectura i386.</h3>
 <p>Para ello utiliza:</p>
 <div class="highlight"><pre><span></span><span class="err">sudo dpkg --add-architecture i386</span>
 </pre></div>
@@ -105,7 +105,7 @@
 </pre></div>
 
 
-<h4>Instalación de paquetes</h4>
+<h3>Instalación de paquetes</h3>
 <p>Se van a descargar estos paquetes con "apt" y instalar con "dpkg", ya que "apt" al instalar paquetes de una arquitectura borra el de la anterior arquitectura, lo que provoca que el sistema se rompa.</p>
 <p>Los paquetes descargados se almacenan en "/var/cache/apt/archives/" por lo que interesa tener este directorio limpio, para ello:</p>
 <div class="highlight"><pre><span></span><span class="err">sudo apt-get clean</span>
@@ -183,7 +183,7 @@
 </pre></div>
 
 
-<h4>Borrado de la arquitectura amd64</h4>
+<h3>Borrado de la arquitectura amd64</h3>
 <p>Una vez realizado todo lo anterior se puede remover la arquitectura amd64 con:</p>
 <div class="highlight"><pre><span></span><span class="err">sudo dpkg --remove-architecture amd64</span>
 </pre></div>
