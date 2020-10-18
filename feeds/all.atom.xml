@@ -4,12 +4,18 @@
 &lt;hr&gt;
 &lt;h2&gt;Cambio de Arquitectura (De amd64 a i386):&lt;/h2&gt;
 &lt;p&gt;Lo primero que se va a realizar es una actualización de todos los paquetes de nuestro equipo a su última versión estable, para ello:&lt;/p&gt;
-&lt;p&gt;::console
-sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade -y&lt;/p&gt;
+&lt;p&gt;::console&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade -y&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h3&gt;Agregar arquitectura i386.&lt;/h3&gt;
 &lt;p&gt;Para ello utiliza:&lt;/p&gt;
-&lt;p&gt;::text
-sudo dpkg --add-architecture i386&lt;/p&gt;
+&lt;p&gt;::text&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;sudo dpkg --add-architecture i386&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;Luego actualiza la lista de paquetes:&lt;/p&gt;
 &lt;p&gt;```:::console
 sudo apt-get update&lt;/p&gt;
