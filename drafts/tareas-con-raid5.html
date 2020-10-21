@@ -88,6 +88,14 @@
           <hr>
 <p>Buenas! En esta ocasión vamos se van a realizar una serie de tareas con firmas electronicas, correo seguro, integridad de ficheros, "apt secure" y autentificación SSH.</p>
 <hr>
+<p>Descarga una firma de un compañerp desde un servidor de claves gpg y importala a tu anillo de claves.</p>
+<p>gpg --recv-keys --keyserver keys.gnupg.net 12B9A4F8</p>
+<p>Firma esta clave de la siguiente forma:</p>
+<p>gpg --edit-key 12B9A4F8</p>
+<p>fpr -&gt; para mirar la huella</p>
+<p>sign -&gt; para firmar</p>
+<p>quit</p>
+<p>gpg --list-key sign 12B9A4F8 --&gt;lista la clave y sus firmas</p>
 <hr>
 <p>Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    </p>
         </section>
