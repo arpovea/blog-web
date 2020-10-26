@@ -378,7 +378,7 @@ Luego se le da formato con &lt;code&gt;mkswap&lt;/code&gt; y se le añade una et
 - El valor 0 evitará el intercambio de información entre la RAM y la swap .
 - El valor 100 el intercambio se estará realizando constantemente.&lt;/p&gt;
 &lt;p&gt;Se le puede dar un valor con el comando:    &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="m"&gt;90&lt;/span&gt; &amp;gt; /proc/sys/vm/swappiness
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt; &amp;gt; /proc/sys/vm/swappiness
 &lt;/pre&gt;&lt;/div&gt;
 
 
