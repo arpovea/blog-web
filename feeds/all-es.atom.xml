@@ -150,12 +150,13 @@
 &lt;li&gt;Para solucionar esta advertencia, se han activado dos opciones en el directorio "drupal" como se puede ver en el fichero "drupal.conf" y activado un módulo:&lt;ul&gt;
 &lt;li&gt;Modificación opciones directorio:&lt;ul&gt;
 &lt;li&gt;Añade "RewriteEngine On" y "AllowOverride All" como se puede ver en drupal.conf mas arriba.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;li&gt;Y activamos el módulo y se recarga apache2:&lt;ul&gt;
 &lt;li&gt;&lt;code&gt;sudo a2enmod rewrite&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo systemctl restart apache2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
