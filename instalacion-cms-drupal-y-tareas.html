@@ -215,13 +215,9 @@
 <li>
 <p>Paso 3: Verificar requisitos.</p>
 <p>Drupal comprueba que tiene todos los requisitos minimos para funcionar y lanza una serie de errores o advertencias en función de lo que falte en nuestro sistema. Los errores son obligatorios correguirlo mientras que las advertencias no son necesarias arreglarlas, ten en cuenta que es recomendable solucionar todos estas advertencia para tener una experiencia completa de drupal.</p>
-<ol>
-<li>
-<p>Soluciones a Errores y Advertencias:</p>
-</li>
-<li>
-<p>Extenciones PHP:</p>
+<p><em>Soluciones a Errores y Advertencias:</em></p>
 <ul>
+<li>Extenciones PHP:<ul>
 <li>En este caso faltaban unos paquetes que producian un error, los cuales se instalan con:</li>
 <li><code>sudo apt install php-dompdf php-gd php-xml</code></li>
 </ul>
@@ -248,7 +244,7 @@
 </li>
 </ul>
 </li>
-</ol>
+</ul>
 </li>
 <li>
 <p>Paso 4: Configurar base de datos:</p>
@@ -297,16 +293,16 @@ Opcion Avanzada: drupal    </p>
 
 
 <p>Una vez realizado esto hay que configurar a Drupal para que busque la base de datos en la otra máquina para ello en la máquina donde esta instalado Drupal modifica el fichero de configuración "/var/www/html/drupal/sites/default/settings.php" quedando asi:</p>
-<div class="highlight"><pre><span></span><span class="x">$databases[&#39;default&#39;][&#39;default&#39;] = array (</span>
-<span class="x">  &#39;database&#39; =&gt; &#39;bddrupal&#39;,</span>
-<span class="x">  &#39;username&#39; =&gt; &#39;userdrupal&#39;,</span>
-<span class="x">  &#39;password&#39; =&gt; &#39;drupal&#39;,</span>
-<span class="x">  &#39;prefix&#39; =&gt; &#39;drupal&#39;,</span>
-<span class="x">  &#39;host&#39; =&gt; &#39;192.168.100.2&#39;,</span>
-<span class="x">  &#39;port&#39; =&gt; &#39;3306&#39;,</span>
-<span class="x">  &#39;namespace&#39; =&gt; &#39;Drupal\\Core\\Database\\Driver\\mysql&#39;,</span>
-<span class="x">  &#39;driver&#39; =&gt; &#39;mysql&#39;,</span>
-<span class="x">);</span>
+<div class="highlight"><pre><span></span><span class="gp">$</span>databases<span class="o">[</span><span class="s1">&#39;default&#39;</span><span class="o">][</span><span class="s1">&#39;default&#39;</span><span class="o">]</span> <span class="o">=</span> array <span class="o">(</span>
+<span class="go">  &#39;database&#39; =&gt; &#39;bddrupal&#39;,</span>
+<span class="go">  &#39;username&#39; =&gt; &#39;userdrupal&#39;,</span>
+<span class="go">  &#39;password&#39; =&gt; &#39;drupal&#39;,</span>
+<span class="go">  &#39;prefix&#39; =&gt; &#39;drupal&#39;,</span>
+<span class="go">  &#39;host&#39; =&gt; &#39;192.168.100.2&#39;,</span>
+<span class="go">  &#39;port&#39; =&gt; &#39;3306&#39;,</span>
+<span class="go">  &#39;namespace&#39; =&gt; &#39;Drupal\\Core\\Database\\Driver\\mysql&#39;,</span>
+<span class="go">  &#39;driver&#39; =&gt; &#39;mysql&#39;,</span>
+<span class="go">);</span>
 </pre></div>
 
 

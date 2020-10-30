@@ -128,13 +128,9 @@
 &lt;li&gt;
 &lt;p&gt;Paso 3: Verificar requisitos.&lt;/p&gt;
 &lt;p&gt;Drupal comprueba que tiene todos los requisitos minimos para funcionar y lanza una serie de errores o advertencias en función de lo que falte en nuestro sistema. Los errores son obligatorios correguirlo mientras que las advertencias no son necesarias arreglarlas, ten en cuenta que es recomendable solucionar todos estas advertencia para tener una experiencia completa de drupal.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Soluciones a Errores y Advertencias:&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Extenciones PHP:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Soluciones a Errores y Advertencias:&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;Extenciones PHP:&lt;ul&gt;
 &lt;li&gt;En este caso faltaban unos paquetes que producian un error, los cuales se instalan con:&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;sudo apt install php-dompdf php-gd php-xml&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -161,7 +157,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Paso 4: Configurar base de datos:&lt;/p&gt;
@@ -210,16 +206,16 @@ Opcion Avanzada: drupal    &lt;/p&gt;
 
 
 &lt;p&gt;Una vez realizado esto hay que configurar a Drupal para que busque la base de datos en la otra máquina para ello en la máquina donde esta instalado Drupal modifica el fichero de configuración "/var/www/html/drupal/sites/default/settings.php" quedando asi:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;$databases[&amp;#39;default&amp;#39;][&amp;#39;default&amp;#39;] = array (&lt;/span&gt;
-&lt;span class="x"&gt;  &amp;#39;database&amp;#39; =&amp;gt; &amp;#39;bddrupal&amp;#39;,&lt;/span&gt;
-&lt;span class="x"&gt;  &amp;#39;username&amp;#39; =&amp;gt; &amp;#39;userdrupal&amp;#39;,&lt;/span&gt;
-&lt;span class="x"&gt;  &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;drupal&amp;#39;,&lt;/span&gt;
-&lt;span class="x"&gt;  &amp;#39;prefix&amp;#39; =&amp;gt; &amp;#39;drupal&amp;#39;,&lt;/span&gt;
-&lt;span class="x"&gt;  &amp;#39;host&amp;#39; =&amp;gt; &amp;#39;192.168.100.2&amp;#39;,&lt;/span&gt;
-&lt;span class="x"&gt;  &amp;#39;port&amp;#39; =&amp;gt; &amp;#39;3306&amp;#39;,&lt;/span&gt;
-&lt;span class="x"&gt;  &amp;#39;namespace&amp;#39; =&amp;gt; &amp;#39;Drupal\\Core\\Database\\Driver\\mysql&amp;#39;,&lt;/span&gt;
-&lt;span class="x"&gt;  &amp;#39;driver&amp;#39; =&amp;gt; &amp;#39;mysql&amp;#39;,&lt;/span&gt;
-&lt;span class="x"&gt;);&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;$&lt;/span&gt;databases&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;][&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; array &lt;span class="o"&gt;(&lt;/span&gt;
+&lt;span class="go"&gt;  &amp;#39;database&amp;#39; =&amp;gt; &amp;#39;bddrupal&amp;#39;,&lt;/span&gt;
+&lt;span class="go"&gt;  &amp;#39;username&amp;#39; =&amp;gt; &amp;#39;userdrupal&amp;#39;,&lt;/span&gt;
+&lt;span class="go"&gt;  &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;drupal&amp;#39;,&lt;/span&gt;
+&lt;span class="go"&gt;  &amp;#39;prefix&amp;#39; =&amp;gt; &amp;#39;drupal&amp;#39;,&lt;/span&gt;
+&lt;span class="go"&gt;  &amp;#39;host&amp;#39; =&amp;gt; &amp;#39;192.168.100.2&amp;#39;,&lt;/span&gt;
+&lt;span class="go"&gt;  &amp;#39;port&amp;#39; =&amp;gt; &amp;#39;3306&amp;#39;,&lt;/span&gt;
+&lt;span class="go"&gt;  &amp;#39;namespace&amp;#39; =&amp;gt; &amp;#39;Drupal\\Core\\Database\\Driver\\mysql&amp;#39;,&lt;/span&gt;
+&lt;span class="go"&gt;  &amp;#39;driver&amp;#39; =&amp;gt; &amp;#39;mysql&amp;#39;,&lt;/span&gt;
+&lt;span class="go"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
