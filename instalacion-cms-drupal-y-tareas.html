@@ -236,10 +236,7 @@
 <li>URL limpias:<ul>
 <li>Para solucionar esta advertencia, se han activado dos opciones en el directorio "drupal" como se puede ver en el fichero "drupal.conf" y activado un módulo:<ul>
 <li>Modificación opciones directorio:<ul>
-<li><code>&lt;Directory /var/www/html/drupal&gt;</code>
-    <code>RewriteEngine On</code>
-    <code>AllowOverride All</code>
-  <code>&lt;/Directory&gt;</code></li>
+<li>Añade "RewriteEngine On" y "AllowOverride All" como se puede ver en drupal.conf mas arriba.</li>
 </ul>
 </li>
 </ul>
@@ -254,14 +251,11 @@
 </li>
 <li>
 <p>Paso 4: Configurar base de datos:</p>
-<p>Aqui se le indica la base de datos a utilizar, en este caso "mariadb", se indica usuario, contraseña y base de datos a utilizar, como opción avanzada se le puede indicar que añada a las tablas una terminología por si la base de datos la utilizan varias aplicaciones, en este caso le indicamos que las marque con la etiqueta "drupal". En este caso la configuración sería:</p>
-<div class="highlight"><pre><span></span><span class="err">* Usuario:userdrupal</span>
-<span class="err">* Base de datos: bddrupal</span>
-<span class="err">* Contraseña: drupal</span>
-<span class="err">* Opcion Avanzada: drupal</span>
-</pre></div>
-
-
+<p>Aqui se le indica la base de datos a utilizar, en este caso "mariadb", se indica usuario, contraseña y base de datos a utilizar, como opción avanzada se le puede indicar que añada a las tablas una terminología por si la base de datos la utilizan varias aplicaciones, en este caso le indicamos que las marque con la etiqueta "drupal". En este caso la configuración sería:    </p>
+<p>Usuario:userdrupal  <br>
+Base de datos: bddrupal  <br>
+Contraseña: drupal  <br>
+Opcion Avanzada: drupal    </p>
 </li>
 <li>
 <p>Paso 5: Configurar Sitio:</p>
