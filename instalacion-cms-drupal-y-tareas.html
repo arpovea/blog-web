@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Instalación CMS Drupal y tareas &ndash; Blog Informático</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Blog Informático &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="Adrián Rodríguez Povea" />
+    <meta property="article:section" content="Implantación Web" />
+    <meta property="article:published_time" content="2020-10-28" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Instalación CMS Drupal y tareas"/>
+    <meta property="og:description" content="Buenas! En esta ocasión se va a realizar la instalación de CMS en PHP concretamente Drupal y distintas configuraciones y tareas."/>
+    <meta property="og:site_name" content="Blog Informático" />
+    <meta property="og:url" content="https://arpovea.vercel.app/instalacion-cms-drupal-y-tareas.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Instalación CMS Drupal y tareas">
+    <meta name="twitter:description" content="Buenas! En esta ocasión se va a realizar la instalación de CMS en PHP concretamente Drupal y distintas configuraciones y tareas.">
+    <meta name="twitter:url" content="https://arpovea.vercel.app/instalacion-cms-drupal-y-tareas.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/all.atom.xml" title="Blog Informático Atom Feed" />
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/Implantación Web.atom.xml" title="Blog Informático Categories Atom Feed" />
+    <link rel="alternate" type="application/rss+xml" href="http://arpovea.disqus.com/latest.rss" title="Blog Informático Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/static/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://arpovea.vercel.app/theme/images/arpovealogo.PNG">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://arpovea.vercel.app/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="https://arpovea.vercel.app" id="header-logo" title="Home">AR</a>
+        <nav id="header-menu">
+          <ul>
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="https://arpovea.vercel.app/category/implantacion-web.html">Implantación Web</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/redes.html">Redes</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/seguridad.html">Seguridad</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/servicios.html">Servicios</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/sistemas.html">Sistemas</a></li>-->
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/categories.html">Categorías</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/archives.html">Artículos</a></li>
+            <li><a href="https://arpovea.vercel.app/pages/acerca-de.html">Acerca de</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Instalación CMS Drupal y tareas</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2020-10-28T00:00:00+01:00">mié 28 octubre 2020</time> en <a href="https://arpovea.vercel.app/category/implantacion-web.html" title="All articles in category Implantación Web">Implantación Web</a></span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <hr>
+<p>Buenas! En esta ocasión se va a realizar la instalación de CMS desarrollados en PHP concretamente Drupal y distintas configuraciones y tareas.</p>
+<hr>
+<h2>Escenario</h2>
+<p>El escenario para esta práctica se despliega en vagrant-libvirt, a continuación se muestra el contenido de Vagrantfile:</p>
+<div class="highlight"><pre><span></span><span class="go">Vagrant.configure(&quot;2&quot;) do |config|</span>
+<span class="go">  config.vm.define :server do |server|</span>
+<span class="go">   server.vm.box = &quot;debian/buster64&quot;</span>
+<span class="go">   server.vm.hostname = &quot;server&quot;</span>
+<span class="go">   server.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;, disabled: true</span>
+<span class="go">   server.vm.network :private_network,</span>
+<span class="go">   :ip =&gt; &quot;192.168.100.1&quot;,</span>
+<span class="go">   :libvirt__network_name =&gt; &quot;lan1&quot;</span>
+<span class="go">   server.vm.provision &quot;shell&quot;,</span>
+<span class="go">   path:&quot;/home/adri/Dropbox/2ASIR/scripLAMP.sh&quot;</span>
+<span class="go">   server.vm.provider :libvirt do |server|</span>
+<span class="go">     server.uri = &#39;qemu+unix:///system&#39;</span>
+<span class="go">     server.host = &quot;server&quot;</span>
+<span class="go">     server.cpus = 1</span>
+<span class="go">     server.memory = 512</span>
+<span class="go">   end</span>
+<span class="go">  end</span>
+<span class="go">  config.vm.define :bd do |bd|</span>
+<span class="go">   bd.vm.box = &quot;debian/buster64&quot;</span>
+<span class="go">   bd.vm.hostname = &quot;bd&quot;</span>
+<span class="go">   bd.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;, disabled: true</span>
+<span class="go">   bd.vm.network :private_network,</span>
+<span class="go">   :ip =&gt; &quot;192.168.100.2&quot;,</span>
+<span class="go">   :libvirt__network_name =&gt; &quot;lan1&quot;</span>
+<span class="go">   bd.vm.provider :libvirt do |bd|</span>
+<span class="go">     bd.uri = &#39;qemu+unix:///system&#39;</span>
+<span class="go">     bd.host = &quot;bd&quot;</span>
+<span class="go">     bd.cpus = 1</span>
+<span class="go">     bd.memory = 512</span>
+<span class="go">   end</span>
+<span class="go">  end</span>
+<span class="go">end</span>
+</pre></div>
+
+
+<h2>Instalación pila LAMP</h2>
+<p>Para poder instalar Drupal previamente hay que tener instalado una serie de requisitos, como por ejemplo una base de datos, modulos de PHP, y el servidor apache2, a todo esto se le llama pila LAMP.</p>
+<p>Para ello se ha realizado un script que realiza:
+* Actualización del equipo
+* Instala la base de datos mariadb y crea un usuario,una base de datos y consede privilegios
+* Instala php y módulos necesarios. 
+* Instala apache2 junto a algunos módulos necesarios y crea también un fichero ".php" para poder probar que funciona correctamente.</p>
+<div class="highlight"><pre><span></span><span class="gp">#</span>! /usr/bin/bash 
+
+<span class="gp">#</span>Le agregamos a grub donde queremos que se instale para que no pregunte en la actualización:
+
+<span class="go">sudo echo &quot;SET grub-pc/install_devices /dev/vda1&quot; | sudo debconf-communicate</span>
+
+<span class="gp">#</span>Actualizamos lista de paquetería y actualizamos los paquetes del sistema:
+
+<span class="go">sudo apt-get update &amp;&amp; sudo apt-get upgrade -y</span>
+
+<span class="gp">#</span>Instalamos MariaDB y creamos usuario y base de datos y le damos privilegios:
+
+<span class="go">sudo apt-get install mariadb-client mariadb-server -y</span>
+<span class="go">newUser=userdrupal</span>
+<span class="go">newDbPassword=drupal</span>
+<span class="go">newDb=bddrupal</span>
+<span class="go">host=localhost</span>
+<span class="go">commands=&quot;CREATE DATABASE \`${newDb}\`;CREATE USER &#39;${newUser}&#39;@&#39;${host}&#39; IDENTIFIED BY &#39;${newDbPassword}&#39;;GRANT USAGE ON *.* TO &#39;${newUser}&#39;@&#39;${host}&#39; IDENTIFIED BY &#39;${newDbPassword}&#39;;GRANT ALL privileges ON \`${newDb}\`.* TO &#39;${newUser}&#39;@&#39;${host}&#39;;FLUSH PRIVILEGES;&quot;</span>
+<span class="go">echo &quot;${commands}&quot; | sudo /usr/bin/mysql -u root</span>
+
+<span class="gp">#</span>Instalamos php y el módulo de php de mysql:
+
+<span class="go">sudo apt-get install php7.3 php7.3-mysql -y</span>
+
+<span class="gp">#</span>Instalamos apache y el módulo de apache para que interprete php:
+
+<span class="go">sudo apt-get install apache2 libapache2-mod-php7.3 -y</span>
+
+<span class="gp">#</span>Creamos el fichero index.php para hacer la prueba de funcionamiento:
+
+<span class="go">sudo echo &quot;&lt;?php phpinfo(); ?&gt;&quot; &gt; /var/www/html/index.php</span>
+</pre></div>
+
+
+<hr>
+<h2>Preparación del Virtual Host con apache</h2>
+<p>A continuación se configura apache2 añadiendo un virtualhost para instalar drupal en él, para ello agregamos un fichero en "/etc/apache2/sites-available", con el siguiente contenido:</p>
+<p>Fichero drupal.conf:</p>
+<div class="highlight"><pre><span></span><span class="go">&lt;VirtualHost *:80&gt;</span>
+<span class="go">        ServerName www.arp-drupal.org</span>
+<span class="go">        ServerAdmin webmaster@localhost</span>
+<span class="go">        DocumentRoot /var/www/html/drupal</span>
+<span class="go">        ErrorLog ${APACHE_LOG_DIR}/error.log</span>
+<span class="go">        CustomLog ${APACHE_LOG_DIR}/access.log combined</span>
+<span class="go">        &lt;Directory /var/www/html/drupal&gt;</span>
+<span class="go">                RewriteEngine On</span>
+<span class="go">                AllowOverride All</span>
+<span class="go">        &lt;/Directory&gt;</span>
+<span class="go">&lt;/VirtualHost&gt;</span>
+</pre></div>
+
+
+<p>A continuación se descarga drupal y se coloca en su directorio y cambian permisos:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo wget https://www.drupal.org/download-latest/zip</span>
+<span class="go">sudo unzip zip</span>
+<span class="go">sudo mv drupal-9.0.7/ drupal</span>
+<span class="go">sudo chown -R www-data. drupal/</span>
+</pre></div>
+
+
+<p>Se activa el sitio y un módulo (explicado mas abajo) con: </p>
+<div class="highlight"><pre><span></span><span class="go">sudo a2ensite drupal.conf</span>
+<span class="go">sudo a2enmod rewrite</span>
+<span class="go">sudo systemctl restart apache2</span>
+</pre></div>
+
+
+<hr>
+<h2>Instalación Drupal</h2>
+<p>Accedemos desde el navegador a la IP o URL si se ha modificado el fichero "/etc/hosts" del anfitrión. Y seguimos lo pasos:</p>
+<ul>
+<li>
+<p>Paso 1: Elegir idioma.</p>
+<p>Simplente elegimos el idioma deseado.</p>
+</li>
+<li>
+<p>Paso 2: Elegir perfil.</p>
+<p>Aquí seleccionamos el nivel de instalación que se quiere realizar, ya sea estandar, mínima o una demo. En este caso "mínima"</p>
+</li>
+<li>
+<p>Paso 3: Verificar requisitos.</p>
+<p>Drupal comprueba que tiene todos los requisitos minimos para funcionar y lanza una serie de errores o advertencias en función de lo que falte en nuestro sistema. Los errores son obligatorios correguirlo mientras que las advertencias no son necesarias arreglarlas, ten en cuenta que es recomendable solucionar todos estas advertencia para tener una experiencia completa de drupal.</p>
+<p>Soluciones a Errores y Advertencias:</p>
+<p>Extenciones PHP:</p>
+<p>En este caso faltaban unos paquetes que producian un error, los cuales se instalan con:</p>
+<p><code>console
+sudo apt install php-dompdf php-gd php-xml</code></p>
+<p>Bilioteca UNICODE:</p>
+<p>En este caso faltaba un paquete que provocaba una advertencia:
+<code>console
+sudo apt install php7.3-mbstring</code></p>
+<p>URL limpias:</p>
+<p>Para solucionar esta advertencia, se han activado dos opciones en el directorio "drupal" como se puede ver en el fichero "drupal.conf" y activado un módulo:</p>
+<p>Modificación opciones directorio:
+<code>console
+        &lt;Directory /var/www/html/drupal&gt;
+                RewriteEngine On
+                AllowOverride All
+        &lt;/Directory&gt;</code></p>
+<p>Y activamos el módulo y se recarga apache2:
+<code>console
+sudo a2enmod rewrite</code></p>
+</li>
+<li>
+<p>Paso 4: Configurar base de datos:</p>
+<p>Aqui se le indica la base de datos a utilizar, en este caso "mariadb", se indica usuario, contraseña y base de datos a utilizar, como opción avanzada se le puede indicar que añada a las tablas una terminología por si la base de datos la utilizan varias aplicaciones, en este caso le indicamos que las marque con la etiqueta "drupal". En este caso la configuración sería:</p>
+<p>Usuario:userdrupal
+Base de datos: bddrupal
+Contraseña: drupal
+Opcion Avanzada: drupal</p>
+</li>
+<li>
+<p>Paso 5: Configurar Sitio:</p>
+<p>Una vez finaliza la instalación se procede a modificar el sitio, basicamente pide un nombre para el sitio, un correo, y información sobre la cuenta del administrador del sitio así como el país donde se encuentra el sitio. Una vez finalizado realiza unas operaciones y terminaría la instalación de drupal.</p>
+</li>
+</ul>
+<hr>
+<h2>Modificación Drupal</h2>
+<p>Sin entrar mucho en detalle puesto que no es el objetivo de esta práctica vamos a comentar un par de aspecto como es el cambio de plantilla, y crear un articulo sencillo en el sitio.</p>
+<p>Para el cambio de plantilla, se puede realizar de varias formas, desde una URL del tema seleccionado, o descargando el paquete tar.gz, para ello con el usuario administrador, desde la pestaña "apariencia" y "instalar nuevo tema" como se muestra en la siguiente imagen:</p>
+<p><img alt="nuevotema" src="https://arpovea.vercel.app/images/CMS/nuevotema0.png"> 
+<img alt="nuevotema1" src="https://arpovea.vercel.app/images/CMS/nuevotema.png"> </p>
+<p>Para crear algun contenido, se realiza desde la pestaña contenido, y luego "añadir contenido", en donde, da varias opciones como "Artículo" o "Página Básica". Con estas opciones creamos nuestro primer artículo como se ve en la siguiente imagen:</p>
+<p><img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevocontenido0.png">
+<img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevocontenido.png"></p>
+<p>Tambien se ha instalado un modulo para facilitar el manejo de la barra de herramientas, para ello desde la página de administración selecciona "ampliar" y luego "instalar nuevo módulo" como se muestra en la siguiente imagen:</p>
+<p><img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevomodulo0.png">
+<img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevomodulo1.png"></p>
+<h2>Configuración Multinodo: Base de datos en otra máquina.</h2>
+<p>Se va a proceder a colocar la base de datos en una máquina distinta, esta máquina estará en la misma red. En la cual unicamente se instalará "mariadb".</p>
+<p>Lo primero a realizar es una copia de seguridad de la base de datos actual del drupal, para ello:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo mysqldump -v --opt --events --routines --triggers --default-character-set=utf8 -u root bddrupal &gt; db_backup_drupal_`date +%Y%m%d_%H%M%S`.sql</span>
+</pre></div>
+
+
+<p>Una vez generada la copia, se pasará a la otra máquina, que tiene instalado previamente "mariadb", se creará la base de datos "bddrupal" y  el usuario "userdrupal" con contraseña "drupal" pero esta vez al crearlo le indicaremos que este usuario puede accerder a la base de datos de forma externa con el siguiente comando desde la consola de "mariadb" con el usuario "root":</p>
+<div class="highlight"><pre><span></span><span class="go">CREATE DATABASE `bddrupal`;</span>
+<span class="go">CREATE USER &#39;userdrupal&#39; IDENTIFIED BY &#39;drupal&#39;;</span>
+<span class="go">GRANT USAGE ON *.* TO &#39;userdrupal&#39;@&#39;%&#39; IDENTIFIED BY &#39;drupal&#39;;</span>
+<span class="go">GRANT ALL privileges ON `bddrupal`.* TO &#39;userdrupal&#39;;</span>
+<span class="go">FLUSH PRIVILEGES;</span>
+</pre></div>
+
+
+<p>Una vez realizado esto restaurá la copia de la base de datos en la nueva máquina:</p>
+<div class="highlight"><pre><span></span><span class="go">mysql -u root bddrupal &lt; db_backup_drupal_20201028_182650.sql</span>
+</pre></div>
+
+
+<p>Una vez realizado esto hay que configurar a Drupal para que busque la base de datos en la otra máquina para ello en la máquina donde esta instalado Drupal modifica el fichero de configuración "/var/www/html/drupal/sites/default/settings.php" quedando asi:</p>
+<div class="highlight"><pre><span></span><span class="x">$databases[&#39;default&#39;][&#39;default&#39;] = array (</span>
+<span class="x">  &#39;database&#39; =&gt; &#39;bddrupal&#39;,</span>
+<span class="x">  &#39;username&#39; =&gt; &#39;userdrupal&#39;,</span>
+<span class="x">  &#39;password&#39; =&gt; &#39;drupal&#39;,</span>
+<span class="x">  &#39;prefix&#39; =&gt; &#39;drupal&#39;,</span>
+<span class="x">  &#39;host&#39; =&gt; &#39;192.168.100.2&#39;,</span>
+<span class="x">  &#39;port&#39; =&gt; &#39;3306&#39;,</span>
+<span class="x">  &#39;namespace&#39; =&gt; &#39;Drupal\\Core\\Database\\Driver\\mysql&#39;,</span>
+<span class="x">  &#39;driver&#39; =&gt; &#39;mysql&#39;,</span>
+<span class="x">);</span>
+</pre></div>
+
+
+<p>Tambien hay que indicarle a "mariadb" que acepte acceso remoto para ello modifica el fichero de configuración "/etc/mysql/mariadb.conf.d/50-server.cnf" comentando la siguiente linea:</p>
+<div class="highlight"><pre><span></span><span class="gp">#</span>bind-address            <span class="o">=</span> <span class="m">127</span>.0.0.1
+</pre></div>
+
+
+<p>ó indicandole acceso desde cualquier sitio:</p>
+<div class="highlight"><pre><span></span><span class="go">bind-address            = 0.0.0.0</span>
+</pre></div>
+
+
+<p>Reinicia el servicio de mariadb para que recarge la configuración:</p>
+<div class="highlight"><pre><span></span><span class="go">systemctl restart mariadb</span>
+</pre></div>
+
+
+<p>Una vez realizado esto se puede borrar la base de datos de la máquina donde esta drupal, para ellos desde la consola de mariadb:</p>
+<div class="highlight"><pre><span></span><span class="go">drop database bddrupal;</span>
+</pre></div>
+
+
+<p>ó tambien se puede realizar la desistalacíon de mariadb, para ello:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo apt purge mariadb*</span>
+</pre></div>
+
+
+<h2>Instalación de un segundo CMS</h2>
+<p>A continuación se va a instalar Joomla! para ello se creará otro virtualhost llamado joomla.conf con el siguiente contenido:</p>
+<div class="highlight"><pre><span></span><span class="go">&lt;VirtualHost *:80&gt;</span>
+<span class="go">        ServerName www.arp-joomla.org</span>
+<span class="go">        ServerAdmin webmaster@localhost</span>
+<span class="go">        DocumentRoot /var/www/html/joomla</span>
+<span class="go">        ErrorLog ${APACHE_LOG_DIR}/error.log</span>
+<span class="go">        CustomLog ${APACHE_LOG_DIR}/access.log combined</span>
+<span class="go">        &lt;Directory /var/www/html/joomla&gt;</span>
+<span class="go">                RewriteEngine On</span>
+<span class="go">                AllowOverride All</span>
+<span class="go">        &lt;/Directory&gt;</span>
+<span class="go">&lt;/VirtualHost&gt;</span>
+</pre></div>
+
+
+<p>También se le va a crear otro usuario y base de datos a Joomla! para ello en la máquina que esta "mariadb", de nuevo en la consola de "mariadb":</p>
+<div class="highlight"><pre><span></span><span class="go">CREATE DATABASE `bdjoomla`;</span>
+<span class="go">CREATE USER &#39;userjoomla&#39; IDENTIFIED BY &#39;joomla&#39;;</span>
+<span class="go">GRANT USAGE ON *.* TO &#39;userjoomla&#39;@&#39;%&#39; IDENTIFIED BY &#39;joomla&#39;;</span>
+<span class="go">GRANT ALL privileges ON `bdjoomla`.* TO &#39;userjoomla&#39;;</span>
+<span class="go">FLUSH PRIVILEGES;</span>
+</pre></div>
+
+
+<p>Una vez realizado esto, accede a la URL del sitio y comienza la instalación, es muy parecida a la de drupal, la única diferencia es que puedes elegir unas plantillas por defecto y al final de la instalación pide borrar la carpeta "installation", los demas pasos son iguales, pedirá usuario y sus datos, y los datos de la base de datos, que en este caso no esta en "localhost" sino en la IP "192.168.100.2", al finalizar Joomla estará disponible.</p>
+<p><img alt="joomla" src="https://arpovea.vercel.app/images/CMS/joomla.png"></p>
+<hr>
+<p>Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    </p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="http://arpovea.vercel.app"><img style="width: 60px; height: 60px;" src="theme/images/arpovealogo.PNG" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="http://arpovea.vercel.app"><span id="author-name" class="w3-hover-text-dark-grey">Adrián Rodríguez Povea</span></a>
+                  <p id="author-story">Apasionado de las tecnologías.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">¿Te ha gustado el artículo? ¡Compartelo!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=https%3A//arpovea.vercel.app/instalacion-cms-drupal-y-tareas.html&amp;t=Blog%20Inform%C3%A1tico%3A%20Instalaci%C3%B3n%20CMS%20Drupal%20y%20tareas" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=https%3A//arpovea.vercel.app/instalacion-cms-drupal-y-tareas.html&amp;text=Blog%20Inform%C3%A1tico%3A%20Instalaci%C3%B3n%20CMS%20Drupal%20y%20tareas" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=https%3A//arpovea.vercel.app/instalacion-cms-drupal-y-tareas.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+<!--                    <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = 'https://arpovea.vercel.app';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'instalacion-cms-drupal-y-tareas'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://arpovea.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+-->
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>&copy;  Adrián Rodríguez Povea</span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>

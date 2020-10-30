@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Blog Informático - Implantación Web</title><link href="https://arpovea.vercel.app/" rel="alternate"></link><link href="https://arpovea.vercel.app/feeds/implantacion-web.atom.xml" rel="self"></link><id>https://arpovea.vercel.app/</id><updated>2020-10-28T00:00:00+01:00</updated><entry><title>Instalación CMS Drupal y tareas</title><link href="https://arpovea.vercel.app/instalacion-cms-drupal-y-tareas.html" rel="alternate"></link><published>2020-10-28T00:00:00+01:00</published><updated>2020-10-28T00:00:00+01:00</updated><author><name>Adrián Rodríguez Povea</name></author><id>tag:arpovea.vercel.app,2020-10-28:/instalacion-cms-drupal-y-tareas.html</id><summary type="html">&lt;p&gt;Buenas! En esta ocasión se va a realizar la instalación de CMS en PHP concretamente Drupal y distintas configuraciones y tareas.&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;p&gt;Buenas! En esta ocasión se va a realizar la instalación de CMS desarrollados en PHP concretamente Drupal y distintas configuraciones y tareas.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Escenario&lt;/h2&gt;
+&lt;p&gt;El escenario para esta práctica se despliega en vagrant-libvirt, a continuación se muestra el contenido de Vagrantfile:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;Vagrant.configure(&amp;quot;2&amp;quot;) do |config|&lt;/span&gt;
+&lt;span class="go"&gt;  config.vm.define :server do |server|&lt;/span&gt;
+&lt;span class="go"&gt;   server.vm.box = &amp;quot;debian/buster64&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;   server.vm.hostname = &amp;quot;server&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;   server.vm.synced_folder &amp;quot;.&amp;quot;, &amp;quot;/vagrant&amp;quot;, disabled: true&lt;/span&gt;
+&lt;span class="go"&gt;   server.vm.network :private_network,&lt;/span&gt;
+&lt;span class="go"&gt;   :ip =&amp;gt; &amp;quot;192.168.100.1&amp;quot;,&lt;/span&gt;
+&lt;span class="go"&gt;   :libvirt__network_name =&amp;gt; &amp;quot;lan1&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;   server.vm.provision &amp;quot;shell&amp;quot;,&lt;/span&gt;
+&lt;span class="go"&gt;   path:&amp;quot;/home/adri/Dropbox/2ASIR/scripLAMP.sh&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;   server.vm.provider :libvirt do |server|&lt;/span&gt;
+&lt;span class="go"&gt;     server.uri = &amp;#39;qemu+unix:///system&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;     server.host = &amp;quot;server&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;     server.cpus = 1&lt;/span&gt;
+&lt;span class="go"&gt;     server.memory = 512&lt;/span&gt;
+&lt;span class="go"&gt;   end&lt;/span&gt;
+&lt;span class="go"&gt;  end&lt;/span&gt;
+&lt;span class="go"&gt;  config.vm.define :bd do |bd|&lt;/span&gt;
+&lt;span class="go"&gt;   bd.vm.box = &amp;quot;debian/buster64&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;   bd.vm.hostname = &amp;quot;bd&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;   bd.vm.synced_folder &amp;quot;.&amp;quot;, &amp;quot;/vagrant&amp;quot;, disabled: true&lt;/span&gt;
+&lt;span class="go"&gt;   bd.vm.network :private_network,&lt;/span&gt;
+&lt;span class="go"&gt;   :ip =&amp;gt; &amp;quot;192.168.100.2&amp;quot;,&lt;/span&gt;
+&lt;span class="go"&gt;   :libvirt__network_name =&amp;gt; &amp;quot;lan1&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;   bd.vm.provider :libvirt do |bd|&lt;/span&gt;
+&lt;span class="go"&gt;     bd.uri = &amp;#39;qemu+unix:///system&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;     bd.host = &amp;quot;bd&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;     bd.cpus = 1&lt;/span&gt;
+&lt;span class="go"&gt;     bd.memory = 512&lt;/span&gt;
+&lt;span class="go"&gt;   end&lt;/span&gt;
+&lt;span class="go"&gt;  end&lt;/span&gt;
+&lt;span class="go"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Instalación pila LAMP&lt;/h2&gt;
+&lt;p&gt;Para poder instalar Drupal previamente hay que tener instalado una serie de requisitos, como por ejemplo una base de datos, modulos de PHP, y el servidor apache2, a todo esto se le llama pila LAMP.&lt;/p&gt;
+&lt;p&gt;Para ello se ha realizado un script que realiza:
+* Actualización del equipo
+* Instala la base de datos mariadb y crea un usuario,una base de datos y consede privilegios
+* Instala php y módulos necesarios. 
+* Instala apache2 junto a algunos módulos necesarios y crea también un fichero ".php" para poder probar que funciona correctamente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;#&lt;/span&gt;! /usr/bin/bash 
+
+&lt;span class="gp"&gt;#&lt;/span&gt;Le agregamos a grub donde queremos que se instale para que no pregunte en la actualización:
+
+&lt;span class="go"&gt;sudo echo &amp;quot;SET grub-pc/install_devices /dev/vda1&amp;quot; | sudo debconf-communicate&lt;/span&gt;
+
+&lt;span class="gp"&gt;#&lt;/span&gt;Actualizamos lista de paquetería y actualizamos los paquetes del sistema:
+
+&lt;span class="go"&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade -y&lt;/span&gt;
+
+&lt;span class="gp"&gt;#&lt;/span&gt;Instalamos MariaDB y creamos usuario y base de datos y le damos privilegios:
+
+&lt;span class="go"&gt;sudo apt-get install mariadb-client mariadb-server -y&lt;/span&gt;
+&lt;span class="go"&gt;newUser=userdrupal&lt;/span&gt;
+&lt;span class="go"&gt;newDbPassword=drupal&lt;/span&gt;
+&lt;span class="go"&gt;newDb=bddrupal&lt;/span&gt;
+&lt;span class="go"&gt;host=localhost&lt;/span&gt;
+&lt;span class="go"&gt;commands=&amp;quot;CREATE DATABASE \`${newDb}\`;CREATE USER &amp;#39;${newUser}&amp;#39;@&amp;#39;${host}&amp;#39; IDENTIFIED BY &amp;#39;${newDbPassword}&amp;#39;;GRANT USAGE ON *.* TO &amp;#39;${newUser}&amp;#39;@&amp;#39;${host}&amp;#39; IDENTIFIED BY &amp;#39;${newDbPassword}&amp;#39;;GRANT ALL privileges ON \`${newDb}\`.* TO &amp;#39;${newUser}&amp;#39;@&amp;#39;${host}&amp;#39;;FLUSH PRIVILEGES;&amp;quot;&lt;/span&gt;
+&lt;span class="go"&gt;echo &amp;quot;${commands}&amp;quot; | sudo /usr/bin/mysql -u root&lt;/span&gt;
+
+&lt;span class="gp"&gt;#&lt;/span&gt;Instalamos php y el módulo de php de mysql:
+
+&lt;span class="go"&gt;sudo apt-get install php7.3 php7.3-mysql -y&lt;/span&gt;
+
+&lt;span class="gp"&gt;#&lt;/span&gt;Instalamos apache y el módulo de apache para que interprete php:
+
+&lt;span class="go"&gt;sudo apt-get install apache2 libapache2-mod-php7.3 -y&lt;/span&gt;
+
+&lt;span class="gp"&gt;#&lt;/span&gt;Creamos el fichero index.php para hacer la prueba de funcionamiento:
+
+&lt;span class="go"&gt;sudo echo &amp;quot;&amp;lt;?php phpinfo(); ?&amp;gt;&amp;quot; &amp;gt; /var/www/html/index.php&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Preparación del Virtual Host con apache&lt;/h2&gt;
+&lt;p&gt;A continuación se configura apache2 añadiendo un virtualhost para instalar drupal en él, para ello agregamos un fichero en "/etc/apache2/sites-available", con el siguiente contenido:&lt;/p&gt;
+&lt;p&gt;Fichero drupal.conf:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;&amp;lt;VirtualHost *:80&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;        ServerName www.arp-drupal.org&lt;/span&gt;
+&lt;span class="go"&gt;        ServerAdmin webmaster@localhost&lt;/span&gt;
+&lt;span class="go"&gt;        DocumentRoot /var/www/html/drupal&lt;/span&gt;
+&lt;span class="go"&gt;        ErrorLog ${APACHE_LOG_DIR}/error.log&lt;/span&gt;
+&lt;span class="go"&gt;        CustomLog ${APACHE_LOG_DIR}/access.log combined&lt;/span&gt;
+&lt;span class="go"&gt;        &amp;lt;Directory /var/www/html/drupal&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;                RewriteEngine On&lt;/span&gt;
+&lt;span class="go"&gt;                AllowOverride All&lt;/span&gt;
+&lt;span class="go"&gt;        &amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A continuación se descarga drupal y se coloca en su directorio y cambian permisos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;sudo wget https://www.drupal.org/download-latest/zip&lt;/span&gt;
+&lt;span class="go"&gt;sudo unzip zip&lt;/span&gt;
+&lt;span class="go"&gt;sudo mv drupal-9.0.7/ drupal&lt;/span&gt;
+&lt;span class="go"&gt;sudo chown -R www-data. drupal/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se activa el sitio y un módulo (explicado mas abajo) con: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;sudo a2ensite drupal.conf&lt;/span&gt;
+&lt;span class="go"&gt;sudo a2enmod rewrite&lt;/span&gt;
+&lt;span class="go"&gt;sudo systemctl restart apache2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Instalación Drupal&lt;/h2&gt;
+&lt;p&gt;Accedemos desde el navegador a la IP o URL si se ha modificado el fichero "/etc/hosts" del anfitrión. Y seguimos lo pasos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Paso 1: Elegir idioma.&lt;/p&gt;
+&lt;p&gt;Simplente elegimos el idioma deseado.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Paso 2: Elegir perfil.&lt;/p&gt;
+&lt;p&gt;Aquí seleccionamos el nivel de instalación que se quiere realizar, ya sea estandar, mínima o una demo. En este caso "mínima"&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Paso 3: Verificar requisitos.&lt;/p&gt;
+&lt;p&gt;Drupal comprueba que tiene todos los requisitos minimos para funcionar y lanza una serie de errores o advertencias en función de lo que falte en nuestro sistema. Los errores son obligatorios correguirlo mientras que las advertencias no son necesarias arreglarlas, ten en cuenta que es recomendable solucionar todos estas advertencia para tener una experiencia completa de drupal.&lt;/p&gt;
+&lt;p&gt;Soluciones a Errores y Advertencias:&lt;/p&gt;
+&lt;p&gt;Extenciones PHP:&lt;/p&gt;
+&lt;p&gt;En este caso faltaban unos paquetes que producian un error, los cuales se instalan con:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;console
+sudo apt install php-dompdf php-gd php-xml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Bilioteca UNICODE:&lt;/p&gt;
+&lt;p&gt;En este caso faltaba un paquete que provocaba una advertencia:
+&lt;code&gt;console
+sudo apt install php7.3-mbstring&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;URL limpias:&lt;/p&gt;
+&lt;p&gt;Para solucionar esta advertencia, se han activado dos opciones en el directorio "drupal" como se puede ver en el fichero "drupal.conf" y activado un módulo:&lt;/p&gt;
+&lt;p&gt;Modificación opciones directorio:
+&lt;code&gt;console
+        &amp;lt;Directory /var/www/html/drupal&amp;gt;
+                RewriteEngine On
+                AllowOverride All
+        &amp;lt;/Directory&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Y activamos el módulo y se recarga apache2:
+&lt;code&gt;console
+sudo a2enmod rewrite&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Paso 4: Configurar base de datos:&lt;/p&gt;
+&lt;p&gt;Aqui se le indica la base de datos a utilizar, en este caso "mariadb", se indica usuario, contraseña y base de datos a utilizar, como opción avanzada se le puede indicar que añada a las tablas una terminología por si la base de datos la utilizan varias aplicaciones, en este caso le indicamos que las marque con la etiqueta "drupal". En este caso la configuración sería:&lt;/p&gt;
+&lt;p&gt;Usuario:userdrupal
+Base de datos: bddrupal
+Contraseña: drupal
+Opcion Avanzada: drupal&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Paso 5: Configurar Sitio:&lt;/p&gt;
+&lt;p&gt;Una vez finaliza la instalación se procede a modificar el sitio, basicamente pide un nombre para el sitio, un correo, y información sobre la cuenta del administrador del sitio así como el país donde se encuentra el sitio. Una vez finalizado realiza unas operaciones y terminaría la instalación de drupal.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Modificación Drupal&lt;/h2&gt;
+&lt;p&gt;Sin entrar mucho en detalle puesto que no es el objetivo de esta práctica vamos a comentar un par de aspecto como es el cambio de plantilla, y crear un articulo sencillo en el sitio.&lt;/p&gt;
+&lt;p&gt;Para el cambio de plantilla, se puede realizar de varias formas, desde una URL del tema seleccionado, o descargando el paquete tar.gz, para ello con el usuario administrador, desde la pestaña "apariencia" y "instalar nuevo tema" como se muestra en la siguiente imagen:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="nuevotema" src="https://arpovea.vercel.app/images/CMS/nuevotema0.png"&gt; 
+&lt;img alt="nuevotema1" src="https://arpovea.vercel.app/images/CMS/nuevotema.png"&gt; &lt;/p&gt;
+&lt;p&gt;Para crear algun contenido, se realiza desde la pestaña contenido, y luego "añadir contenido", en donde, da varias opciones como "Artículo" o "Página Básica". Con estas opciones creamos nuestro primer artículo como se ve en la siguiente imagen:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevocontenido0.png"&gt;
+&lt;img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevocontenido.png"&gt;&lt;/p&gt;
+&lt;p&gt;Tambien se ha instalado un modulo para facilitar el manejo de la barra de herramientas, para ello desde la página de administración selecciona "ampliar" y luego "instalar nuevo módulo" como se muestra en la siguiente imagen:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevomodulo0.png"&gt;
+&lt;img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevomodulo1.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Configuración Multinodo: Base de datos en otra máquina.&lt;/h2&gt;
+&lt;p&gt;Se va a proceder a colocar la base de datos en una máquina distinta, esta máquina estará en la misma red. En la cual unicamente se instalará "mariadb".&lt;/p&gt;
+&lt;p&gt;Lo primero a realizar es una copia de seguridad de la base de datos actual del drupal, para ello:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;sudo mysqldump -v --opt --events --routines --triggers --default-character-set=utf8 -u root bddrupal &amp;gt; db_backup_drupal_`date +%Y%m%d_%H%M%S`.sql&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez generada la copia, se pasará a la otra máquina, que tiene instalado previamente "mariadb", se creará la base de datos "bddrupal" y  el usuario "userdrupal" con contraseña "drupal" pero esta vez al crearlo le indicaremos que este usuario puede accerder a la base de datos de forma externa con el siguiente comando desde la consola de "mariadb" con el usuario "root":&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;CREATE DATABASE `bddrupal`;&lt;/span&gt;
+&lt;span class="go"&gt;CREATE USER &amp;#39;userdrupal&amp;#39; IDENTIFIED BY &amp;#39;drupal&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;GRANT USAGE ON *.* TO &amp;#39;userdrupal&amp;#39;@&amp;#39;%&amp;#39; IDENTIFIED BY &amp;#39;drupal&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;GRANT ALL privileges ON `bddrupal`.* TO &amp;#39;userdrupal&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;FLUSH PRIVILEGES;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez realizado esto restaurá la copia de la base de datos en la nueva máquina:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;mysql -u root bddrupal &amp;lt; db_backup_drupal_20201028_182650.sql&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez realizado esto hay que configurar a Drupal para que busque la base de datos en la otra máquina para ello en la máquina donde esta instalado Drupal modifica el fichero de configuración "/var/www/html/drupal/sites/default/settings.php" quedando asi:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;$databases[&amp;#39;default&amp;#39;][&amp;#39;default&amp;#39;] = array (&lt;/span&gt;
+&lt;span class="x"&gt;  &amp;#39;database&amp;#39; =&amp;gt; &amp;#39;bddrupal&amp;#39;,&lt;/span&gt;
+&lt;span class="x"&gt;  &amp;#39;username&amp;#39; =&amp;gt; &amp;#39;userdrupal&amp;#39;,&lt;/span&gt;
+&lt;span class="x"&gt;  &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;drupal&amp;#39;,&lt;/span&gt;
+&lt;span class="x"&gt;  &amp;#39;prefix&amp;#39; =&amp;gt; &amp;#39;drupal&amp;#39;,&lt;/span&gt;
+&lt;span class="x"&gt;  &amp;#39;host&amp;#39; =&amp;gt; &amp;#39;192.168.100.2&amp;#39;,&lt;/span&gt;
+&lt;span class="x"&gt;  &amp;#39;port&amp;#39; =&amp;gt; &amp;#39;3306&amp;#39;,&lt;/span&gt;
+&lt;span class="x"&gt;  &amp;#39;namespace&amp;#39; =&amp;gt; &amp;#39;Drupal\\Core\\Database\\Driver\\mysql&amp;#39;,&lt;/span&gt;
+&lt;span class="x"&gt;  &amp;#39;driver&amp;#39; =&amp;gt; &amp;#39;mysql&amp;#39;,&lt;/span&gt;
+&lt;span class="x"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Tambien hay que indicarle a "mariadb" que acepte acceso remoto para ello modifica el fichero de configuración "/etc/mysql/mariadb.conf.d/50-server.cnf" comentando la siguiente linea:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gp"&gt;#&lt;/span&gt;bind-address            &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;127&lt;/span&gt;.0.0.1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ó indicandole acceso desde cualquier sitio:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;bind-address            = 0.0.0.0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reinicia el servicio de mariadb para que recarge la configuración:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;systemctl restart mariadb&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez realizado esto se puede borrar la base de datos de la máquina donde esta drupal, para ellos desde la consola de mariadb:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;drop database bddrupal;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ó tambien se puede realizar la desistalacíon de mariadb, para ello:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;sudo apt purge mariadb*&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Instalación de un segundo CMS&lt;/h2&gt;
+&lt;p&gt;A continuación se va a instalar Joomla! para ello se creará otro virtualhost llamado joomla.conf con el siguiente contenido:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;&amp;lt;VirtualHost *:80&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;        ServerName www.arp-joomla.org&lt;/span&gt;
+&lt;span class="go"&gt;        ServerAdmin webmaster@localhost&lt;/span&gt;
+&lt;span class="go"&gt;        DocumentRoot /var/www/html/joomla&lt;/span&gt;
+&lt;span class="go"&gt;        ErrorLog ${APACHE_LOG_DIR}/error.log&lt;/span&gt;
+&lt;span class="go"&gt;        CustomLog ${APACHE_LOG_DIR}/access.log combined&lt;/span&gt;
+&lt;span class="go"&gt;        &amp;lt;Directory /var/www/html/joomla&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;                RewriteEngine On&lt;/span&gt;
+&lt;span class="go"&gt;                AllowOverride All&lt;/span&gt;
+&lt;span class="go"&gt;        &amp;lt;/Directory&amp;gt;&lt;/span&gt;
+&lt;span class="go"&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;También se le va a crear otro usuario y base de datos a Joomla! para ello en la máquina que esta "mariadb", de nuevo en la consola de "mariadb":&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;CREATE DATABASE `bdjoomla`;&lt;/span&gt;
+&lt;span class="go"&gt;CREATE USER &amp;#39;userjoomla&amp;#39; IDENTIFIED BY &amp;#39;joomla&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;GRANT USAGE ON *.* TO &amp;#39;userjoomla&amp;#39;@&amp;#39;%&amp;#39; IDENTIFIED BY &amp;#39;joomla&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;GRANT ALL privileges ON `bdjoomla`.* TO &amp;#39;userjoomla&amp;#39;;&lt;/span&gt;
+&lt;span class="go"&gt;FLUSH PRIVILEGES;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Una vez realizado esto, accede a la URL del sitio y comienza la instalación, es muy parecida a la de drupal, la única diferencia es que puedes elegir unas plantillas por defecto y al final de la instalación pide borrar la carpeta "installation", los demas pasos son iguales, pedirá usuario y sus datos, y los datos de la base de datos, que en este caso no esta en "localhost" sino en la IP "192.168.100.2", al finalizar Joomla estará disponible.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="joomla" src="https://arpovea.vercel.app/images/CMS/joomla.png"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    &lt;/p&gt;</content><category term="Implantación Web"></category></entry></feed>
