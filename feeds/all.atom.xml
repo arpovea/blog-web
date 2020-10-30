@@ -137,8 +137,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Bilioteca UNICODE:&lt;/span&gt;
-&lt;span class="err"&gt;En este caso faltaba un paquete que provocaba una advertencia:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;* Bilioteca UNICODE:&lt;/span&gt;
+&lt;span class="err"&gt;    En este caso faltaba un paquete que provocaba una advertencia:&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -146,9 +146,9 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;URL limpias:&lt;/span&gt;
-&lt;span class="err"&gt;Para solucionar esta advertencia, se han activado dos opciones en el directorio &amp;quot;drupal&amp;quot; como se puede ver en el fichero &amp;quot;drupal.conf&amp;quot; y activado un módulo:&lt;/span&gt;
-&lt;span class="err"&gt;Modificación opciones directorio:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;* URL limpias:&lt;/span&gt;
+&lt;span class="err"&gt;    Para solucionar esta advertencia, se han activado dos opciones en el directorio &amp;quot;drupal&amp;quot; como se puede ver en el fichero &amp;quot;drupal.conf&amp;quot; y activado un módulo:&lt;/span&gt;
+&lt;span class="err"&gt;    Modificación opciones directorio:&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -159,7 +159,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Y activamos el módulo y se recarga apache2:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;* Y activamos el módulo y se recarga apache2:&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -171,10 +171,12 @@
 &lt;li&gt;
 &lt;p&gt;Paso 4: Configurar base de datos:&lt;/p&gt;
 &lt;p&gt;Aqui se le indica la base de datos a utilizar, en este caso "mariadb", se indica usuario, contraseña y base de datos a utilizar, como opción avanzada se le puede indicar que añada a las tablas una terminología por si la base de datos la utilizan varias aplicaciones, en este caso le indicamos que las marque con la etiqueta "drupal". En este caso la configuración sería:&lt;/p&gt;
-&lt;p&gt;Usuario:userdrupal
-Base de datos: bddrupal
-Contraseña: drupal
-Opcion Avanzada: drupal&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Usuario:userdrupal&lt;/li&gt;
+&lt;li&gt;Base de datos: bddrupal&lt;/li&gt;
+&lt;li&gt;Contraseña: drupal&lt;/li&gt;
+&lt;li&gt;Opcion Avanzada: drupal&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Paso 5: Configurar Sitio:&lt;/p&gt;
