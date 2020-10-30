@@ -130,7 +130,7 @@
 <p>Para poder instalar Drupal previamente hay que tener instalado una serie de requisitos, como por ejemplo una base de datos, modulos de PHP, y el servidor apache2, a todo esto se le llama pila LAMP.</p>
 <p>Para ello se ha realizado un script que realiza:
 * Actualización del equipo
-* Instala la base de datos mariadb y crea un usuario,una base de datos y consede privilegios
+* Instala la base de datos mariadb y crea un usuario, una base de datos y concede privilegios
 * Instala php y módulos necesarios. 
 * Instala apache2 junto a algunos módulos necesarios y crea también un fichero ".php" para poder probar que funciona correctamente.</p>
 <div class="highlight"><pre><span></span><span class="gp">#</span>! /usr/bin/bash 
@@ -193,7 +193,7 @@
 </pre></div>
 
 
-<p>Se activa el sitio y un módulo (explicado mas abajo) con: </p>
+<p>Se activa el sitio y un módulo (explicado más abajo) con: </p>
 <div class="highlight"><pre><span></span><span class="go">sudo a2ensite drupal.conf</span>
 <span class="go">sudo a2enmod rewrite</span>
 <span class="go">sudo systemctl restart apache2</span>
@@ -206,23 +206,23 @@
 <ul>
 <li>
 <p>Paso 1: Elegir idioma.</p>
-<p>Simplente elegimos el idioma deseado.</p>
+<p>Simplemente elegimos el idioma deseado.</p>
 </li>
 <li>
 <p>Paso 2: Elegir perfil.</p>
-<p>Aquí seleccionamos el nivel de instalación que se quiere realizar, ya sea estandar, mínima o una demo. En este caso "mínima"</p>
+<p>Aquí seleccionamos el nivel de instalación que se quiere realizar, ya sea estándar, mínima o una demo. En este caso "mínima".</p>
 </li>
 <li>
 <p>Paso 3: Verificar requisitos.</p>
-<p>Drupal comprueba que tiene todos los requisitos minimos para funcionar y lanza una serie de errores o advertencias en función de lo que falte en nuestro sistema. Los errores son obligatorios correguirlo mientras que las advertencias no son necesarias arreglarlas, ten en cuenta que es recomendable solucionar todos estas advertencia para tener una experiencia completa de drupal.</p>
+<p>Drupal comprueba que tiene todos los requisitos mínimos para funcionar y lanza una serie de errores o advertencias en función de lo que falte en nuestro sistema. Los errores son obligatorios correguirlo mientras que las advertencias no son necesarias arreglarlas, ten en cuenta que es recomendable solucionar todas estas advertencia para tener una experiencia completa de drupal.</p>
 <p><em>Soluciones a Errores y Advertencias:</em></p>
 <ul>
 <li>Extenciones PHP:<ul>
-<li>En este caso faltaban unos paquetes que producian un error, los cuales se instalan con:</li>
+<li>En este caso faltaban unos paquetes que producían un error, los cuales se instalan con:</li>
 <li><code>sudo apt install php-dompdf php-gd php-xml</code></li>
 </ul>
 </li>
-<li>Bilioteca UNICODE:<ul>
+<li>Biblioteca UNICODE:<ul>
 <li>En este caso faltaba un paquete que provocaba una advertencia:<ul>
 <li><code>sudo apt install php7.3-mbstring</code></li>
 </ul>
@@ -232,7 +232,7 @@
 <li>URL limpias:<ul>
 <li>Para solucionar esta advertencia, se han activado dos opciones en el directorio "drupal" como se puede ver en el fichero "drupal.conf" y activado un módulo:<ul>
 <li>Modificación opciones directorio:<ul>
-<li>Añade "RewriteEngine On" y "AllowOverride All" como se puede ver en drupal.conf mas arriba.</li>
+<li>Añade "RewriteEngine On" y "AllowOverride All" como se puede ver en drupal.conf más arriba.</li>
 <li>Y activamos el módulo y se recarga apache2:<ul>
 <li><code>sudo a2enmod rewrite</code></li>
 <li><code>sudo systemctl restart apache2</code></li>
@@ -248,37 +248,37 @@
 </li>
 <li>
 <p>Paso 4: Configurar base de datos:</p>
-<p>Aqui se le indica la base de datos a utilizar, en este caso "mariadb", se indica usuario, contraseña y base de datos a utilizar, como opción avanzada se le puede indicar que añada a las tablas una terminología por si la base de datos la utilizan varias aplicaciones, en este caso le indicamos que las marque con la etiqueta "drupal". En este caso la configuración sería:    </p>
+<p>Aquí se le indica la base de datos a utilizar, en este caso "mariadb", se indica usuario, contraseña y base de datos a utilizar, como opción avanzada se le puede indicar que añada a las tablas una terminología por si la base de datos la utilizan varias aplicaciones, en este caso le indicamos que las marque con la etiqueta "drupal". En este caso la configuración sería:    </p>
 <p>Usuario:userdrupal  <br>
 Base de datos: bddrupal  <br>
 Contraseña: drupal  <br>
-Opcion Avanzada: drupal    </p>
+Opción Avanzada: drupal    </p>
 </li>
 <li>
 <p>Paso 5: Configurar Sitio:</p>
-<p>Una vez finaliza la instalación se procede a modificar el sitio, basicamente pide un nombre para el sitio, un correo, y información sobre la cuenta del administrador del sitio así como el país donde se encuentra el sitio. Una vez finalizado realiza unas operaciones y terminaría la instalación de drupal.</p>
+<p>Una vez finaliza la instalación se procede a modificar el sitio, básicamente pide un nombre para el sitio, un correo, y información sobre la cuenta del administrador del sitio así como el país donde se encuentra el sitio. Una vez finalizado realiza unas operaciones y terminaría la instalación de drupal.</p>
 </li>
 </ul>
 <hr>
 <h2>Modificación Drupal</h2>
-<p>Sin entrar mucho en detalle puesto que no es el objetivo de esta práctica vamos a comentar un par de aspecto como es el cambio de plantilla, y crear un articulo sencillo en el sitio.</p>
+<p>Sin entrar mucho en detalle puesto que no es el objetivo de esta práctica vamos a comentar un par de aspectos como es el cambio de plantilla, y crear un artículo sencillo en el sitio.</p>
 <p>Para el cambio de plantilla, se puede realizar de varias formas, desde una URL del tema seleccionado, o descargando el paquete tar.gz, para ello con el usuario administrador, desde la pestaña "apariencia" y "instalar nuevo tema" como se muestra en la siguiente imagen:</p>
 <p><img alt="nuevotema" src="https://arpovea.vercel.app/images/CMS/nuevotema0.png"> 
 <img alt="nuevotema1" src="https://arpovea.vercel.app/images/CMS/nuevotema.png"> </p>
-<p>Para crear algun contenido, se realiza desde la pestaña contenido, y luego "añadir contenido", en donde, da varias opciones como "Artículo" o "Página Básica". Con estas opciones creamos nuestro primer artículo como se ve en la siguiente imagen:</p>
+<p>Para crear algún contenido, se realiza desde la pestaña contenido, y luego "añadir contenido", en donde, da varias opciones como "Artículo" o "Página Básica". Con estas opciones creamos nuestro primer artículo como se ve en la siguiente imagen:</p>
 <p><img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevocontenido0.png">
 <img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevocontenido.png"></p>
-<p>Tambien se ha instalado un modulo para facilitar el manejo de la barra de herramientas, para ello desde la página de administración selecciona "ampliar" y luego "instalar nuevo módulo" como se muestra en la siguiente imagen:</p>
+<p>También se ha instalado un módulo llamado "Admin Toolbar" para facilitar el manejo de la barra de herramientas, para ello desde la página de administración selecciona "ampliar" y luego "instalar nuevo módulo",tiene el mismo mecanismo que los temas, como se muestra en la siguiente imagen:</p>
 <p><img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevomodulo0.png">
 <img alt="nuevocontenido" src="https://arpovea.vercel.app/images/CMS/nuevomodulo1.png"></p>
 <h2>Configuración Multinodo: Base de datos en otra máquina.</h2>
-<p>Se va a proceder a colocar la base de datos en una máquina distinta, esta máquina estará en la misma red. En la cual unicamente se instalará "mariadb".</p>
-<p>Lo primero a realizar es una copia de seguridad de la base de datos actual del drupal, para ello:</p>
+<p>Se va a proceder a colocar la base de datos en una máquina distinta, esta máquina estará en la misma red. En la cual únicamente se instalará "mariadb".</p>
+<p>Lo primero a realizar es una copia de seguridad de la base de datos actual de drupal, para ello:</p>
 <div class="highlight"><pre><span></span><span class="go">sudo mysqldump -v --opt --events --routines --triggers --default-character-set=utf8 -u root bddrupal &gt; db_backup_drupal_`date +%Y%m%d_%H%M%S`.sql</span>
 </pre></div>
 
 
-<p>Una vez generada la copia, se pasará a la otra máquina, que tiene instalado previamente "mariadb", se creará la base de datos "bddrupal" y  el usuario "userdrupal" con contraseña "drupal" pero esta vez al crearlo le indicaremos que este usuario puede accerder a la base de datos de forma externa con el siguiente comando desde la consola de "mariadb" con el usuario "root":</p>
+<p>Una vez generada la copia, se pasará a la otra máquina, que tiene instalado previamente "mariadb", se creará la base de datos "bddrupal" y  el usuario "userdrupal" con contraseña "drupal" pero esta vez al crearlo le indicaremos que este usuario puede acceder a la base de datos de forma externa con el siguiente comando desde la consola de "mariadb" con el usuario "root":</p>
 <div class="highlight"><pre><span></span><span class="go">CREATE DATABASE `bddrupal`;</span>
 <span class="go">CREATE USER &#39;userdrupal&#39; IDENTIFIED BY &#39;drupal&#39;;</span>
 <span class="go">GRANT USAGE ON *.* TO &#39;userdrupal&#39;@&#39;%&#39; IDENTIFIED BY &#39;drupal&#39;;</span>
@@ -287,12 +287,12 @@ Opcion Avanzada: drupal    </p>
 </pre></div>
 
 
-<p>Una vez realizado esto restaurá la copia de la base de datos en la nueva máquina:</p>
+<p>Una vez realizado esto restaura la copia de la base de datos en la nueva máquina:</p>
 <div class="highlight"><pre><span></span><span class="go">mysql -u root bddrupal &lt; db_backup_drupal_20201028_182650.sql</span>
 </pre></div>
 
 
-<p>Una vez realizado esto hay que configurar a Drupal para que busque la base de datos en la otra máquina para ello en la máquina donde esta instalado Drupal modifica el fichero de configuración "/var/www/html/drupal/sites/default/settings.php" quedando asi:</p>
+<p>Una vez realizado esto, hay que configurar a "Drupal" que busque la base de datos en la otra máquina, para ello en la máquina donde está instalado "Drupal" modifica el fichero de configuración "/var/www/html/drupal/sites/default/settings.php" quedando así:</p>
 <div class="highlight"><pre><span></span><span class="gp"> $</span>databases<span class="o">[</span><span class="s1">&#39;default&#39;</span><span class="o">][</span><span class="s1">&#39;default&#39;</span><span class="o">]</span> <span class="o">=</span> array <span class="o">(</span>
 <span class="go">  &#39;database&#39; =&gt; &#39;bddrupal&#39;,</span>
 <span class="go">  &#39;username&#39; =&gt; &#39;userdrupal&#39;,</span>
@@ -306,12 +306,12 @@ Opcion Avanzada: drupal    </p>
 </pre></div>
 
 
-<p>Tambien hay que indicarle a "mariadb" que acepte acceso remoto para ello modifica el fichero de configuración "/etc/mysql/mariadb.conf.d/50-server.cnf" comentando la siguiente linea:</p>
+<p>También hay que indicarle a "mariadb" que acepte acceso remoto para ello modifica el fichero de configuración "/etc/mysql/mariadb.conf.d/50-server.cnf" comentando la siguiente línea:</p>
 <div class="highlight"><pre><span></span><span class="gp">#</span> bind-address            <span class="o">=</span> <span class="m">127</span>.0.0.1
 </pre></div>
 
 
-<p>ó indicandole acceso desde cualquier sitio:</p>
+<p>ó indicándole acceso desde cualquier sitio:</p>
 <div class="highlight"><pre><span></span><span class="go">bind-address            = 0.0.0.0</span>
 </pre></div>
 
@@ -321,18 +321,18 @@ Opcion Avanzada: drupal    </p>
 </pre></div>
 
 
-<p>Una vez realizado esto se puede borrar la base de datos de la máquina donde esta drupal, para ellos desde la consola de mariadb:</p>
+<p>Una vez realizado esto se puede borrar la base de datos de la máquina donde está drupal, para ello desde la consola de mariadb:</p>
 <div class="highlight"><pre><span></span><span class="go">drop database bddrupal;</span>
 </pre></div>
 
 
-<p>ó tambien se puede realizar la desistalacíon de mariadb, para ello:</p>
+<p>ó también se puede realizar la desistalacióon de mariadb, para ello:</p>
 <div class="highlight"><pre><span></span><span class="go">sudo apt purge mariadb*</span>
 </pre></div>
 
 
 <h2>Instalación de un segundo CMS</h2>
-<p>A continuación se va a instalar Joomla! para ello se creará otro virtualhost llamado joomla.conf con el siguiente contenido:</p>
+<p>A continuación se va a instalar Joomla!, para ello se creará otro virtualhost llamado "joomla.conf" con el siguiente contenido:</p>
 <div class="highlight"><pre><span></span><span class="go">&lt;VirtualHost *:80&gt;</span>
 <span class="go">        ServerName www.arp-joomla.org</span>
 <span class="go">        ServerAdmin webmaster@localhost</span>
@@ -347,7 +347,7 @@ Opcion Avanzada: drupal    </p>
 </pre></div>
 
 
-<p>También se le va a crear otro usuario y base de datos a Joomla! para ello en la máquina que esta "mariadb", de nuevo en la consola de "mariadb":</p>
+<p>También se le va a crear otro usuario y base de datos a Joomla! para ello en la máquina que está "mariadb", de nuevo en la consola de "mariadb":</p>
 <div class="highlight"><pre><span></span><span class="go">CREATE DATABASE `bdjoomla`;</span>
 <span class="go">CREATE USER &#39;userjoomla&#39; IDENTIFIED BY &#39;joomla&#39;;</span>
 <span class="go">GRANT USAGE ON *.* TO &#39;userjoomla&#39;@&#39;%&#39; IDENTIFIED BY &#39;joomla&#39;;</span>
@@ -356,7 +356,7 @@ Opcion Avanzada: drupal    </p>
 </pre></div>
 
 
-<p>Una vez realizado esto, accede a la URL del sitio y comienza la instalación, es muy parecida a la de drupal, la única diferencia es que puedes elegir unas plantillas por defecto y al final de la instalación pide borrar la carpeta "installation", los demas pasos son iguales, pedirá usuario y sus datos, y los datos de la base de datos, que en este caso no esta en "localhost" sino en la IP "192.168.100.2", al finalizar Joomla estará disponible.</p>
+<p>Una vez realizado esto, accede a la URL del sitio y comienza la instalación, es muy parecida a la de drupal, la única diferencia es que puedes elegir unas plantillas por defecto y al final de la instalación pide borrar la carpeta "installation", los demás pasos son iguales, pedirá usuario y sus datos, y los datos de la base de datos, que en este caso no está en "localhost" sino en la IP "192.168.100.2", al finalizar Joomla estará disponible.</p>
 <p><img alt="joomla" src="https://arpovea.vercel.app/images/CMS/joomla.png"></p>
 <hr>
 <p>Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    </p>
