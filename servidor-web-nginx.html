@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Servidor web NGINX &ndash; Blog Informático</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Blog Informático &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="article:author" content="Adrián Rodríguez Povea" />
+    <meta property="article:section" content="Servicios" />
+    <meta property="article:published_time" content="2020-11-05" />
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Servidor web NGINX"/>
+    <meta property="og:description" content="Buenas! En esta ocasión se va a realizar un conjunto de tareas con el servidor web Nginx."/>
+    <meta property="og:site_name" content="Blog Informático" />
+    <meta property="og:url" content="https://arpovea.vercel.app/servidor-web-nginx.html"/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Servidor web NGINX">
+    <meta name="twitter:description" content="Buenas! En esta ocasión se va a realizar un conjunto de tareas con el servidor web Nginx.">
+    <meta name="twitter:url" content="https://arpovea.vercel.app/servidor-web-nginx.html">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/all.atom.xml" title="Blog Informático Atom Feed" />
+    <link rel="alternate" type="application/atom+xml" href="https://arpovea.vercel.app/feeds/Servicios.atom.xml" title="Blog Informático Categories Atom Feed" />
+    <link rel="alternate" type="application/rss+xml" href="http://arpovea.disqus.com/latest.rss" title="Blog Informático Comments RSS Feed">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="https://arpovea.vercel.app/static/custom.css">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://arpovea.vercel.app/theme/images/arpovealogo.PNG">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://arpovea.vercel.app/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="https://arpovea.vercel.app" id="header-logo" title="Home">AR</a>
+        <nav id="header-menu">
+          <ul>
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/implantacion-web.html">Implantación Web</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/redes.html">Redes</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/seguridad.html">Seguridad</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" style="font-weight: bold;"><a href="https://arpovea.vercel.app/category/servicios.html">Servicios</a></li>-->
+            <!--<li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="https://arpovea.vercel.app/category/sistemas.html">Sistemas</a></li>-->
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/categories.html">Categorías</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/archives.html">Artículos</a></li>
+            <li><a href="https://arpovea.vercel.app/pages/acerca-de.html">Acerca de</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Servidor web NGINX</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            <span><time datetime="2020-11-05T00:00:00+01:00">jue 05 noviembre 2020</time> en <a href="https://arpovea.vercel.app/category/servicios.html" title="All articles in category Servicios">Servicios</a></span>
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <hr>
+<p>Buenas, en esta ocasión se va a realizar un conjunto de tareas con el servidor web Nginx, desde crear varios "virtual host" hasta jugar con el control de acceso y autorización. Para este escenario se utilizará S.O Debian Buster.</p>
+<hr>
+<h2>Creación de los Virtual Host:</h2>
+<p>Este servidor tendrá dos sitios web, cada sitio web compartirá la misma dirección y el mismo puerto (80), estos sitios tendrán las siguientes características:</p>
+<p>El nombre de dominio del primero será "www.iesgn.org", su directorio base será "/srv/www/iesgn" y contendrá una página llamada index.html, donde sólo se verá una "bienvenida" a la página del Instituto Gonzalo Nazareno.</p>
+<p>En el segundo sitio, se va a crear una página, donde se pondrán noticias por parte de los departamentos, el nombre de este sitio será departamentos.iesgn.org, y su directorio base será "/srv/www/departamentos". En este sitio sólo habrá una página inicial index.html, dando la bienvenida a la página de los departamentos del instituto.</p>
+<h3>Configuración de "www.iesgn.org"</h3>
+<p>Lo primero sera crear el directorio "/srv/www/iesgn" junto a su "index.html" el cual contendrá una "bienvenida" como se a comentado anteriormente.Y cambiar sus propietario a "www-data" ya que este es el usuario definido en el fichero de configuración de nginx ("/etc/nginx/nginx.conf").</p>
+<div class="highlight"><pre><span></span><span class="go">sudo mkdir /srv/www/iesgn/</span>
+<span class="go">sudo echo &quot;Bienvenido a la página principal IES Gonzalo Nazareno&quot; &gt; index.html</span>
+<span class="go">sudo chown -R www-data. /srv </span>
+</pre></div>
+
+
+<p>Una vez realizado lo siguiente será copiar el fichero "default" ubicado en "/etc/nginx/sites-available/" con el nombre "wwwiesgn" este fichero contendrá la siguiente información:</p>
+<div class="highlight"><pre><span></span><span class="go">server {</span>
+<span class="go">  listen 80;</span>
+
+<span class="go">  root /srv/www/iesgn;</span>
+<span class="go">  index index.html index.htm;</span>
+<span class="go">  server_name www.iesgn.org;</span>
+<span class="go">}</span>
+</pre></div>
+
+
+<p>Una vez definida esta configuración, si quieres validarla puedes utilizar el comando <code>nginx -t</code> para comprobar que no hay ningún error en el fichero, luego reinicia el servicio:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo systemctl restart nginx</span>
+</pre></div>
+
+
+<h3>Configuración de "departamentos.iesgn.org"</h3>
+<p>Para este sitio se van a realizar los mismos pasos, crear el directorio e "index.html" y cambiar el propietario.</p>
+<div class="highlight"><pre><span></span><span class="go">sudo mkdir /srv/www/departamentos</span>
+<span class="go">sudo echo &quot;Bienvenido a la página de los departamentos de IES Gonzalo Nazareno&quot; &gt; index.html</span>
+<span class="go">sudo chown -R www-data. /srv </span>
+</pre></div>
+
+
+<p>Una vez realizado, vuelve a copiar el fichero "default" y nombralo "departamentosiesgn" y edita el contenido quedando de la siguiente forma:</p>
+<div class="highlight"><pre><span></span><span class="go">server {</span>
+<span class="go">  listen 80;</span>
+
+<span class="go">  root /srv/www/departamentos;</span>
+<span class="go">  index index.html index.htm;</span>
+
+<span class="go">  server_name departamentos.iesgn.org;</span>
+<span class="go">}</span>
+</pre></div>
+
+
+<p>Una vez definida esta configuración, si quieres validarla puedes utilizar el comando <code>nginx -t</code> para comprobar que no hay ningún error en el fichero, luego reinicia el servicio:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo systemctl restart nginx</span>
+</pre></div>
+
+
+<hr>
+<h2>Mapeo de URL</h2>
+<h4>Tarea 1</h4>
+<p>Cuando se entre a la dirección "www.iesgn.org" se redireccionará automáticamente a "www.iesgn.org/principal", donde se mostrará el mensaje de bienvenida. En el directorio principal no se permite ver la lista de los ficheros y no se permite que se siga los enlaces simbólicos</p>
+<p>Para ello lo primero será crear el directorio "principal" y mover el index.html dentro de "principal" luego cambiar permisos:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo mkdir /srv/www/iesgn/principal/</span>
+<span class="go">sudo mv /srv/www/iesgn/index.html /srv/www/iesgn/principal</span>
+<span class="go">sudo chown -R www-data. /srv</span>
+</pre></div>
+
+
+<p>Una vez realizado esto edita el fichero "wwwiesgn" agregando lo siguiente:</p>
+<div class="highlight"><pre><span></span><span class="go"> rewrite ^/$ http://www.iesgn.org/principal/index.html permanent;</span>
+
+<span class="go"> location /principal {</span>
+<span class="go">    autoindex off;</span>
+<span class="go">    disable_symlinks on;</span>
+<span class="go"> }</span>
+</pre></div>
+
+
+<p>Una vez definida esta configuración, si quieres validarla puedes utilizar el comando <code>nginx -t</code> para comprobar que no hay ningún error en el fichero, luego reinicia el servicio:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo systemctl restart nginx</span>
+</pre></div>
+
+
+<h4>Tarea 2</h4>
+<p>Si accedes a la página "www.iesgn.org/principal/documentos" se visualizarán los documentos que hay en "/srv/doc". Por lo tanto se permitirá el listado de fichero y el seguimiento de enlaces simbólicos siempre que sean a ficheros o directorios cuyo dueño sea el usuario.</p>
+<p>Para ello crea el directorio "/srv/doc" con algun fichero de prueba y algun enlace simbólico y también el directorio "/srv/www/iesgn/documentos" y modifica los propietarios:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo mkdir /srv/doc &amp; cd /srv/doc</span>
+<span class="go">sudo touch fich1 fich2 fich3</span>
+<span class="go">sudo ln -s /home/debian/fichero1 fichero10</span>
+<span class="go">sudo mkdir /srv/www/iesgn/documentos</span>
+<span class="go">sudo chown -R www-data /srv</span>
+</pre></div>
+
+
+<p>Una vez realizado esto modifica la configuracíon de "wwwiesgn" y agregá lo siguiente:</p>
+<div class="highlight"><pre><span></span><span class="go"> location /documentos {</span>
+<span class="go">  alias /srv/doc;</span>
+<span class="go">  autoindex on;</span>
+<span class="go">  default_type text/html;</span>
+<span class="go">  disable_symlinks if_not_owner;</span>
+<span class="go"> }</span>
+</pre></div>
+
+
+<p>Una cosa curiosa, es el parametro "default_type" este parametro es para que nginx tome por defecto el tipo de los ficheros dentro del directorio, estos tipos aparecen en el fichero "/etc/nginx/mime.types", y dependiendo del tipo nginx se comporta de una forma, es decir, los muestra, los ejecuta, los descarga, etc... Al ser ficheros vacíos y no aparecer el tipo en el fichero "mime.types" este por defecto los descarga, este no es el comportamiento que se desea, entonces se le asigna el tipo de "text/html" para que los muestre en el navegador en vez de descargarlos. Si por alguna casualidad se requiere saber el tipo "mime" de un fichero puedes realizar el siguiente comando:</p>
+<div class="highlight"><pre><span></span><span class="go">file -b --mime-type /srv/doc/fich1</span>
+</pre></div>
+
+
+<p>Una vez definida esta configuración, si quieres validarla puedes utilizar el comando <code>nginx -t</code> para comprobar que no hay ningún error en el fichero, luego reinicia el servicio:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo systemctl restart nginx</span>
+</pre></div>
+
+
+<h4>Tarea 3</h4>
+<p>En todo el host virtual se debe redefinir los mensajes de error de objeto no encontrado y no permitido. Para el ello se crearan dos ficheros "html" dentro del directorio error.</p>
+<p>Lo primero es crear el directorio "/srv/www/iesgn/error" y crear los ficheros de errores y cambiar los propietarios:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo mkdir /srv/www/iesgn/error</span>
+<span class="go">sudo echo &quot;&lt;h1&gt;OBJETO NO PERMITIDO&lt;/h1&gt;&quot; &gt; /srv/www/iesgn/error/403.html</span>
+<span class="go">sudo echo &quot;&lt;h1&gt;OBJETO NO ENCONTRADO&lt;/h1&gt;&quot; &gt; /srv/www/iesgn/error/404.html</span>
+<span class="go">sudo chown -R www-data /srv</span>
+</pre></div>
+
+
+<p>A continuación agrega estas líneas a "wwwiesgn":</p>
+<div class="highlight"><pre><span></span><span class="go">error_page 403 /error/403.html;</span>
+<span class="go">error_page 404 /error/404.html;</span>
+</pre></div>
+
+
+<p>Una vez definida esta configuración, si quieres validarla puedes utilizar el comando <code>nginx -t</code> para comprobar que no hay ningún error en el fichero, luego reinicia el servicio:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo systemctl restart nginx</span>
+</pre></div>
+
+
+<hr>
+<h2>Autentificación, Autorización, y Control de Acceso</h2>
+<h4>Tarea 1</h4>
+<p>Añade al escenario otra máquina conectada por una red interna al servidor. A la URL departamentos.iesgn.org/intranet sólo se debe tener acceso desde el cliente de la red local, y no se pueda acceder desde la anfitriona por la red pública. A la URL departamentos.iesgn.org/internet, sin embargo, sólo se debe tener acceso desde la anfitriona por la red pública, y no desde la red local.</p>
+<p>Lo primero es crear los directorios y "index.html" de ambos, así como el cambio de propietario:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo mkdir /srv/www/departamentos/intranet</span>
+<span class="go">sudo mkdir /srv/www/departamentos/internet</span>
+<span class="go">echo &quot;&lt;h1&gt;Página Intranet&lt;/h1&gt;&quot; &gt; /srv/www/departamentos/intranet/index.html</span>
+<span class="go">echo &quot;&lt;h1&gt;Página Internet&lt;/h1&gt;&quot; &gt; /srv/www/departamentos/internet/index.html</span>
+<span class="go">chown -R www-data. /srv</span>
+</pre></div>
+
+
+<p>Agrega la siguiente configuración al fichero "departamentosiesgn":</p>
+<div class="highlight"><pre><span></span><span class="go"> location /intranet {</span>
+<span class="go">  deny 172.23.0.0/16;</span>
+<span class="go">  allow 10.0.0.0/24;</span>
+<span class="go"> }</span>
+
+<span class="go"> location /internet  {</span>
+<span class="go">  deny 10.0.0.0/24;</span>
+<span class="go">  allow 172.23.0.0/16;</span>
+<span class="go"> }</span>
+</pre></div>
+
+
+<p>Una vez definida esta configuración, si quieres validarla puedes utilizar el comando <code>nginx -t</code> para comprobar que no hay ningún error en el fichero, luego reinicia el servicio:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo systemctl restart nginx</span>
+</pre></div>
+
+
+<h4>Tarea 2</h4>
+<p>Con autentificación básica limita el acceso a la URL "departamentos.iesgn.org/secreto".</p>
+<p>Para ello se hará uso de la herramienta "htpasswd" la cual se incluye en el paquete "apache2-utils" para instalar utiliza el siguiente comando:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo apt install apache2-utils</span>
+</pre></div>
+
+
+<p>Una vez instalado utiliza el siguiente comando para generar el fichero con los usuarios y sus contraseñas:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo htpasswd -c /etc/nginx/.htpasswd jose</span>
+</pre></div>
+
+
+<p>Esto pedirá la contraseña de jose y se creará el fichero, a continuación crea el directorio "/secreto" y su "index.html" asi como el cambio de propietario:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo mkdir /srv/www/departamentos/secreto</span>
+<span class="go">sudo echo &quot;&lt;h1&gt;Página Secreta&lt;/h1&gt;&quot; &gt; /srv/www/departamentos/secreto/index.html</span>
+<span class="go">chown -R www-data. /srv</span>
+</pre></div>
+
+
+<p>Por último edita el fichero "departamentosiesgn" agregando el siguiente contenido:</p>
+<div class="highlight"><pre><span></span><span class="go"> location /secreto {</span>
+<span class="go">  auth_basic &quot;Area Restringida&quot;;</span>
+<span class="go">  auth_basic_user_file /etc/nginx/.htpasswd;</span>
+<span class="go"> }</span>
+</pre></div>
+
+
+<p>Una vez definida esta configuración, si quieres validarla puedes utilizar el comando <code>nginx -t</code> para comprobar que no hay ningún error en el fichero, luego reinicia el servicio:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo systemctl restart nginx</span>
+</pre></div>
+
+
+<h4>Tarea 3</h4>
+<p>Se va a combinar el control de acceso y la autentificación, se va a configurar el virtual host para que se comporte de la siguiente manera: el acceso a la URL "departamentos.iesgn.org/secreto" se hace forma directa desde la intranet, desde la red pública te pide la autentificación.</p>
+<p>Para realizar esto modifica el fichero "departamentosiesgn" dejandolo así;</p>
+<div class="highlight"><pre><span></span><span class="go"> location /secreto {</span>
+<span class="go">  satisfy any;</span>
+<span class="go">  allow 10.0.0.0/24;</span>
+<span class="go">  auth_basic &quot;Area Restringida&quot;;</span>
+<span class="go">  auth_basic_user_file /etc/nginx/.htpasswd;</span>
+<span class="go">  deny all;</span>
+<span class="go"> }</span>
+</pre></div>
+
+
+<p>Una vez definida esta configuración, si quieres validarla puedes utilizar el comando <code>nginx -t</code> para comprobar que no hay ningún error en el fichero, luego reinicia el servicio:</p>
+<div class="highlight"><pre><span></span><span class="go">sudo systemctl restart nginx</span>
+</pre></div>
+
+
+<hr>
+<p>Muchas gracias por leer hasta aquí espero que haya servido de ayuda. Un saludo.    </p>
+        </section>
+
+        <br><br><br>
+
+        <footer>
+          <div class="adjust-width">
+            <div id="author-block" class="w3-light-grey w3-border">
+              <div id="author-info">
+                <a href="http://arpovea.vercel.app"><img style="width: 60px; height: 60px;" src="theme/images/arpovealogo.PNG" onerror="this.src='theme/images/avatar.png'" alt="Avatar"></a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                  <a href="http://arpovea.vercel.app"><span id="author-name" class="w3-hover-text-dark-grey">Adrián Rodríguez Povea</span></a>
+                  <p id="author-story">Apasionado de las tecnologías.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br><br><br>
+
+          <p style="font-size:10pt; font-style: italic;">¿Te ha gustado el artículo? ¡Compartelo!</p>
+          <div id="share" class="share">
+            <a href="http://www.facebook.com/sharer.php?u=https%3A//arpovea.vercel.app/servidor-web-nginx.html&amp;t=Blog%20Inform%C3%A1tico%3A%20Servidor%20web%20NGINX" target="_blank" class="w3-btn w3-indigo">
+              <i class="fa fa-facebook"></i> <span>Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?url=https%3A//arpovea.vercel.app/servidor-web-nginx.html&amp;text=Blog%20Inform%C3%A1tico%3A%20Servidor%20web%20NGINX" target="_blank" class="w3-btn w3-blue">
+              <i class="fa fa-twitter"></i> <span>Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url=https%3A//arpovea.vercel.app/servidor-web-nginx.html" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="w3-btn w3-red">
+              <i class="fa fa-google-plus"></i> <span>Google</span>
+            </a>
+          </div>
+
+          <br><br><br>
+
+
+<!--                    <div id="disqus_thread"></div>
+          <script>
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+             */
+            
+            var disqus_config = function () {
+              this.page.url = 'https://arpovea.vercel.app';  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = 'servidor-web-nginx'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+              var d = document, s = d.createElement('script');
+              
+              s.src = 'https://arpovea.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+              
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          <br><br><br>
+-->
+
+        </footer>
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>&copy;  Adrián Rodríguez Povea</span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-12345678-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>
