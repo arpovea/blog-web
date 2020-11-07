@@ -114,7 +114,7 @@
 
 <p>Una vez definida esta configuración, si quieres validarla puedes utilizar el comando <code>nginx -t</code> para comprobar que no hay ningún error en el fichero, luego crea el enlace simbólico para habilitarlo y reinicia el servicio:</p>
 <div class="highlight"><pre><span></span><span class="go">nginx -t</span>
-<span class="go">ln -s /etc/nginx/sites-available/wwwiesgn /etc/nginx/sites-enabled/</span>
+<span class="go">sudo ln -s /etc/nginx/sites-available/wwwiesgn /etc/nginx/sites-enabled/</span>
 <span class="go">sudo systemctl restart nginx</span>
 </pre></div>
 
@@ -141,7 +141,7 @@
 
 <p>Una vez definida esta configuración, si quieres validarla puedes utilizar el comando <code>nginx -t</code> para comprobar que no hay ningún error en el fichero, luego crea el enlace simbólico para habilitarlo y reinicia el servicio:</p>
 <div class="highlight"><pre><span></span><span class="go">nginx -t</span>
-<span class="go">ln -s /etc/nginx/sites-available/departamentosiesgn /etc/nginx/sites-enabled/</span>
+<span class="go">sudo ln -s /etc/nginx/sites-available/departamentosiesgn /etc/nginx/sites-enabled/</span>
 <span class="go">sudo systemctl restart nginx</span>
 </pre></div>
 
