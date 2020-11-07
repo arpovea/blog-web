@@ -25,8 +25,10 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Una vez definida esta configuración, si quieres validarla puedes utilizar el comando &lt;code&gt;nginx -t&lt;/code&gt; para comprobar que no hay ningún error en el fichero, luego reinicia el servicio:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;sudo systemctl restart nginx&lt;/span&gt;
+&lt;p&gt;Una vez definida esta configuración, si quieres validarla puedes utilizar el comando &lt;code&gt;nginx -t&lt;/code&gt; para comprobar que no hay ningún error en el fichero, luego crea el enlace simbólico para habilitarlo y reinicia el servicio:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;nginx -t&lt;/span&gt;
+&lt;span class="go"&gt;ln -s /etc/nginx/sites-available/wwwiesgn /etc/nginx/sites-enabled/&lt;/span&gt;
+&lt;span class="go"&gt;sudo systemctl restart nginx&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -50,8 +52,10 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Una vez definida esta configuración, si quieres validarla puedes utilizar el comando &lt;code&gt;nginx -t&lt;/code&gt; para comprobar que no hay ningún error en el fichero, luego reinicia el servicio:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;sudo systemctl restart nginx&lt;/span&gt;
+&lt;p&gt;Una vez definida esta configuración, si quieres validarla puedes utilizar el comando &lt;code&gt;nginx -t&lt;/code&gt; para comprobar que no hay ningún error en el fichero, luego crea el enlace simbólico para habilitarlo y reinicia el servicio:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="go"&gt;nginx -t&lt;/span&gt;
+&lt;span class="go"&gt;ln -s /etc/nginx/sites-available/departamentosiesgn /etc/nginx/sites-enabled/&lt;/span&gt;
+&lt;span class="go"&gt;sudo systemctl restart nginx&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
